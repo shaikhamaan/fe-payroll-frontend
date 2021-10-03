@@ -1,0 +1,33 @@
+.password_modal_footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mail-icon {
+  color: black;
+  font-size: 24px;
+  margin-left: 10px;
+
+}
+
+.mail-icon:hover{
+  color: gray;
+}
+
+.password_modal_copy_button{
+  width: 88%;
+  background-color: transparent !important;
+  border: 1px solid #c4bcbc !important;
+  border-radius: 5px;
+  box-shadow: none !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 10px;
+}
+
+.password_modal_copy_button:hover {
+  background-color: hsl(120, 100%, 93%) !important;
+  border-color: 1px solid green;
+}

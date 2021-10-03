@@ -1,0 +1,34 @@
+.filter-input {
+  outline: none;
+  border: 0px;
+}
+
+textarea:focus,
+textarea.form-control:focus,
+input.form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+[type="text"].form-control:focus,
+[type="password"].form-control:focus,
+[type="email"].form-control:focus,
+[type="tel"].form-control:focus,
+[contenteditable].form-control:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+
+#table-global-filter {
+  text-align: left;
+  border: 1px solid #808080;
+  transition: all 0.2s ease-in;
+}
+
+#table-global-filter:hover {
+  border: 1px solid #2f20d2;
+}
+
+.pagination-item{
+  background-color: #2f20d2 !important;
+  color: white !important;
+}
