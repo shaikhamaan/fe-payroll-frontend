@@ -11,7 +11,7 @@ import {
   CSidebarNavDropdown,
   CSidebarNavItem,
 } from '@coreui/react'
-
+import { useState } from 'react'
 import CIcon from '@coreui/icons-react'
 
 // sidebar nav config
@@ -19,7 +19,7 @@ import navigation from './_nav'
 
 const TheSidebar = () => {
   const dispatch = useDispatch()
-  const show = useSelector(state => state.sidebarShow)
+  const show = useSelector((state) => state.commonReducer.sidebarShow)
 
   return (
     <CSidebar

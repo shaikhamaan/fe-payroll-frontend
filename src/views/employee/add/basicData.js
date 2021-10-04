@@ -6,13 +6,14 @@ import SimpleInput from "src/components/formFields/simpleInput";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { addEmployee } from "./api";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { basicDetailsValidation } from "./validations";
 import countries from "../../../constants/jsons/countries";
 // import { getCityStateFromPinCode } from "src/views/organization/add/apis";
 import moment from "moment";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import { store } from "src/redux/store";
 
 const BasicData = ({
   setActive,
@@ -27,19 +28,12 @@ const BasicData = ({
   const organization_id = useSelector((state) => state);
 
   const {
-    _id,
-    first_name = "",
-    middle_name = "",
-    last_name = "",
+    employee_name="",
     work_location = "",
-    dob = "",
-    gender = "",
+    entry_made_on = "",
+    entry_added_by = "",
     employee_code = "",
-    street = "",
-    city = "",
-    postal_code = "",
-    country = "India",
-    state = "",
+    
   } = userDetails;
 
   var today = new Date();
@@ -47,6 +41,9 @@ const BasicData = ({
   maxDate = moment(maxDate?.setFullYear(today?.getFullYear() - 18)).format(
     "YYYY-MM-DD"
   );
+
+  const data = store.getState().commonReducer.data;
+  
   return (
     <>
       <CCol xs="12" sm="12" className="mt-4">
@@ -54,130 +51,84 @@ const BasicData = ({
           <Formik
             enableReinitialize
             initialValues={{
-              _id,
+            
               work_location,
-              first_name,
-              middle_name,
-              last_name,
-              dob,
-              gender,
-              street,
-              city,
-              postal_code,
-              country,
-              state,
+              entry_made_on,
+              entry_added_by,
+              employee_code,
+              employee_name
             }}
             //validateOnChange={validateAfterSubmit}
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
-              // setActive(1);
               dispatch({ type: SET_LOADER, payload: true });
-              console.log(values, "values");
+              
+              for(const key in values){
+                data[key] = values[key]
+              }
+
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+
               setActive(1);
-              // addEmployee(
-              //   _id
-              //     ? { ...values, _id, organization_id }
-              //     : { ...values, organization_id },
-              //   (data) => {
-              //     if (data?.status == "success") {
-              //       setUserId(data?.data?._id);
-              //       setUserDetails(data?.data);
-              //       enqueueSnackbar("Saved.", {
-              //         variant: "success",
-              //         anchorOrigin: {
-              //           vertical: "bottom",
-              //           horizontal: "left",
-              //         },
-              //       });
-              //       setActive(1);
-              //       dispatch({ type: SET_LOADER, payload: false });
-              //     } else {
-              //       enqueueSnackbar(data?.message, {
-              //         variant: "error",
-              //         anchorOrigin: {
-              //           vertical: "bottom",
-              //           horizontal: "left",
-              //         },
-              //       });
-              //       dispatch({ type: SET_LOADER, payload: false });
-              //     }
-              //   },
-              //   () => {
-              //     alert("Error while saving");
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //   }
-              // );
             }}
           >
-            {({ errors, touched, values, setFieldValue, validateForm }) => {
+            {({ errors, touched, values, setFieldValue, validateForm, submitForm }) => {
               return (
                 <Form>
                   <CCardBody>
                     <CFormGroup row className="my-0">
-                      <CCol xs="12" lg="4" md="4">
+                      <CCol xs="12" lg="12" md="4">
                         <SimpleInput
-                          id="first_name"
-                          placeholder="Enter your first "
+                          id="employee_name"
+                          placeholder="Employee Full Name : "
                           onChange={(e) => {
-                            setFieldValue("first_name", e.target.value);
+                            setFieldValue("employee_name", e.target.value);
                           }}
-                          value={values?.first_name}
-                          error={touched?.first_name && errors?.first_name}
-                          title="First Name"
+                          value={values?.employee_name}
+                          error={touched?.employee_name && errors?.employee_name}
+                          title="Employee Full Name"
                           required
                           disabled={isDisabled}
                         />
                       </CCol>
-                      <CCol xs="12" lg="4" md="4">
-                        <SimpleInput
-                          id="middle_name"
-                          placeholder="Enter your middle name"
-                          onChange={(e) => {
-                            setFieldValue("middle_name", e.target.value);
-                          }}
-                          value={values?.middle_name}
-                          error={touched?.middle_name && errors?.middle_name}
-                          title="Middle Name"
-                          disabled={isDisabled}
-                        />
-                      </CCol>
-                      <CCol xs="12" lg="4" md="4">
-                        <SimpleInput
-                          id="last_name"
-                          placeholder="Enter your last name"
-                          onChange={(e) => {
-                            setFieldValue("last_name", e.target.value);
-                          }}
-                          value={values?.last_name}
-                          error={touched?.last_name && errors?.last_name}
-                          title="Last Name"
-                          required
-                          disabled={isDisabled}
-                        />
-                      </CCol>
+                      
                     </CFormGroup>
                     <CFormGroup row className="mt-2">
                       <CCol xs="12" lg="6">
                         <DatePicker
-                          title="Date of birth"
-                          id="date-input"
+                          title="Entery Made On"
+                          id="entry_made_on"
                           placeholder="date"
                           required
                           onChange={(e) => {
-                            setFieldValue("dob", e.target.value);
+                            setFieldValue("entry_made_on", e.target.value);
                           }}
                           value={
-                            values?.dob
-                              ? moment(values?.dob)?.format("YYYY-MM-DD")
+                            values?.entry_made_on
+                              ? moment(values?.entry_made_on)?.format("YYYY-MM-DD")
                               : ""
                           }
-                          error={touched?.dob && errors?.dob}
+                          error={touched?.entry_made_on && errors?.entry_made_on}
                           maxDate={maxDate}
                           disabled={isDisabled}
                         />
                       </CCol>
                       <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="entry_added_by"
+                          placeholder="Entry Made By..."
+                          onChange={(e) => {
+                            setFieldValue("entry_added_by", e.target.value);
+                          }}
+                          value={values?.entry_added_by}
+                          error={touched?.entry_added_by && errors?.entry_added_by}
+                          title="Entry Made By :"
+                          required
+                          disabled={isDisabled}
+                        />
+                      </CCol>
+                      {/* <CCol xs="12" lg="6">
                         <Select
                           id="select"
                           title="Gender"
@@ -195,7 +146,7 @@ const BasicData = ({
                           error={touched?.gender && errors?.gender}
                           disabled={isDisabled}
                         />
-                      </CCol>
+                      </CCol> */}
                     </CFormGroup>
                     <CFormGroup row>
                       {/* <CCol xs="12" lg="6">
@@ -264,7 +215,7 @@ const BasicData = ({
                         />
                       </CCol>
                     </CFormGroup>
-                    <CFormGroup row>
+                    {/* <CFormGroup row>
                       <CCol>
                         <SimpleInput
                           id="street"
@@ -279,7 +230,7 @@ const BasicData = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                    </CFormGroup>
+                    </CFormGroup> */}
                     {/* <CFormGroup row className="my-0 mt-2">
                       <CCol>
                         <SimpleInput
@@ -295,7 +246,7 @@ const BasicData = ({
                         />
                       </CCol>
                     </CFormGroup> */}
-                    <CFormGroup row className="my-0 mt-2">
+                    {/* <CFormGroup row className="my-0 mt-2">
                       <CCol xs="8">
                         <SimpleInput
                           id="city"
@@ -383,7 +334,7 @@ const BasicData = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                    </CFormGroup>
+                    </CFormGroup> */}
                     <SimpleButton
                       onClick={() => {
                         setValidateAfterSubmit(true);
@@ -396,6 +347,7 @@ const BasicData = ({
                       title="Save & Next"
                       color="primary"
                       className="float-right my-3"
+                      type="submit"
                     />
                   </CCardBody>
                 </Form>
