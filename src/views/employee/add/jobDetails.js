@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CFormGroup,
-  CLabel,
-  CSelect,
-  CButton,
-} from "@coreui/react";
+import React, { useState } from "react";
+import { CCard, CCardBody, CCol, CFormGroup, CButton } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
-import { useSelector } from "react-redux";
-import { getEmployees, getEmployeesForManagers } from "./api";
 import Select from "src/components/formFields/select";
-import { array } from "prop-types";
-import { addEmployee } from "./api";
-import { ADD_EMPLOYEE_DATA,SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
-import { jobDetailsValidation } from "./validations";
-import { useSnackbar } from "notistack";
-import { useParams } from "react-router";
-import DatePicker from "src/components/formFields/datePicker";
-import moment from "moment";
-import{store} from 'src/redux/store'
+import { store } from "src/redux/store";
 function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
-  const { id } = useParams();
+  //const { id } = useParams();
   const {
     aadhar_no = "",
     employee_photo = "",
@@ -35,18 +17,10 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     education = "",
     employee_grade = "",
   } = userDetails;
-  
-  const [managers, setManagers] = useState([
-    { key: "Please select", value: "" },
-  ]);
-
-
-  console.log(managers);
 
   const data = store.getState().commonReducer.data;
 
   const dispatch = useDispatch();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   return (
     <>
       <CCol xs="12" sm="12" className="mt-4">
@@ -64,15 +38,21 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
               dispatch({ type: SET_LOADER, payload: true });
-              for(const key in values){
-                data[key] = values[key]
+              for (const key in values) {
+                data[key] = values[key];
               }
-              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
               setActive(4);
-              
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              resetForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -178,7 +158,6 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                       </CCol>
 
                       <CCol xs="12" lg="6">
-                        
                         <SimpleInput
                           id="employee_grade"
                           placeholder="Enter your grade"
@@ -186,7 +165,9 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                             setFieldValue("employee_grade", e.target.value);
                           }}
                           value={values?.employee_grade}
-                          error={touched?.employee_grade && errors?.employee_grade}
+                          error={
+                            touched?.employee_grade && errors?.employee_grade
+                          }
                           title="Grade"
                           required
                           disabled={isDisabled}
