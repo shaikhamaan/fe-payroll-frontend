@@ -12,24 +12,28 @@ import {
 import SimpleInput from "src/components/formFields/simpleInput";
 import Select from "src/components/formFields/select";
 import { addEmployee } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { communicationValidation } from "./validations";
 import { useSnackbar, SnackbarProvider } from "notistack";
 import PhoneNumberInput from "src/components/formFields/phoneNumberInput";
+import { store } from "src/redux/store";
 
 function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
   const {
-    _id,
-    mobile_number = "",
+    
+    mobile_no = "",
     whatsapp_status = "",
     vehicle_group = "",
     mobile_relation = "",
   } = userDetails;
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const data = store.getState().commonReducer.data;
+
   return (
     <>
       <CCol xs="12" sm="12" className="mt-4">
@@ -37,42 +41,24 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
           <Formik
             enableReinitialize
             initialValues={{
-              _id,
-              mobile_number,
+              
+              mobile_no,
               whatsapp_status,
               vehicle_group,
               mobile_relation,
             }}
             //validationSchema={communicationValidation}
             onSubmit={async (values) => {
-              // setActive(1);
               dispatch({ type: SET_LOADER, payload: true });
-              console.log(values, "values");
+              for(const key in values){
+                data[key] = values[key]
+              }
+
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
               setActive(2);
-              // addEmployee(
-              //   _id ? { ...values, _id } : values,
-              //   (data) => {
-              //     setUserDetails(data?.data);
-              //     if (!isDisabled) {
-              //       setActive(2);
-              //     }
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //     enqueueSnackbar("Saved.", {
-              //       variant: "success",
-              //       anchorOrigin: {
-              //         vertical: "bottom",
-              //         horizontal: "left",
-              //       },
-              //     });
-              //   },
-              //   () => {
-              //     alert("Error while saving");
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //   }
-              // );
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm }) => {
+            {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -80,14 +66,14 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
                       <CCol xs="12" sm="6" lg="6">
                         <PhoneNumberInput
                           title="Mobile Number"
-                          value={values?.mobile_number}
+                          value={values?.mobile_no}
                           onChange={(e) => {
                             console.log(e);
-                            setFieldValue("mobile_number", e ? `+${e}` : "");
+                            setFieldValue("mobile_no", e ? `+${e}` : "");
                           }}
-                          id="phone_number"
+                          id="mobile_no"
                           error={
-                            touched?.mobile_number && errors?.mobile_number
+                            touched?.mobile_no && errors?.mobile_no
                           }
                           required
                           disabled={isDisabled}
@@ -139,13 +125,16 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
                           id="mobile_relation"
                           placeholder="Enter Mobile Relation"
                           onChange={(e) => {
-                            setFieldValue("personal_email", e.target.value);
+                            setFieldValue("mobile_relation", e.target.value);
                           }}
                           value={values?.mobile_relation}
                           error={
                             touched?.mobile_relation && errors?.mobile_relation
                           }
                           title="Mobile Relation"
+                          required
+                          disabled={isDisabled}
+                          
                         />
                       </CCol>
                     </CFormGroup>
@@ -164,6 +153,7 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
                       title={isDisabled ? "Save" : "Save & Next"}
                       color="primary"
                       className="float-right"
+                      type="submit"
                     />
                   </CCardBody>
                 </Form>

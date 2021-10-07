@@ -1,5 +1,10 @@
 import React from "react";
 import {
+  CModal,
+  CModalFooter,
+  CModalHeader,
+  CModalBody,
+  CModalTitle,
   CCard,
   CCardBody,
   CCardHeader,
@@ -11,14 +16,17 @@ import {
 } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
 import { addEmployee } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import { SET_LOADER, ADD_EMPLOYEE_DATA } from "src/redux/actions";
 import { Formik, Form } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { emergencyContactValidation } from "./validations";
 import { useSnackbar } from "notistack";
 import Select from "src/components/formFields/select";
 import PhoneNumberInput from "src/components/formFields/phoneNumberInput";
+import { store } from "src/redux/store";
+import axios from "axios";
+import { useState } from 'react'
 
 function EmergencyContact({
   userDetails,
@@ -27,16 +35,28 @@ function EmergencyContact({
   touched,
   isDisabled,
 }) {
+
+
+  const data = store.getState().commonReducer.data;
+
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  const [vis, setVisible] = useState(false)
+
   const {
-    _id,
     emergency_contact = "",
     emergency_contact_no = "",
     emergency_person_relation = "",
+    pay_scale = "",
+    pay_scale_type = "",
+    payscale_per_hour = "",
+    pay_scale_term = ""
   } = userDetails;
   return (
     <>
+      <Popup visible="true" messsage="Hello"/>
+
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
           <Formik
@@ -45,36 +65,34 @@ function EmergencyContact({
               emergency_contact,
               emergency_contact_no,
               emergency_person_relation,
+              pay_scale,
+              pay_scale_type,
+              payscale_per_hour,
+              pay_scale_term
             }}
             //validationSchema={emergencyContactValidation}
             onSubmit={async (values) => {
-              // setActive(1);
               dispatch({ type: SET_LOADER, payload: true });
-              console.log(values, "values");
-              // addEmployee(
-              //   _id ? { ...values, _id, is_profile_completed: true } : values,
-              //   (data) => {
-              //     setUserDetails(data?.data);
-              //     if (!isDisabled) {
-              //       setActive(6);
-              //     }
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //     enqueueSnackbar("Saved.", {
-              //       variant: "success",
-              //       anchorOrigin: {
-              //         vertical: "bottom",
-              //         horizontal: "left",
-              //       },
-              //     });
-              //   },
-              //   () => {
-              //     alert("Error while saving");
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //   }
-              // );
+              for (const key in values) {
+                data[key] = values[key]
+              }
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data })
+
+              const d = await axios.post('http://localhost:5000', data)
+
+              console.log(d);
+              enqueueSnackbar(String(d.data.message),{
+                anchorOrigin:{
+                  vertical:'top',
+                  horizontal:'right'
+                },
+                variant:String(d.data.status),
+              
+              })
+              
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm }) => {
+            {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -145,7 +163,73 @@ function EmergencyContact({
                         />
                       </CCol>
                     </CFormGroup>
+                    <CFormGroup row className="mt-4">
+                      <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="pay-scale"
+                          placeholder="Pay Scale"
+                          onChange={(e) => {
+                            setFieldValue("pay_scale", e.target.value);
+                          }}
+                          value={values?.pay_scale}
+                          error={
+                            touched?.pay_scale &&
+                            errors?.pay_scale
+                          }
+                          title="Pay Scale"
+                          required
+                        />
+                      </CCol>
+                      <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="pay-scale-type"
+                          placeholder="Pay Scale Type"
+                          onChange={(e) => {
+                            setFieldValue("pay_scale_type", e.target.value);
+                          }}
+                          value={values?.pay_scale_type}
+                          error={
+                            touched?.pay_scale_type &&
+                            errors?.pay_scale_type
+                          }
+                          title="Pay Scale Type"
+                          required
+                        />
+                      </CCol>
+                      <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="payscale-per-hour"
+                          placeholder="Pay Scale Per Hour"
+                          onChange={(e) => {
+                            setFieldValue("payscale_per_hour", e.target.value);
+                          }}
+                          value={values?.payscale_per_hour}
+                          error={
+                            touched?.payscale_per_hour &&
+                            errors?.payscale_per_hour
+                          }
+                          title="Pay Scale Hour"
+                          required
+                        />
+                      </CCol>
+                      <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="payscale-term"
+                          placeholder="Pay Scale Per Term"
+                          onChange={(e) => {
+                            setFieldValue("pay_scale_term", e.target.value);
+                          }}
+                          value={values?.pay_scale_term}
+                          error={
+                            touched?.pay_scale_term &&
+                            errors?.pay_scale_term
+                          }
+                          title="Pay Scale Term"
+                          required
+                        />
+                      </CCol>
 
+                    </CFormGroup>
                     <CButton
                       onClick={() => {
                         setActive(3);
@@ -157,13 +241,14 @@ function EmergencyContact({
                     >
                       Previous
                     </CButton>
-                    
-                      <SimpleButton
-                        title={isDisabled ? "Save" : "Save & Next"}
-                        color="primary"
-                        className="float-right"
-                      />
-               
+
+                    <SimpleButton
+                      title={isDisabled ? "Save" : "Submit"}
+                      color="primary"
+                      className="float-right"
+                      type="submit"
+                    />
+
                   </CCardBody>
                 </Form>
               );
@@ -174,5 +259,28 @@ function EmergencyContact({
     </>
   );
 }
+
+
+function Popup(props) {
+  if(props.visible == "false"){
+    return null
+  }
+
+  return (
+    <>
+      <CModal visible= "true" >
+        <CModalHeader>
+          <CModalTitle>Message</CModalTitle>
+        </CModalHeader>
+        <CModalBody>{ props.message }</CModalBody>
+        <CModalFooter>
+          <CButton color="primary">OK</CButton>
+        </CModalFooter>
+      </CModal>
+    </>
+  )
+}
+
+
 
 export default EmergencyContact;

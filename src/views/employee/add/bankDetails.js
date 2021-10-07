@@ -9,16 +9,19 @@ import {
 } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
 import { addEmployee } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA,SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { bankDetailsValidation } from "./validations";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import {store} from 'src/redux/store'
 
 function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+  const data = store.getState().commonReducer.data;
+
   const {
     _id,
     bank_name = "",
@@ -46,32 +49,19 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
             }}
             //validationSchema={bankDetailsValidation}
             onSubmit={async (values) => {
-              // setActive(1);
               dispatch({ type: SET_LOADER, payload: true });
-              console.log(values, "values");
+              
+              for(const key in values){
+                data[key] = values[key]
+              }
+
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+
               setActive(3);
-              // addEmployee(
-              //   _id ? { ...values, _id } : values,
-              //   (data) => {
-              //     setUserDetails(data?.data);
-              //     setActive(4);
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //     enqueueSnackbar("Saved.", {
-              //       variant: "success",
-              //       anchorOrigin: {
-              //         vertical: "bottom",
-              //         horizontal: "left",
-              //       },
-              //     });
-              //   },
-              //   () => {
-              //     alert("Error while saving");
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //   }
-              // );
+              
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm }) => {
+            {({ errors, touched, values, setFieldValue, resetForm,submitForm }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -79,7 +69,7 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
                       <CCol xs="12" lg="6">
                         <CFormGroup>
                           <SimpleInput
-                            id="bank-name"
+                            id="bank_name"
                             placeholder="Enter your bank name"
                             required
                             onChange={(e) => {
@@ -95,7 +85,7 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
                       <CCol xs="12" lg="6">
                         <CFormGroup>
                           <SimpleInput
-                            id="bank-ifsc-code"
+                            id="bank_ifsc_code"
                             placeholder="Enter your bank IFSC Code"
                             required
                             onChange={(e) => {
@@ -226,6 +216,7 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
                       color="primary"
                       className="float-right"
                       type="submit"
+              
                     />
                   </CCardBody>
                 </Form>

@@ -3,7 +3,7 @@ import { LOGOUT } from "./actions";
 import commonReducer from "./common-reducer";
 
 const appReducer = combineReducers({
-  commonReducer: commonReducer,
+  commonReducer: commonReducer
 });
 
 const rootReducer = (state, action) => {

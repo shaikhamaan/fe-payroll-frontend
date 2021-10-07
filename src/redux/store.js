@@ -19,6 +19,7 @@ middlewares.push(logger);
 let store = createStore(
   persistedReducer,
   composeWithDevTools(applyMiddleware(...middlewares))
+
 );
 let persistor = persistStore(store);
 

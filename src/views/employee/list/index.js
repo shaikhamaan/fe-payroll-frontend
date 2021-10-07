@@ -11,41 +11,43 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
 
+import axios from "axios";
+
+
+function tableMaker(val){
+  return(
+    <>
+      <tr>
+        <td>{val.employee_name}</td>
+        <td>{val.employee_code}</td>
+        <td>{val.work_location}</td>
+      </tr>
+    </>
+  )
+}
+
+
+
 function ListEmployees(props) {
   const { id } = useParams();
 
-  const dispatch = useDispatch();
-  const [employeeData, setEmployeeData] = useState([]);
-  const organization_id = useSelector((state) =>
-    id ? id : state.auth?.userDetails?.organization_id
-  );
+  // const dispatch = useDispatch();
+  // const [employeeData, setEmployeeData] = useState([]);
+  // const organization_id = useSelector((state) =>
+  //   id ? id : state.auth?.userDetails?.organization_id
+  // );
   // const params = new URLSearchParams(props.location.search);
   // var page = params.get("page");
+  const [employees,setEmployees] = useState([])
+   useEffect( async () => {
+    
+    const e = await axios.get('http://localhost:5000')
+    setEmployees(e.data)
+   }, []);
+  
 
-  useEffect(() => {
-    dispatch({ type: SET_LOADER, payload: true });
-    getUsersWithSelectedFields(
-      {
-        organization_id,
-        fieldsToGet: [
-          "first_name",
-          "employee_code",
-          "status",
-          "office_email",
-          "gender",
-        ],
-      },
-      (data) => {
-        console.log(data, "ahsdfgh");
-        setEmployeeData(data?.data);
-        dispatch({ type: SET_LOADER, payload: false });
-      },
-      () => {
-        dispatch({ type: SET_LOADER, payload: false });
-      }
-    );
-  }, []);
-
+   console.log(employees);
+  
   return (
     <SnackbarProvider>
       <div>
@@ -54,28 +56,20 @@ function ListEmployees(props) {
             <MainHeading heading="Employees" />
             <CCardBody>
               <CustomTable
-                data={[...employeeData]}
-                actions
-                type={tableTypes?.employeesList}
+                data={[...employees]}
+                // actions
+                // type={tableTypes?.employeesList}
                 columns={[
                   {
-                    Header: "First Name",
-                    accessor: "first_name",
+                    Header: "Employee Name",
+                    accessor: "employee_name",
                   },
                   {
-                    Header: "Gender",
-                    accessor: "gender",
+                    Header: "Work Location",
+                    accessor: "work_location",
                   },
                   {
-                    Header: "Email",
-                    accessor: "office_email",
-                  },
-                  {
-                    Header: "Status",
-                    accessor: "status",
-                  },
-                  {
-                    Header: "Code",
+                    Header: "Employee Code",
                     accessor: "employee_code",
                   },
                   {
@@ -90,6 +84,12 @@ function ListEmployees(props) {
         </CCol>
       </div>
     </SnackbarProvider>
+ 
+   
+
+   
+
+
   );
 }
 

@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from "react";
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CFormGroup,
-  CLabel,
-  CSelect,
-  CButton,
-} from "@coreui/react";
+import React, { useState } from "react";
+import { CCard, CCardBody, CCol, CFormGroup, CButton } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
-import { useSelector } from "react-redux";
-import { getEmployees, getEmployeesForManagers } from "./api";
 import Select from "src/components/formFields/select";
-import { array } from "prop-types";
-import { addEmployee } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
-import { jobDetailsValidation } from "./validations";
-import { useSnackbar } from "notistack";
-import { useParams } from "react-router";
-import DatePicker from "src/components/formFields/datePicker";
-import moment from "moment";
-
+import { store } from "src/redux/store";
 function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
-  const { id } = useParams();
+  //const { id } = useParams();
   const {
     aadhar_no = "",
     employee_photo = "",
@@ -35,55 +17,10 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     education = "",
     employee_grade = "",
   } = userDetails;
-  // const org_id = useSelector(
-  //   (state) => state.auth?.userDetails?.organization_id
-  // );
-  // var final_org_id = org_id ? org_id : organization_id;
-  // console.log(final_org_id, "oooooooooo");
-  const [managers, setManagers] = useState([
-    { key: "Please select", value: "" },
-  ]);
 
-  // useEffect(async () => {
-  //   if (id) {
-  //     getEmployees(
-  //       `?_id=${id}`,
-  //       (data) => {
-  //         setUserDetails(data?.data[0]);
-  //         console.log(userDetails, "userrrrrr");
-  //       },
-  //       () => {}
-  //     );
-  //   }
-  //   if (final_org_id) {
-  //     getEmployeesForManagers(
-  //       {
-  //         employee_code: userDetails?.employee_code,
-  //         organization_id: org_id ? org_id : userDetails?.organization_id,
-  //       },
-  //       (data) => {
-  //         var users = data?.data;
-  //         console.log(data?.data, "dataEm");
-  //         const arrayy = users
-  //           .filter((item) => item._id != id)
-  //           .map((user) => ({
-  //             key: `${user?.first_name} ${user?.last_name} (${user?.employee_code})`,
-  //             value: user?.employee_code,
-  //           }));
-  //         console.log(arrayy, "arrayyyy");
-  //         setManagers([...managers, ...arrayy]);
-  //       },
-  //       () => {
-  //         console.log("Nope");
-  //       }
-  //     );
-  //   }
-  // }, [final_org_id]);
-
-  console.log(managers);
+  const data = store.getState().commonReducer.data;
 
   const dispatch = useDispatch();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   return (
     <>
       <CCol xs="12" sm="12" className="mt-4">
@@ -100,31 +37,22 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
             }}
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
-              // setActive(1);
               dispatch({ type: SET_LOADER, payload: true });
+              for (const key in values) {
+                data[key] = values[key];
+              }
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
               setActive(4);
-              // addEmployee(
-              //   _id ? { ...values, _id } : values,
-              //   (data) => {
-              //     setUserDetails(data?.data);
-              //     setActive(5);
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //     enqueueSnackbar("Saved.", {
-              //       variant: "success",
-              //       anchorOrigin: {
-              //         vertical: "bottom",
-              //         horizontal: "left",
-              //       },
-              //     });
-              //   },
-              //   () => {
-              //     alert("Error while saving");
-              //     dispatch({ type: SET_LOADER, payload: false });
-              //   }
-              // );
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              resetForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -145,7 +73,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                       </CCol>
                       <CCol xs="12" lg="6">
                         <SimpleInput
-                          id="employee-photo"
+                          id="employee_photo"
                           placeholder="Your Image URL"
                           onChange={(e) => {
                             setFieldValue("employee_photo", e.target.value);
@@ -170,7 +98,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                         <Select
                           custom
                           name="select"
-                          id="select"
+                          id="experience_status"
                           options={[
                             { key: "Please select", value: "" },
                             { key: "Experieced", value: "experienced" },
@@ -193,7 +121,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                       <CCol xs="12" lg="6">
                         {values?.experience_status === "experienced" ? (
                           <SimpleInput
-                            id="years-of-experience"
+                            id="years_of_experience"
                             placeholder="Enter years of your experience"
                             onChange={(e) => {
                               setFieldValue(
@@ -230,7 +158,6 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                       </CCol>
 
                       <CCol xs="12" lg="6">
-                        
                         <SimpleInput
                           id="employee_grade"
                           placeholder="Enter your grade"
@@ -238,7 +165,9 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                             setFieldValue("employee_grade", e.target.value);
                           }}
                           value={values?.employee_grade}
-                          error={touched?.employee_grade && errors?.employee_grade}
+                          error={
+                            touched?.employee_grade && errors?.employee_grade
+                          }
                           title="Grade"
                           required
                           disabled={isDisabled}
@@ -260,6 +189,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                       title="Save & Next"
                       color="primary"
                       className="float-right"
+                      type="submit"
                     />
                   </CCardBody>
                 </Form>
