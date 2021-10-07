@@ -42,7 +42,7 @@ function EmergencyContact({
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const [visible, setVisible] = useState(false)
+  const [vis, setVisible] = useState(false)
 
   const {
     emergency_contact = "",
@@ -55,6 +55,8 @@ function EmergencyContact({
   } = userDetails;
   return (
     <>
+      <Popup visible="true" messsage="Hello"/>
+
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
           <Formik
@@ -74,15 +76,20 @@ function EmergencyContact({
               for (const key in values) {
                 data[key] = values[key]
               }
-
-
               dispatch({ type: ADD_EMPLOYEE_DATA, values: data })
 
               const d = await axios.post('http://localhost:5000', data)
-              
-              console.log(d.data.message);
-              alert(String(d.data.message))
 
+              console.log(d);
+              enqueueSnackbar(String(d.data.message),{
+                anchorOrigin:{
+                  vertical:'top',
+                  horizontal:'right'
+                },
+                variant:String(d.data.status),
+              
+              })
+              
             }}
           >
             {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
@@ -255,24 +262,24 @@ function EmergencyContact({
 
 
 function Popup(props) {
+  if(props.visible == "false"){
+    return null
+  }
+
   return (
     <>
-      <CModal visible={props.visible} >
+      <CModal visible= "true" >
         <CModalHeader>
-          <CModalTitle>Modal title</CModalTitle>
+          <CModalTitle>Message</CModalTitle>
         </CModalHeader>
-        <CModalBody>Woohoo, you're reading this text in a modal!</CModalBody>
+        <CModalBody>{ props.message }</CModalBody>
         <CModalFooter>
-          <CButton color="secondary">
-            Close
-          </CButton>
-          <CButton color="primary">Save changes</CButton>
+          <CButton color="primary">OK</CButton>
         </CModalFooter>
       </CModal>
     </>
   )
 }
-
 
 
 

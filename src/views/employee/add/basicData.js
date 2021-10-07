@@ -38,7 +38,7 @@ const BasicData = ({
 
   var today = new Date();
   var maxDate = new Date();
-  maxDate = moment(maxDate?.setFullYear(today?.getFullYear() - 18)).format(
+  maxDate = moment(maxDate?.setFullYear(today?.getFullYear())).format(
     "YYYY-MM-DD"
   );
 

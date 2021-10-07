@@ -10,7 +10,7 @@ import tableTypes from "../../../components/tables/types";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
-import './style.css'
+
 import axios from "axios";
 
 
@@ -49,69 +49,46 @@ function ListEmployees(props) {
    console.log(employees);
   
   return (
-    // <SnackbarProvider>
-    //   <div>
-    //     <CCol xs="12" lg="12">
-    //       <CCard accentColor="primary">
-    //         <MainHeading heading="Employees" />
-    //         <CCardBody>
-    //           <CustomTable
-    //             data={[...employeeData]}
-    //             actions
-    //             type={tableTypes?.employeesList}
-    //             columns={[
-    //               {
-    //                 Header: "Employee Name",
-    //                 accessor: "employee_name",
-    //               },
-    //               {
-    //                 Header: "Gender",
-    //                 accessor: "gender",
-    //               },
-    //               {
-    //                 Header: "Email",
-    //                 accessor: "office_email",
-    //               },
-    //               {
-    //                 Header: "Status",
-    //                 accessor: "status",
-    //               },
-    //               {
-    //                 Header: "Code",
-    //                 accessor: "employee_code",
-    //               },
-    //               {
-    //                 Header: "ID",
-    //                 accessor: "_id",
-    //                 show: false,
-    //               },
-    //             ]}
-    //           />
-    //         </CCardBody>
-    //       </CCard>
-    //     </CCol>
-    //   </div>
-    // </SnackbarProvider>
-    <>
-    <table>
-      <tbody>
-        <tr>
-          <th>Employee Name</th>
-          <th>Employee Code</th>
-          <th>Work Location</th>
-        </tr>
-
-        {
-          
-          employees.map(tableMaker)
-         
-        }
-      </tbody>
-    </table>
+    <SnackbarProvider>
+      <div>
+        <CCol xs="12" lg="12">
+          <CCard accentColor="primary">
+            <MainHeading heading="Employees" />
+            <CCardBody>
+              <CustomTable
+                data={[...employees]}
+                // actions
+                // type={tableTypes?.employeesList}
+                columns={[
+                  {
+                    Header: "Employee Name",
+                    accessor: "employee_name",
+                  },
+                  {
+                    Header: "Work Location",
+                    accessor: "work_location",
+                  },
+                  {
+                    Header: "Employee Code",
+                    accessor: "employee_code",
+                  },
+                  {
+                    Header: "ID",
+                    accessor: "_id",
+                    show: false,
+                  },
+                ]}
+              />
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </div>
+    </SnackbarProvider>
+ 
+   
 
    
 
-    </>
 
   );
 }
