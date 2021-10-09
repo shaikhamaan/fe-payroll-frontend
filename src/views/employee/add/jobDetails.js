@@ -71,10 +71,11 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                           disabled={isDisabled}
                         />
                       </CCol>
+                      
                       <CCol xs="12" lg="6">
                         <SimpleInput
                           id="employee_photo"
-                          placeholder="Your Image URL"
+                          placeholder="Employee Image URL"
                           onChange={(e) => {
                             setFieldValue("employee_photo", e.target.value);
                           }}
@@ -82,7 +83,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                           error={
                             touched?.employee_photo && errors?.employee_photo
                           }
-                          title="Your Image"
+                          title="Employee Image URL"
                           required
                           disabled={isDisabled}
                         />

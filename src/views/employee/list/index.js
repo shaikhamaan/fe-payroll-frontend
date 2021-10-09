@@ -14,20 +14,6 @@ import { SnackbarProvider } from "notistack";
 import axios from "axios";
 
 
-function tableMaker(val){
-  return(
-    <>
-      <tr>
-        <td>{val.employee_name}</td>
-        <td>{val.employee_code}</td>
-        <td>{val.work_location}</td>
-      </tr>
-    </>
-  )
-}
-
-
-
 function ListEmployees(props) {
   const { id } = useParams();
 
@@ -39,14 +25,15 @@ function ListEmployees(props) {
   // const params = new URLSearchParams(props.location.search);
   // var page = params.get("page");
   const [employees,setEmployees] = useState([])
-   useEffect( async () => {
-    
-    const e = await axios.get('http://localhost:5000')
-    setEmployees(e.data)
-   }, []);
+
+  useEffect( async () => {
+  
+  const e = await axios.get('http://localhost:5000')
+  setEmployees(e.data)
+  }, []);
   
 
-   console.log(employees);
+  console.log(employees);
   
   return (
     <SnackbarProvider>

@@ -62,6 +62,7 @@ const User = React.lazy(() => import("./views/users/User"));
 
 const AddEmployees = React.lazy(() => import("../src/views/employee/add"));
 const ListEmployees = React.lazy(() => import("../src/views/employee/list"));
+const ViewEmployeeData = React.lazy(() => import("../src/views/employee/viewdata"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -135,6 +136,12 @@ const routes = [
     component: ListEmployees,
     exact: true,
   },
+  {
+    path: "/employees/viewdata/:id",
+    name:"View Individual Data",
+    component: ViewEmployeeData,
+    exact: "true"
+  }
 ];
 
 export default routes;
