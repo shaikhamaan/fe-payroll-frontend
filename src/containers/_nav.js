@@ -27,7 +27,12 @@ const _nav = [
         _tag: "CSidebarNavItem",
         name: "View Employees",
         to: "/employees/list",
-      }
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Mass Upload",
+        to: "/employees/upload",
+      },
     ],
   },
   {

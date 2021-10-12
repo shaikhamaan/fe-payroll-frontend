@@ -62,7 +62,12 @@ const User = React.lazy(() => import("./views/users/User"));
 
 const AddEmployees = React.lazy(() => import("../src/views/employee/add"));
 const ListEmployees = React.lazy(() => import("../src/views/employee/list"));
-const ViewEmployeeData = React.lazy(() => import("../src/views/employee/viewdata"));
+const ViewEmployeeData = React.lazy(() =>
+  import("../src/views/employee/viewdata")
+);
+const MassUploadEmployees = React.lazy(() =>
+  import("src/views/employee/massUpload/massUploadEmployees")
+);
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -138,10 +143,16 @@ const routes = [
   },
   {
     path: "/employees/viewdata/:id",
-    name:"View Individual Data",
+    name: "View Individual Data",
     component: ViewEmployeeData,
-    exact: "true"
-  }
+    exact: "true",
+  },
+  {
+    path: "/employees/upload",
+    name: "Upload Employees",
+    component: MassUploadEmployees,
+    exact: true,
+  },
 ];
 
 export default routes;

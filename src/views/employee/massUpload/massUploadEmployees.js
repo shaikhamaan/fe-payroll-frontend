@@ -31,24 +31,24 @@ const MassUploadEmployees = () => {
             enableReinitialize
             initialValues={{}}
             onSubmit={async (values) => {
-              if (fileChoosen) {
-                dispatch({ type: SET_LOADER, payload: true });
-                importEmployees(
-                  organization_id,
-                  fileChoosen,
-                  (data) => {
-                    dispatch({ type: SET_LOADER, payload: false });
-                    setResponseText(data?.message);
-                    setExcelData(data?.data?.unUploadedEmployeesList);
-                  },
-                  () => {
-                    dispatch({ type: SET_LOADER, payload: false });
-                  }
-                );
-              } else {
-                dispatch({ type: SET_LOADER, payload: false });
-                setResponseText("Upload a Valid CSV file");
-              }
+              // if (fileChoosen) {
+              //   dispatch({ type: SET_LOADER, payload: true });
+              //   importEmployees(
+              //     organization_id,
+              //     fileChoosen,
+              //     (data) => {
+              //       dispatch({ type: SET_LOADER, payload: false });
+              //       setResponseText(data?.message);
+              //       setExcelData(data?.data?.unUploadedEmployeesList);
+              //     },
+              //     () => {
+              //       dispatch({ type: SET_LOADER, payload: false });
+              //     }
+              //   );
+              // } else {
+              //   dispatch({ type: SET_LOADER, payload: false });
+              //   setResponseText("Upload a Valid CSV file");
+              // }
             }}
           >
             {({ errors, touched, values, setFieldValue }) => {
@@ -70,7 +70,7 @@ const MassUploadEmployees = () => {
                       fontSize: 12,
                     }}
                   >
-                    * only CSV files allowed
+                    * only xlsx files allowed
                   </p>
                   {responseText?.length > 0 ? (
                     <p
@@ -100,7 +100,7 @@ const MassUploadEmployees = () => {
                       </a>
                     ) : (
                       <a
-                        href={`${apiBaseUrl}${apiUrls?.downloads?.employeeUploadSampleSheet}`}
+                        href="#"
                         download
                         className="mt-2"
                       >
