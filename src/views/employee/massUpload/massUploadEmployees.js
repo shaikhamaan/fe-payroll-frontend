@@ -38,12 +38,12 @@ const MassUploadEmployees = () => {
               var formData = new FormData()
 
               try {
-                formData.append("file", fileChoosen, "fe.xlsx")
+                formData.append("file", fileChoosen, "Fe.xlsx")
               } catch (error) {
                 console.log(error);
               }
 
-              axios.post('/massupload', formData, {
+              await axios.post('/massupload', formData, {
                 headers: {
                   'Content-Type': 'multipart/form-data'
                 }
