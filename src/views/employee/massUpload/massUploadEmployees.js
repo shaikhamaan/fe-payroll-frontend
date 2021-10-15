@@ -11,6 +11,8 @@ import { useSnackbar } from "notistack";
 import { useHistory } from "react-router";
 import { fields } from "./utils/fields";
 import { JsonToCsv, useJsonToCsv } from "react-json-csv";
+import axios from 'axios'
+
 
 const MassUploadEmployees = () => {
   const organization_id = useSelector(
@@ -31,6 +33,22 @@ const MassUploadEmployees = () => {
             enableReinitialize
             initialValues={{}}
             onSubmit={async (values) => {
+
+              console.log(fileChoosen);
+              var formData = new FormData()
+
+              try {
+                formData.append("file", fileChoosen, "fe.xlsx")
+              } catch (error) {
+                console.log(error);
+              }
+
+              axios.post('/massupload', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }
+              })
+
               // if (fileChoosen) {
               //   dispatch({ type: SET_LOADER, payload: true });
               //   importEmployees(
@@ -114,7 +132,7 @@ const MassUploadEmployees = () => {
                       className="float-right my-3 mt-4"
                       type="submit"
                       disable={disable}
-                      // ref={textInputRef}
+                    // ref={textInputRef}
                     />
                   </div>
                 </Form>
