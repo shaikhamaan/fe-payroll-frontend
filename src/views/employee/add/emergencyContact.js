@@ -26,7 +26,7 @@ import Select from "src/components/formFields/select";
 import PhoneNumberInput from "src/components/formFields/phoneNumberInput";
 import { store } from "src/redux/store";
 import axios from "axios";
-import { useState } from 'react'
+import { useState } from "react";
 
 function EmergencyContact({
   userDetails,
@@ -35,14 +35,12 @@ function EmergencyContact({
   touched,
   isDisabled,
 }) {
-
-
   const data = store.getState().commonReducer.data;
 
   const dispatch = useDispatch();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const [vis, setVisible] = useState(false)
+  const [vis, setVisible] = useState(false);
 
   const {
     emergency_contact = "",
@@ -51,11 +49,11 @@ function EmergencyContact({
     pay_scale = "",
     pay_scale_type = "",
     payscale_per_hour = "",
-    pay_scale_term = ""
+    pay_scale_term = "",
   } = userDetails;
   return (
     <>
-      <Popup visible="true" messsage="Hello"/>
+      <Popup visible="true" messsage="Hello" />
 
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
@@ -68,32 +66,36 @@ function EmergencyContact({
               pay_scale,
               pay_scale_type,
               payscale_per_hour,
-              pay_scale_term
+              pay_scale_term,
             }}
             //validationSchema={emergencyContactValidation}
             onSubmit={async (values) => {
               dispatch({ type: SET_LOADER, payload: true });
               for (const key in values) {
-                data[key] = values[key]
+                data[key] = values[key];
               }
-              dispatch({ type: ADD_EMPLOYEE_DATA, values: data })
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
 
-              const d = await axios.post('http://localhost:5000', data)
+              const d = await axios.post("http://localhost:5000", data);
 
               console.log(d);
-              enqueueSnackbar(String(d.data.message),{
-                anchorOrigin:{
-                  vertical:'top',
-                  horizontal:'right'
+              enqueueSnackbar(String(d.data.message), {
+                anchorOrigin: {
+                  vertical: "top",
+                  horizontal: "right",
                 },
-                variant:String(d.data.status),
-              
-              })
-              
-              
+                variant: String(d.data.status),
+              });
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              resetForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -173,10 +175,7 @@ function EmergencyContact({
                             setFieldValue("pay_scale", e.target.value);
                           }}
                           value={values?.pay_scale}
-                          error={
-                            touched?.pay_scale &&
-                            errors?.pay_scale
-                          }
+                          error={touched?.pay_scale && errors?.pay_scale}
                           title="Pay Scale"
                           required
                         />
@@ -190,13 +189,14 @@ function EmergencyContact({
                           }}
                           value={values?.pay_scale_type}
                           error={
-                            touched?.pay_scale_type &&
-                            errors?.pay_scale_type
+                            touched?.pay_scale_type && errors?.pay_scale_type
                           }
                           title="Pay Scale Type"
                           required
                         />
                       </CCol>
+                    </CFormGroup>
+                    <CFormGroup row className="mt-3">
                       <CCol xs="12" lg="6">
                         <SimpleInput
                           id="payscale-per-hour"
@@ -222,14 +222,12 @@ function EmergencyContact({
                           }}
                           value={values?.pay_scale_term}
                           error={
-                            touched?.pay_scale_term &&
-                            errors?.pay_scale_term
+                            touched?.pay_scale_term && errors?.pay_scale_term
                           }
                           title="Pay Scale Term"
                           required
                         />
                       </CCol>
-
                     </CFormGroup>
                     <CButton
                       onClick={() => {
@@ -249,7 +247,6 @@ function EmergencyContact({
                       className="float-right"
                       type="submit"
                     />
-
                   </CCardBody>
                 </Form>
               );
@@ -261,27 +258,24 @@ function EmergencyContact({
   );
 }
 
-
 function Popup(props) {
-  if(props.visible == "false"){
-    return null
+  if (props.visible == "false") {
+    return null;
   }
 
   return (
     <>
-      <CModal visible= "true" >
+      <CModal visible="true">
         <CModalHeader>
           <CModalTitle>Message</CModalTitle>
         </CModalHeader>
-        <CModalBody>{ props.message }</CModalBody>
+        <CModalBody>{props.message}</CModalBody>
         <CModalFooter>
           <CButton color="primary">OK</CButton>
         </CModalFooter>
       </CModal>
     </>
-  )
+  );
 }
-
-
 
 export default EmergencyContact;
