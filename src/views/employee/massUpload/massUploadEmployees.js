@@ -12,7 +12,8 @@ import { useHistory } from "react-router";
 import { fields } from "./utils/fields";
 import { JsonToCsv, useJsonToCsv } from "react-json-csv";
 import axios from "axios";
-
+import xlsx from "json-as-xlsx";
+import { columns } from "./utils/columns";
 const MassUploadEmployees = () => {
   const organization_id = useSelector(
     (state) => state?.auth?.userDetails?.organization_id
@@ -22,6 +23,11 @@ const MassUploadEmployees = () => {
   const [responseText, setResponseText] = useState("");
   const [excelData, setExcelData] = useState([]);
   const [disable, setDisable] = useState(false);
+  let settings = {
+    fileName: "RejectedItems",
+    extraLength: 4,
+    writeOptions: {},
+  };
   // var textInputRef = useRef()
   const { saveAsCsv } = useJsonToCsv();
   return (
@@ -47,7 +53,13 @@ const MassUploadEmployees = () => {
                 },
               });
 
-              
+              setExcelData([
+                {
+                  sheet: "Failed Entries",
+                  columns: columns,
+                  content: data?.failedEntries,
+                },
+              ]);
 
               // if (fileChoosen) {
               //   dispatch({ type: SET_LOADER, payload: true });

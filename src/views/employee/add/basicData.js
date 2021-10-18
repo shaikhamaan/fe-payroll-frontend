@@ -28,12 +28,11 @@ const BasicData = ({
   const organization_id = useSelector((state) => state);
 
   const {
-    employee_name="",
+    employee_name = "",
     work_location = "",
     entry_made_on = "",
     entry_added_by = "",
     employee_code = "",
-    
   } = userDetails;
 
   var today = new Date();
@@ -43,7 +42,7 @@ const BasicData = ({
   );
 
   const data = store.getState().commonReducer.data;
-  
+
   return (
     <>
       <CCol xs="12" sm="12" className="mt-4">
@@ -51,29 +50,35 @@ const BasicData = ({
           <Formik
             enableReinitialize
             initialValues={{
-            
               work_location,
               entry_made_on,
               entry_added_by,
               employee_code,
-              employee_name
+              employee_name,
             }}
             //validateOnChange={validateAfterSubmit}
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
               dispatch({ type: SET_LOADER, payload: true });
-              
-              for(const key in values){
-                data[key] = values[key]
+
+              for (const key in values) {
+                data[key] = values[key];
               }
 
-              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
 
               setActive(1);
             }}
           >
-            {({ errors, touched, values, setFieldValue, validateForm, submitForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              validateForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -86,13 +91,14 @@ const BasicData = ({
                             setFieldValue("employee_name", e.target.value);
                           }}
                           value={values?.employee_name}
-                          error={touched?.employee_name && errors?.employee_name}
+                          error={
+                            touched?.employee_name && errors?.employee_name
+                          }
                           title="Employee Full Name"
                           required
                           disabled={isDisabled}
                         />
                       </CCol>
-                      
                     </CFormGroup>
                     <CFormGroup row className="mt-2">
                       <CCol xs="12" lg="6">
@@ -106,10 +112,14 @@ const BasicData = ({
                           }}
                           value={
                             values?.entry_made_on
-                              ? moment(values?.entry_made_on)?.format("YYYY-MM-DD")
+                              ? moment(values?.entry_made_on)?.format(
+                                  "YYYY-MM-DD"
+                                )
                               : ""
                           }
-                          error={touched?.entry_made_on && errors?.entry_made_on}
+                          error={
+                            touched?.entry_made_on && errors?.entry_made_on
+                          }
                           maxDate={maxDate}
                           disabled={isDisabled}
                         />
@@ -122,7 +132,9 @@ const BasicData = ({
                             setFieldValue("entry_added_by", e.target.value);
                           }}
                           value={values?.entry_added_by}
-                          error={touched?.entry_added_by && errors?.entry_added_by}
+                          error={
+                            touched?.entry_added_by && errors?.entry_added_by
+                          }
                           title="Entry Made By :"
                           required
                           disabled={isDisabled}
@@ -199,9 +211,28 @@ const BasicData = ({
                         />
                       </CCol>
                       <CCol xs="12" lg="6">
-                        <SimpleInput
+                        <Select
+                          custom
+                          name="select"
                           id="work-location"
-                          placeholder="Enter Work Location "
+                          options={[
+                            {
+                              key: "Please select your work location",
+                              value: "",
+                            },
+                            {
+                              key: "02-IDEAL",
+                              value: "02-IDEAL",
+                            },
+                            {
+                              key: "03-NEW",
+                              value: "03-NEW",
+                            },
+                            {
+                              key: "04-MRJ",
+                              value: "04-MRJ",
+                            },
+                          ]}
                           onChange={(e) => {
                             setFieldValue("work_location", e.target.value);
                           }}
