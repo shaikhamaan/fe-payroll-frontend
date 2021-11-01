@@ -11,9 +11,9 @@ import { useSnackbar } from "notistack";
 import { useHistory } from "react-router";
 import { fields } from "./utils/fields";
 import { JsonToCsv, useJsonToCsv } from "react-json-csv";
-import axios from 'axios'
-
-
+import axios from "axios";
+import xlsx from "json-as-xlsx";
+import { columns } from "./utils/columns";
 const MassUploadEmployees = () => {
   const organization_id = useSelector(
     (state) => state?.auth?.userDetails?.organization_id
@@ -23,6 +23,11 @@ const MassUploadEmployees = () => {
   const [responseText, setResponseText] = useState("");
   const [excelData, setExcelData] = useState([]);
   const [disable, setDisable] = useState(false);
+  let settings = {
+    fileName: "RejectedItems",
+    extraLength: 4,
+    writeOptions: {},
+  };
   // var textInputRef = useRef()
   const { saveAsCsv } = useJsonToCsv();
   return (
@@ -33,21 +38,28 @@ const MassUploadEmployees = () => {
             enableReinitialize
             initialValues={{}}
             onSubmit={async (values) => {
-
               console.log(fileChoosen);
-              var formData = new FormData()
+              var formData = new FormData();
 
               try {
-                formData.append("file", fileChoosen, "Fe.xlsx")
+                formData.append("file", fileChoosen, "Fe.xlsx");
               } catch (error) {
                 console.log(error);
               }
 
-              await axios.post('/massupload', formData, {
+              const { data = {} } = await axios.post("/massupload", formData, {
                 headers: {
-                  'Content-Type': 'multipart/form-data'
-                }
-              })
+                  "Content-Type": "multipart/form-data",
+                },
+              });
+
+              setExcelData([
+                {
+                  sheet: "Failed Entries",
+                  columns: columns,
+                  content: data?.failedEntries,
+                },
+              ]);
 
               // if (fileChoosen) {
               //   dispatch({ type: SET_LOADER, payload: true });
@@ -117,11 +129,7 @@ const MassUploadEmployees = () => {
                         Download file for rejected employees
                       </a>
                     ) : (
-                      <a
-                        href="#"
-                        download
-                        className="mt-2"
-                      >
+                      <a href="#" download className="mt-2">
                         Download sample file
                       </a>
                     )}
@@ -132,7 +140,7 @@ const MassUploadEmployees = () => {
                       className="float-right my-3 mt-4"
                       type="submit"
                       disable={disable}
-                    // ref={textInputRef}
+                      // ref={textInputRef}
                     />
                   </div>
                 </Form>
