@@ -33,6 +33,11 @@ const _nav = [
         name: "Mass Upload",
         to: "/employees/upload",
       },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Payscale Update",
+        to: "/employees/payscale",
+      }
     ],
   },
   // {

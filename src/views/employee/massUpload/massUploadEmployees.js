@@ -52,7 +52,7 @@ const MassUploadEmployees = () => {
                   "Content-Type": "multipart/form-data",
                 },
               });
-
+              console.log(data.failedEntries);
               setExcelData([
                 {
                   sheet: "Failed Entries",
@@ -60,25 +60,6 @@ const MassUploadEmployees = () => {
                   content: data?.failedEntries,
                 },
               ]);
-
-              // if (fileChoosen) {
-              //   dispatch({ type: SET_LOADER, payload: true });
-              //   importEmployees(
-              //     organization_id,
-              //     fileChoosen,
-              //     (data) => {
-              //       dispatch({ type: SET_LOADER, payload: false });
-              //       setResponseText(data?.message);
-              //       setExcelData(data?.data?.unUploadedEmployeesList);
-              //     },
-              //     () => {
-              //       dispatch({ type: SET_LOADER, payload: false });
-              //     }
-              //   );
-              // } else {
-              //   dispatch({ type: SET_LOADER, payload: false });
-              //   setResponseText("Upload a Valid CSV file");
-              // }
             }}
           >
             {({ errors, touched, values, setFieldValue }) => {
@@ -117,12 +98,10 @@ const MassUploadEmployees = () => {
                     {excelData?.length > 0 ? (
                       <a
                         href="#"
-                        onClick={() =>
-                          saveAsCsv({
-                            data: excelData,
-                            fields,
-                            filename: "Not Uploaded Employees",
-                          })
+                        onClick={() =>{
+                            console.log(excelData, "myExcel");
+                            xlsx(excelData, settings);
+                          }
                         }
                         className="mt-2"
                       >
