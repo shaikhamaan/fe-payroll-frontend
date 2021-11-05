@@ -11,9 +11,16 @@ import { useSnackbar } from "notistack";
 import { useHistory } from "react-router";
 import { fields } from "./utils/fields";
 import { JsonToCsv, useJsonToCsv } from "react-json-csv";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios";
 import xlsx from "json-as-xlsx";
 import { columns } from "./utils/columns";
+
+toast.configure();
+
+
 const MassUploadEmployees = () => {
   const organization_id = useSelector(
     (state) => state?.auth?.userDetails?.organization_id
@@ -52,7 +59,15 @@ const MassUploadEmployees = () => {
                   "Content-Type": "multipart/form-data",
                 },
               });
-              console.log(data.failedEntries);
+              toast.warning( `Done, ${data.failedEntries.length} Enteries Failed - Download Failed Enteries`,{
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              });
               setExcelData([
                 {
                   sheet: "Failed Entries",

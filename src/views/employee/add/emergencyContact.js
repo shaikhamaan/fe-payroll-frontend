@@ -21,7 +21,7 @@ import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { emergencyContactValidation } from "./validations";
-import { useSnackbar } from "notistack";
+import { SnackbarProvider,useSnackbar } from "notistack";
 import Select from "src/components/formFields/select";
 import PhoneNumberInput from "src/components/formFields/phoneNumberInput";
 import { store } from "src/redux/store";
@@ -53,7 +53,6 @@ function EmergencyContact({
   } = userDetails;
   return (
     <>
-      <Popup visible="true" messsage="Hello" />
 
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
@@ -258,24 +257,5 @@ function EmergencyContact({
   );
 }
 
-function Popup(props) {
-  if (props.visible == "false") {
-    return null;
-  }
-
-  return (
-    <>
-      <CModal visible="true">
-        <CModalHeader>
-          <CModalTitle>Message</CModalTitle>
-        </CModalHeader>
-        <CModalBody>{props.message}</CModalBody>
-        <CModalFooter>
-          <CButton color="primary">OK</CButton>
-        </CModalFooter>
-      </CModal>
-    </>
-  );
-}
 
 export default EmergencyContact;

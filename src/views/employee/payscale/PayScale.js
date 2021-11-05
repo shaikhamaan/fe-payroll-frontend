@@ -12,7 +12,12 @@ import countries from "../../../constants/jsons/countries";
 import moment from "moment";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { store } from "src/redux/store";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
 
+
+toast.configure();
 const PayScale = ({
   setActive,
   setUserDetails,
@@ -45,8 +50,8 @@ const PayScale = ({
           <Formik
             enableReinitialize
             initialValues={{
-                employee_grade:'',
-               pay_scale_term: '',
+              employee_grade:'',
+              pay_scale_term: '',
               pay_scale_type:'',
               pay_scale:''
             }}
@@ -54,10 +59,34 @@ const PayScale = ({
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
-                
-
-              setActive(1);
-            }}
+                //console.log(values);
+                const d = await axios.post("http://localhost:5000/payscale",values);
+                if(d.data.status == "success")
+                {
+                  toast.success(d.data.message, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                 });
+                }
+                else
+                {
+                  toast.error(d.data.message, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                 });
+                }
+              }  
+            }
           >
             {({
               errors,
