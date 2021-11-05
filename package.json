@@ -66,7 +66,7 @@
     "react-router-dom": "^5.2.0",
     "react-spring-lightbox": "^1.5.0",
     "react-table": "^7.7.0",
-    "react-toastify": "^8.0.3",
+    "react-toastify": "^8.1.0",
     "react-tooltip": "^4.2.19",
     "reactstrap": "^8.9.0",
     "redux": "^4.0.5",
