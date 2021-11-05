@@ -12,6 +12,7 @@ const _nav = [
       text: "NEW",
     },
   },
+
   {
     _tag: "CSidebarNavDropdown",
     name: "Employees",
@@ -32,6 +33,29 @@ const _nav = [
         _tag: "CSidebarNavItem",
         name: "Mass Upload",
         to: "/employees/upload",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Employee Profile",
+        to: "/employees/profile",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Employee Penalty",
+        to: "/employees/penalty",
+      },
+    ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Attendance",
+    route: "/attendance",
+    icon: "cil-settings",
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "Attendance",
+        to: "/attendance/all",
       },
     ],
   },

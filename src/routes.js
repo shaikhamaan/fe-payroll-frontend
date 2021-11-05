@@ -4,7 +4,7 @@ const Toaster = React.lazy(() =>
   import("./views/notifications/toaster/Toaster")
 );
 const Tables = React.lazy(() => import("./views/base/tables/Tables"));
-
+const Profile = React.lazy(() => import("./views/employee/profile"));
 const Breadcrumbs = React.lazy(() =>
   import("./views/base/breadcrumbs/Breadcrumbs")
 );
@@ -56,15 +56,15 @@ const Colors = React.lazy(() => import("./views/theme/colors/Colors"));
 const Typography = React.lazy(() =>
   import("./views/theme/typography/Typography")
 );
+const Penalty = React.lazy(() => import("./views/penalty/"));
+const Attendance = React.lazy(() => import("./views/attendance/"));
 const Widgets = React.lazy(() => import("./views/widgets/Widgets"));
 const Users = React.lazy(() => import("./views/users/Users"));
 const User = React.lazy(() => import("./views/users/User"));
 
 const AddEmployees = React.lazy(() => import("../src/views/employee/add"));
 const ListEmployees = React.lazy(() => import("../src/views/employee/list"));
-const ViewEmployeeData = React.lazy(() =>
-  import("../src/views/employee/viewdata")
-);
+const ViewEmployeeData = React.lazy(() => import("./views/employee/profile"));
 const MassUploadEmployees = React.lazy(() =>
   import("src/views/employee/massUpload/massUploadEmployees")
 );
@@ -148,9 +148,27 @@ const routes = [
     exact: "true",
   },
   {
+    path: "/employees/profile",
+    name: "Employee Profile",
+    component: Profile,
+    exact: true,
+  },
+  {
+    path: "/employees/penalty",
+    name: "Add Penalty",
+    component: Penalty,
+    exact: true,
+  },
+  {
     path: "/employees/upload",
     name: "Upload Employees",
     component: MassUploadEmployees,
+    exact: true,
+  },
+  {
+    path: "/attendance/all",
+    name: "Attendance",
+    component: Attendance,
     exact: true,
   },
 ];
