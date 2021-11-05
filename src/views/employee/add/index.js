@@ -116,7 +116,7 @@ const AddEmployees = () => {
           <CCard accentColor="primary">
             <MainHeading heading="Add Employee" />
             <CCardBody>
-              <CTabs activeTab={0} onActiveTabChange={(idx) => setActive(idx)}>
+              <CTabs activeTab={active} onActiveTabChange={(idx) => setActive(idx)}>
                 <CNav variant="tabs">
                   <CNavItem data-tip="Basic Data">
                     <CNavLink disabled={!id}>
