@@ -21,16 +21,17 @@ const SimpleTextArea = ({
         {required ? <span style={{ color: "red" }}> *</span> : null}
       </CLabel>
       <CTextarea
-                      id={id}
-                      className={className}
-                      placeholder={placeholder}
-                      onChange={onChange}
-                      onBlur={onBlur}
-                      onFocus={onFocus}
-                      value={value}
-                      style={{ borderColor: error ? "#e55353" : "" }}
-                      disabled={disabled}
-                    />
+        id={id}
+        className={className}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        value={value}
+        style={{ borderColor: error ? "#e55353" : "" }}
+        disabled={disabled}
+        rows={8}
+      />
 
       {error ? (
         <CLabel htmlFor={id} style={{ color: "#e55353" }}>
