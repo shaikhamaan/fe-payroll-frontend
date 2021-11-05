@@ -65,6 +65,10 @@ const User = React.lazy(() => import("./views/users/User"));
 const AddEmployees = React.lazy(() => import("../src/views/employee/add"));
 const ListEmployees = React.lazy(() => import("../src/views/employee/list"));
 const ViewEmployeeData = React.lazy(() => import("./views/employee/profile"));
+
+const PayScale = React.lazy(() =>
+  import("../src/views/employee/payscale/PayScale")
+);
 const MassUploadEmployees = React.lazy(() =>
   import("src/views/employee/massUpload/massUploadEmployees")
 );
@@ -169,6 +173,12 @@ const routes = [
     path: "/attendance/all",
     name: "Attendance",
     component: Attendance,
+    exact: true,
+  },
+  {
+    path: "/employees/payscale",
+    name: "PayScale Update",
+    component: PayScale,
     exact: true,
   },
 ];

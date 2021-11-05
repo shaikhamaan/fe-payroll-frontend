@@ -57,6 +57,11 @@ const _nav = [
         name: "Attendance",
         to: "/attendance/all",
       },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Payscale Update",
+        to: "/employees/payscale",
+      },
     ],
   },
   // {
