@@ -62,6 +62,7 @@ function Attendance(props) {
             type="month"
             value={moment(monthYear).format("yyyy-MM")}
             onChange={(e) => {
+              console.log(e.target.value)
               setMonthYear(moment(e.target.value).format("MMMM-yyyy"));
             }}
             className="col-md-10 col-xs-10 col-lg-10"
@@ -71,7 +72,7 @@ function Attendance(props) {
               title="Download Excel Sheet"
               style={{ width: 230, marginLeft: 30 }}
               onClick={() => {
-                xlsx(excelData, settings);
+                //xlsx(excelData, settings);
               }}
               className="col-md-2 col-xs-2 col-lg-2"
             />
