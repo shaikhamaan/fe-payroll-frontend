@@ -1,0 +1,88 @@
+{
+    "date": "2021-11-06",
+    "report": [
+        {
+            "department": "PH ladies - standard",
+            "data": [
+                {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "late_time": "00.00",
+                    "dept_time": "2021-11-06 18:01:20",
+                    "early_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": 2,
+                    "status": "P",
+                    "remarks": "Present"
+                },
+                {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "late_time": "00.00",
+                    "dept_time": "00.00",
+                    "early_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A",
+                    "remarks": "Absent"
+                },
+                {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "late_time": "00.00",
+                    "dept_time": "00.00",
+                    "early_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A",
+                    "remarks": "Absent"
+                },
+                {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "late_time": "00.00",
+                    "dept_time": "00.00",
+                    "early_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P",
+                    "remarks": "Odd Punch"
+                }
+            ]
+        },
+        {
+            "department": "",
+            "data": []
+        },
+        {
+            "department": "Canteen",
+            "data": []
+        },
+        {
+            "department": "PH Bengal Boys Supervisor",
+            "data": [
+                {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "late_time": "00.00",
+                    "dept_time": "2021-11-06 18:01:20",
+                    "early_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P",
+                    "remarks": "Present"
+                }
+            ]
+        }
+    ]
+}

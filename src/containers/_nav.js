@@ -7,10 +7,10 @@ const _nav = [
     name: "Dashboard",
     to: "/dashboard",
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
-    badge: {
-      color: "info",
-      text: "NEW",
-    },
+    // badge: {
+    //   color: "info",
+    //   text: "NEW",
+    // },
   },
 
   {
@@ -63,6 +63,12 @@ const _nav = [
         to: "/employees/payscale",
       },
     ],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Reports",
+    to: "/reports",
+    icon: "cil-drop",
   },
   // {
   //   _tag: "CSidebarNavTitle",

@@ -90,28 +90,60 @@ function Attendance(props) {
             data={[...attendance]}
             columns={[
               {
-                Header: "Employee Name",
+                Header: "Sr. No.",
                 accessor: "first_name",
               },
               {
-                Header: "Monday",
+                Header: "EmpCode",
                 accessor: "monday",
               },
               {
-                Header: "Tuesday",
+                Header: "CardNo",
                 accessor: "tuesday",
               },
               {
-                Header: "Wednesday",
+                Header: "Name",
                 accessor: "wednesday",
               },
               {
-                Header: "Thursday",
+                Header: "Shift",
                 accessor: "thursday",
               },
               {
-                Header: "Friday",
+                Header: "Shift Time",
                 accessor: "friday",
+              },
+              {
+                Header: "Arr. Time",
+                accessor: "arrival_time",
+              },
+              {
+                Header: "Late Hrs",
+                accessor: "late_hours",
+              },
+              {
+                Header: "Dep. Time",
+                accessor: "departure_time",
+              },
+              {
+                Header: "Early Hrs",
+                accessor: "early_hours",
+              },
+              {
+                Header: "Work Hrs",
+                accessor: "work_hours",
+              },
+              {
+                Header: "O.Time",
+                accessor: "on_time",
+              },
+              {
+                Header: "Status",
+                accessor: "status",
+              },
+              {
+                Header: "Remarks",
+                accessor: "remarks",
               },
             ]}
           />
