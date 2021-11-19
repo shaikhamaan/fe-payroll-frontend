@@ -1,8 +1,8 @@
 const daily = [
-  { label: "Date", value: "date" },
-  { label: "Report", value: "report" },
-  { label: "Departement", value: "department" },
-  { label: "Data", value: "data" },
+  // { label: "Date", value: "date" },
+  // { label: "Report", value: "report" },
+  // { label: "Departement", value: "department" },
+  // { label: "Data", value: "data" },
   { label: "Employee Code", value: "employee_code" },
   { label: "Employee Name", value: "employee_name" },
   { label: "RFID", value: "rfid_card_no" },

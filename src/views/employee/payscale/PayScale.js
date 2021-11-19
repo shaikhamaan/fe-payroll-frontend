@@ -61,9 +61,9 @@ const PayScale = ({
             onSubmit={async (values, { resetForm }) => {
                 //console.log(values);
                 const result = await axios.post("http://localhost:5000/payscale",values);
-                if(result.ata.status == "success")
+                if(result.data.status == "success")
                 {
-                  toast.success(result.ata.message, {
+                  toast.success(result.data.message, {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -75,7 +75,7 @@ const PayScale = ({
                 }
                 else
                 {
-                  toast.error(result.ata.message, {
+                  toast.error(result.data.message, {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
