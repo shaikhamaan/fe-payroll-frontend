@@ -52,11 +52,11 @@ const _nav = [
     route: "/attendance",
     icon: "cil-settings",
     _children: [
-      {
-        _tag: "CSidebarNavItem",
-        name: "Attendance",
-        to: "/attendance/all",
-      },
+      // {
+      //   _tag: "CSidebarNavItem",
+      //   name: "Attendance",
+      //   to: "/attendance/all",
+      // },
       {
         _tag: "CSidebarNavItem",
         name: "Payscale Update",

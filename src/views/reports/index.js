@@ -34,6 +34,7 @@ function Reports(props) {
   const [type, setType] = useState("");
   const [excelData, setExcelData] = useState([]);
   const [department, setDepartment] = useState("");
+  const dispatch = useDispatch();
   let settings = {
     fileName:
       type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
@@ -41,26 +42,37 @@ function Reports(props) {
     writeOptions: {},
   };
 
-  //   handleClick(() => {
-  //     dispatch({ type: SET_LOADER, payload: true });
-  //     getReport(
-  //       type === "monthly" ? {date : monthYear} : {date : date}},
-  //       (data) => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //         setExcelData([
-  //           {
-  //             sheet:  type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
-  //             columns: type === "monthly" ? monthly : daily,
-  //             content: data?.data?.data,
-  //           },
-  //         ]);
-  //       },
-  //       () => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //       }
-  //     );
-  //    xlsx(excelData, settings);
-  //   }, [refresh, monthYear]);
+  const handleClick = async () => {
+    dispatch({ type: SET_LOADER, payload: true });
+    const getReport = async () => {
+      const data = await axios.post("http://localhost:5000/report", {
+        date: date,
+      });
+      console.log(data.data);
+
+      await setExcelData([
+        {
+          // sheet:  type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
+          // columns: type === "monthly" ? monthly : daily,
+          // content: data.data.report,
+          sheet: `attendance`,
+          columns: daily,
+          content: data.data,
+        },
+      ]);
+    };
+    await getReport();
+
+    const download = async () => {
+      try {
+        xlsx(excelData, settings);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    await download();
+  };
 
   return (
     <div>
@@ -162,7 +174,7 @@ function Reports(props) {
                     title="Download Report"
                     style={{ width: 230, marginLeft: 30 }}
                     onClick={() => {
-                      //handleClick();
+                      handleClick();
                     }}
                     className="col-md-2 col-xs-2 col-lg-2 mt-4 float-right"
                   />
