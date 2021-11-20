@@ -137,6 +137,11 @@ const routes = [
   {
     path: "/employees/add",
     name: "Add Employee",
+    component: AddEmployees, 
+  },
+  {
+    path: "/employees/edit/:id",
+    name: "Edit Employee",
     component: AddEmployees,
   },
   {

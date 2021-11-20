@@ -13,7 +13,6 @@ import { SnackbarProvider } from "notistack";
 
 import axios from "axios";
 
-
 function ListEmployees(props) {
   const { id } = useParams();
 
@@ -24,17 +23,15 @@ function ListEmployees(props) {
   // );
   // const params = new URLSearchParams(props.location.search);
   // var page = params.get("page");
-  const [employees,setEmployees] = useState([])
+  const [employees, setEmployees] = useState([]);
 
-  useEffect( async () => {
-  
-  const e = await axios.get('http://localhost:5000')
-  setEmployees(e.data)
+  useEffect(async () => {
+    const e = await axios.get("http://localhost:5000");
+    setEmployees(e.data);
   }, []);
-  
 
   console.log(employees);
-  
+
   return (
     <SnackbarProvider>
       <div>
@@ -44,8 +41,8 @@ function ListEmployees(props) {
             <CCardBody>
               <CustomTable
                 data={[...employees]}
-                // actions
-                // type={tableTypes?.employeesList}
+                actions
+                type={tableTypes?.employeesList}
                 columns={[
                   {
                     Header: "Employee Name",
@@ -71,12 +68,6 @@ function ListEmployees(props) {
         </CCol>
       </div>
     </SnackbarProvider>
- 
-   
-
-   
-
-
   );
 }
 

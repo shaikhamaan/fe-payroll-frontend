@@ -7,6 +7,7 @@ import {
   CCol,
   CFormGroup,
 } from "@coreui/react";
+import { options } from "./utils/options";
 import moment from "moment";
 import SimpleButton from "src/components/buttons/simpleButton";
 import Select from "src/components/formFields/select";
@@ -32,6 +33,7 @@ function Reports(props) {
   const [date, setDate] = useState(new Date());
   const [type, setType] = useState("");
   const [excelData, setExcelData] = useState([]);
+  const [department, setDepartment] = useState("");
   let settings = {
     fileName:
       type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
@@ -80,21 +82,25 @@ function Reports(props) {
             </CCol>
           </CFormGroup>
           {type === "monthly" ? (
-            <div
-              className="mt-2 mx-2 p-2"
-              style={
-                {
-                  //   border: "solid 1px ",
-                  //   borderRadius: "5px",
-                  //   borderColor: "#d9d9d9",
-                }
-              }
-            >
+            <div className="mt-2 mx-2 p-2">
+              <CCol className="pl-0 mb-2">
+                <h3>Monthly Reports</h3>
+              </CCol>
               <CFormGroup row>
-                <CCol>
-                  <h3>Monthly Reports</h3>
+                <CCol xs="12" lg="6">
+                  <Select
+                    custom
+                    name="select"
+                    options={options}
+                    onChange={(e) => {
+                      setDepartment(e.target.value);
+                    }}
+                    value={department}
+                    title="Department"
+                    required
+                  />
                 </CCol>
-                <CCol lg="12" md="12">
+                <CCol lg="6" md="6">
                   <DatePicker
                     type="month"
                     value={moment(monthYear).format("yyyy-MM")}
@@ -102,11 +108,14 @@ function Reports(props) {
                       setMonthYear(moment(e.target.value).format("MMMM-yyyy"));
                     }}
                     className="col-md-10 col-xs-10 col-lg-10"
+                    title="Month"
+                    required
                   />
-
+                </CCol>
+                <CCol>
                   <SimpleButton
                     title="Download Report"
-                    style={{ width: 230, marginLeft: 30 }}
+                    style={{ width: 400 }}
                     onClick={() => {
                       //handleClick();
                     }}
@@ -118,12 +127,27 @@ function Reports(props) {
           ) : null}
           {type === "daily" ? (
             <div className="mt-2 mx-2 p-2">
+              <CCol className="pl-0 mb-2">
+                <h3>Daily Reports</h3>
+              </CCol>
               <CFormGroup row>
-                <CCol>
-                  <h3>Daily Reports</h3>
+                <CCol xs="12" lg="6">
+                  <Select
+                    custom
+                    name="select"
+                    options={options}
+                    onChange={(e) => {
+                      setDepartment(e.target.value);
+                    }}
+                    value={department}
+                    title="Department"
+                    required
+                  />
                 </CCol>
-                <CCol lg="12" md="12">
+                <CCol lg="6" md="6">
                   <DatePicker
+                    title="Date"
+                    required
                     type="date"
                     value={moment(date).format("DD-MMM-YYYY")}
                     className="col-md-10 col-xs-10 col-lg-10"
@@ -132,7 +156,8 @@ function Reports(props) {
                     }}
                     value={date ? moment(date)?.format("YYYY-MM-DD") : ""}
                   />
-
+                </CCol>
+                <CCol>
                   <SimpleButton
                     title="Download Report"
                     style={{ width: 230, marginLeft: 30 }}
