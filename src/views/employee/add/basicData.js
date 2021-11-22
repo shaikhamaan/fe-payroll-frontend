@@ -60,6 +60,7 @@ const BasicData = ({
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
+              console.log("hello");
               dispatch({ type: SET_LOADER, payload: true });
 
               for (const key in values) {

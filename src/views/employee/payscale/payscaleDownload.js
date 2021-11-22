@@ -20,7 +20,7 @@ import xlsx from "json-as-xlsx";
 import { columns } from "./columns";
 
 function PayscaleDownload() {
-  const [excelData, setExcelData] = useState([]);
+  //const [excelData, setExcelData] = useState([]);
   const dispatch = useDispatch();
   let settings = {
     fileName: "Salary",
@@ -28,7 +28,7 @@ function PayscaleDownload() {
     writeOptions: {},
   };
 
-  const { from_date = "", to_date = "" } = {};
+  const { start = "", end = "" } = {};
   return (
     <div>
       <CCol xs="12" sm="12" className="mt-4">
@@ -37,24 +37,24 @@ function PayscaleDownload() {
           <Formik
             enableReinitialize
             initialValues={{
-              from_date,
-              to_date,
+              start,
+              end,
             }}
             validationSchema={yup.object().shape({
-              from_date: yup.date().required("From Date is required"),
-              to_date: yup
+              start: yup.date().required("From Date is required"),
+              end: yup
                 .date()
                 .test(
-                  "to_date_test",
+                  "end_test",
                   "To date cannot be lesser than from date",
                   (value, context) => {
                     if (value) {
                       var isValid;
-                      var to_date = new Date(value)?.getTime();
-                      var from_date = new Date(
-                        context?.parent?.from_date
+                      var end = new Date(value)?.getTime();
+                      var start = new Date(
+                        context?.parent?.start
                       )?.getTime();
-                      if (to_date >= from_date) {
+                      if (end >= start) {
                         isValid = true;
                       } else {
                         isValid = false;
@@ -68,22 +68,20 @@ function PayscaleDownload() {
             })}
             onSubmit={async (values) => {
               dispatch({ type: SET_LOADER, payload: true });
-              console.log(values, "paisa");
-              dispatch({ type: SET_LOADER, payload: true });
+              
+              let excelData
               const getPayScale = async () => {
                 const data = await axios.post(
-                  "http://localhost:5000/payscale",
+                  "http://localhost:5000/masssalary",
                   values
                 );
-                console.log(data.data);
-
-                setExcelData([
-                  {
-                    sheet: `Pay Scale`,
-                    columns: columns,
-                    content: data.data,
-                  },
-                ]);
+                
+                excelData = [{
+                  sheet: `Payment Report`,
+                  columns: columns,
+                  content: data.data,
+                }]
+               
               };
               await getPayScale();
 
@@ -94,6 +92,7 @@ function PayscaleDownload() {
                   console.log(error);
                 }
               };
+              
               await download();
             }}
           >
@@ -106,16 +105,16 @@ function PayscaleDownload() {
                         <DatePicker
                           type="date"
                           placeholder="From Date"
-                          id="from_date"
+                          id="start"
                           value={
-                            values?.from_date
-                              ? moment(values?.from_date).format("YYYY-MM-DD")
+                            values?.start
+                              ? moment(values?.start).format("YYYY-MM-DD")
                               : ""
                           }
                           onChange={(e) => {
-                            setFieldValue("from_date", e.target.value);
+                            setFieldValue("start", e.target.value);
                           }}
-                          error={touched?.from_date && errors?.from_date}
+                          error={touched?.start && errors?.start}
                           title="From Date"
                           required
                         />
@@ -124,16 +123,16 @@ function PayscaleDownload() {
                         <DatePicker
                           type="date"
                           placeholder="To Date"
-                          id="to_date"
+                          id="end"
                           value={
-                            values?.to_date
-                              ? moment(values?.to_date).format("YYYY-MM-DD")
+                            values?.end
+                              ? moment(values?.end).format("YYYY-MM-DD")
                               : ""
                           }
                           onChange={(e) => {
-                            setFieldValue("to_date", e.target.value);
+                            setFieldValue("end", e.target.value);
                           }}
-                          error={touched?.to_date && errors?.to_date}
+                          error={touched?.end && errors?.end}
                           title="To Date"
                         />
                       </CCol>

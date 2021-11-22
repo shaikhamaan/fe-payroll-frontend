@@ -1,5 +1,5 @@
 import localStorageConstants from "src/constants/localstorageConstants";
-
+import axios from "axios";
 const { default: apiClient } = require("src/apis/api-client");
 const { default: apiUrls } = require("src/apis/apis");
 
@@ -82,12 +82,10 @@ const getEmployees = async (
   failCallback = () => {}
 ) => {
   try {
-    const { data = {} } = await apiClient.get(
-      apiUrls.employee.getEmployees(queryString)
-    );
-    console.log(data, "getEmployee-success");
-    successCallback(data);
-    return data;
+    const data = await axios.get(`http://localhost:5000/getdata/${queryString}`)
+    console.log(data.data.data, "getEmployee-success");
+    successCallback(data.data.data);
+    return data?.data?.data;
   } catch (err) {
     console.log(err, "getEmployee-error");
     failCallback();

@@ -6,16 +6,14 @@
         "performance": [
             {
                 "date": "2021-11-01",
-                "data": {
-                    "employee_code": "2001",
-                    "employee_name": "Asha Kaale",
-                    "rfid_card_no": "ACSED10",
-                    "arrival_time": "00.00",
-                    "dept_time": "00.00",
-                    "working_hrs": "",
-                    "over_time": "0",
-                    "status": "A"
-                }
+                "employee_code": "2001",
+                "employee_name": "Asha Kaale",
+                "rfid_card_no": "ACSED10",
+                "arrival_time": "00.00",
+                "dept_time": "00.00",
+                "working_hrs": "",
+                "over_time": "0",
+                "status": "A"
             },
             {
                 "date": "2021-11-02",

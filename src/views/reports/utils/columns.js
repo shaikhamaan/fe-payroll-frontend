@@ -17,9 +17,7 @@ const daily = [
 ];
 
 const monthly = [
-  { label: "Record", value: "record" },
   { label: "Departement", value: "department" },
-  { label: "Data", value: "data" },
   { label: "Employee Code", value: "employee_code" },
   { label: "Employee Name", value: "employee_name" },
   { label: "RFID", value: "rfid_card_no" },

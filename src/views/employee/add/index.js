@@ -36,7 +36,7 @@ import { useSelector } from "react-redux";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import ProfileCard from "./profileCard";
 import MainHeading from "src/components/heading";
-
+import axios from "axios";
 const AddEmployees = () => {
   const [active, setActive] = useState(0);
   const [refresh, setRefresh] = useState(0);
@@ -46,16 +46,19 @@ const AddEmployees = () => {
   var isDisabled = false;
   //const { user_type, _id } = useSelector((state) => state?.auth?.userDetails);
 
-  const { id } = useParams();
-
+ const { id } = useParams();
+  // useEffect(async () => {
+  //   const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+  //   setUserDetails(e?.data?.data);
+  // }, []);
   //checkPermission(user_type, id, _id);
   useEffect(() => {
     if (id) {
       dispatch({ type: SET_LOADER, payload: true });
       getEmployees(
-        `?_id=${id}`,
+        `${id}`,
         (data) => {
-          setUserDetails(data?.data[0]);
+          setUserDetails(data);
           console.log(userDetails);
           dispatch({ type: SET_LOADER, payload: false });
         },

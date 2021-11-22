@@ -10,8 +10,12 @@ import tableTypes from "../../../components/tables/types";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
-
+import { Link }  from 'react-router-dom'
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faAirFreshener } from '@fortawesome/free-solid-svg-icons'
+
+
 
 function ListEmployees(props) {
   const { id } = useParams();
@@ -30,7 +34,6 @@ function ListEmployees(props) {
     setEmployees(e.data);
   }, []);
 
-  console.log(employees);
 
   return (
     <SnackbarProvider>
@@ -41,8 +44,8 @@ function ListEmployees(props) {
             <CCardBody>
               <CustomTable
                 data={[...employees]}
-                actions
-                type={tableTypes?.employeesList}
+                //actions
+                //type={tableTypes?.employeesList}
                 columns={[
                   {
                     Header: "Employee Name",
@@ -57,9 +60,22 @@ function ListEmployees(props) {
                     accessor: "employee_code",
                   },
                   {
-                    Header: "ID",
-                    accessor: "_id",
-                    show: false,
+                    Header: "Actions",
+                    disableSortBy: true,
+                    disableFilters: true,
+                    accessor: (row) => {
+                      return (
+                        <>
+              
+                        <Link
+                          to={`/employees/profile/${row?.employee_code}`}
+                        >
+                        <h4 className="text-center"><FontAwesomeIcon icon={faAddressCard} color="blue" /></h4>
+                        
+                        </Link>
+                        </>
+                      );
+                    },
                   },
                 ]}
               />

@@ -24,15 +24,16 @@ import { Doughnut, Pie } from "react-chartjs-2";
 import axios from "axios";
 import xlsx from "json-as-xlsx";
 import { daily, monthly } from "./utils/columns";
+import XLSX from "xlsx";
 
 function Reports(props) {
   const { id } = useParams();
   const [monthYear, setMonthYear] = useState(
-    moment(new Date()).format("MMMM-yyyy")
+    moment(new Date()).format("YYYY-MM")
   );
   const [date, setDate] = useState(new Date());
   const [type, setType] = useState("");
-  const [excelData, setExcelData] = useState([]);
+  //const [excelData, setExcelData] = useState([]);
   const [department, setDepartment] = useState("");
   const dispatch = useDispatch();
   let settings = {
@@ -43,35 +44,58 @@ function Reports(props) {
   };
 
   const handleClick = async () => {
+    
     dispatch({ type: SET_LOADER, payload: true });
     const getReport = async () => {
-      const data = await axios.post("http://localhost:5000/report", {
-        date: date,
-      });
-      console.log(data.data);
-
-      setExcelData([
+      
+      if(type === "daily"){
+        const data = await axios.post("http://localhost:5000/report", {
+          date: date,
+        });
+        
+  
+        const excelData = [
+          {
+            sheet: `attendance`,
+            columns: daily,
+            content: data.data,
+          },
+        ];
+        
+        const download = async () => {
+          try {
+            xlsx(excelData, settings);
+          } catch (error) {
+            console.log(error);
+          }
+        };
+    
+        await download();
+      }
+      else
+      {
+        const data = await axios.post("http://localhost:5000/month", {
+          month: monthYear,
+          department: department
+        });
+        const report = data.data;
+        const wb = XLSX.utils.book_new();
+        if(!wb.Props) wb.Props = {};
+        wb.Props.Title = "Attendance Report";
+        for(let i=0;i<report.length;i++)
         {
-          // sheet:  type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
-          // columns: type === "monthly" ? monthly : daily,
-          // content: data.data.report,
-          sheet: `attendance`,
-          columns: daily,
-          content: data.data,
-        },
-      ]);
+          wb.SheetNames.push(String(i+1))
+          var ws = XLSX.utils.json_to_sheet(report[i]);
+        
+          wb.Sheets[String(i+1)] = ws;
+        }
+        var wbout = XLSX.writeFile(wb,`${department} ${monthYear}.xlsx`,{bookType:'xlsx',  type: 'binary'});
+      }
+     
     };
     await getReport();
 
-    const download = async () => {
-      try {
-        xlsx(excelData, settings);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    await download();
+    
   };
 
   return (
@@ -129,7 +153,7 @@ function Reports(props) {
                     title="Download Report"
                     style={{ width: 400 }}
                     onClick={() => {
-                      //handleClick();
+                      handleClick();
                     }}
                     className="col-md-2 col-xs-2 col-lg-2 mt-4 float-right"
                   />
@@ -143,19 +167,6 @@ function Reports(props) {
                 <h3>Daily Reports</h3>
               </CCol>
               <CFormGroup row>
-                <CCol xs="12" lg="6">
-                  <Select
-                    custom
-                    name="select"
-                    options={options}
-                    onChange={(e) => {
-                      setDepartment(e.target.value);
-                    }}
-                    value={department}
-                    title="Department"
-                    required
-                  />
-                </CCol>
                 <CCol lg="6" md="6">
                   <DatePicker
                     title="Date"
@@ -169,8 +180,7 @@ function Reports(props) {
                     value={date ? moment(date)?.format("YYYY-MM-DD") : ""}
                   />
                 </CCol>
-                <CCol>
-                  <SimpleButton
+                <SimpleButton
                     title="Download Report"
                     style={{ width: 230, marginLeft: 30 }}
                     onClick={() => {
@@ -178,7 +188,6 @@ function Reports(props) {
                     }}
                     className="col-md-2 col-xs-2 col-lg-2 mt-4 float-right"
                   />
-                </CCol>
               </CFormGroup>
             </div>
           ) : null}

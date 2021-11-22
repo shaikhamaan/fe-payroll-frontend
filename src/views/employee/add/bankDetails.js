@@ -23,7 +23,7 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
   const data = store.getState().commonReducer.data;
 
   const {
-    _id,
+   
     bank_name = "",
     bank_ifsc_code = "",
     bank_account_no = "",

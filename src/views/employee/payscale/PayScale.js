@@ -63,6 +63,7 @@ const PayScale = ({
                 "http://localhost:5000/payscale",
                 values
               );
+              
               if (result.data.status == "success") {
                 toast.success(result.data.message, {
                   position: "top-right",
