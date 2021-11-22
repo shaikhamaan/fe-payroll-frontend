@@ -13,8 +13,8 @@ const Actions = ({ row, type }) => {
       ) : null}
       {type === tableTypes?.employeesList ? (
         <Link
-          data-tip="Edit"
-          to={`/employees/edit/${row?.values?.employee_id}`}
+          data-tip="Employee Profile"
+          to={`/employees/profile/${row?.values?.employee_code}`}
         >
           <i class="fas fa-user-edit"></i>
         </Link>

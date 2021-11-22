@@ -62,6 +62,11 @@ const _nav = [
         name: "Payscale Update",
         to: "/employees/payscale",
       },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Payscale Download",
+        to: "/employees/payscale/download",
+      },
     ],
   },
   {

@@ -9,13 +9,8 @@ import {
 import moment from "moment";
 import SimpleButton from "src/components/buttons/simpleButton";
 import DatePicker from "src/components/formFields/datePicker";
-import { SET_LOADER } from "src/redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import CustomTable from "src/components/tables";
-import { SelectColumnFilter } from "src/components/tables/filters";
 import { useParams } from "react-router";
-import tableTypes from "../../../components/tables/types";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
 import { Doughnut, Pie } from "react-chartjs-2";
@@ -68,6 +63,11 @@ function Profile(props) {
 
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <Link to={`/employees/edit/${employee?.employee_code}`}>
+          <SimpleButton title="Upload Documents" className="mr-3 mb-2" />
+        </Link>
+      </div>
       <CCard accentColor="primary">
         <MainHeading heading="Amaan Shaikh" />
         <CCardBody className="px-5">
@@ -87,23 +87,23 @@ function Profile(props) {
           <div className="row view-basic-card pl-2 mt-3">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Employee Name</label>
-              <p className="font-weight-bold">Shaikh Amaan</p>
+              <p className="font-weight-bold">{employee?.employee_name}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Employee Code</label>
-              <p className="font-weight-bold">2019BTECS00076</p>
+              <p className="font-weight-bold">{employee?.employee_code}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Work Location</label>
-              <p className="font-weight-bold">Nanded</p>
+              <p className="font-weight-bold">{employee?.work_location}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Added By</label>
-              <p className="font-weight-bold">Dnyaneshwar on 28-01-2021</p>
+              <p className="font-weight-bold">{employee?.entry_added_by}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
@@ -122,23 +122,23 @@ function Profile(props) {
           <div className="row view-basic-card pl-2 mt-3">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Mobile Number</label>
-              <p className="font-weight-bold">+91-97649-19739</p>
+              <p className="font-weight-bold">{employee?.mobile_no}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">WhatsApp Status</label>
-              <p className="font-weight-bold">Active</p>
+              <p className="font-weight-bold">{employee?.whatsapp_status}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 ">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Vehicle Group</label>
-              <p className="font-weight-bold">MRJ-2</p>
+              <p className="font-weight-bold">{employee?.vehicle_group}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Mobile Number Relation</label>
-              <p className="font-weight-bold">Self</p>
+              <p className="font-weight-bold">{employee?.mobile_relation}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
@@ -157,31 +157,31 @@ function Profile(props) {
           <div className="row view-basic-card pl-2 mt-3">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank Name</label>
-              <p className="font-weight-bold">State Bank of India</p>
+              <p className="font-weight-bold">{employee?.bank_name}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank IFSC</label>
-              <p className="font-weight-bold">SBIN0124586</p>
+              <p className="font-weight-bold">{employee?.bank_ifsc_code}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 ">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank Account Number</label>
-              <p className="font-weight-bold">XXXXXX77777</p>
+              <p className="font-weight-bold">{employee?.bank_account_no}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank Account Name</label>
-              <p className="font-weight-bold">Shaikh Amaan Shaikh Farooque</p>
+              <p className="font-weight-bold">{employee?.bank_account_name}</p>
             </div>
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank Account Relation</label>
-              <p className="font-weight-bold">Self</p>
+              <p className="font-weight-bold">{employee?.account_relation}</p>
             </div>
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Bank Branch Name</label>
-              <p className="font-weight-bold">Market Yard, Dharmabad</p>
+              <p className="font-weight-bold">{employee?.bank_branch}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
@@ -200,23 +200,27 @@ function Profile(props) {
           <div className="row view-basic-card pl-2 mt-3">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Aadhar Number</label>
-              <p className="font-weight-bold">312468473546</p>
+              <p className="font-weight-bold">{employee?.aadhar_no}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Experience Status</label>
-              <p className="font-weight-bold">5-Years Experience</p>
+              <p className="font-weight-bold">
+                {employee?.experience_status === "inexperienced"
+                  ? "No Experience"
+                  : employee?.years_of_experience}
+              </p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 ">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Education Level</label>
-              <p className="font-weight-bold">Under-graduate</p>
+              <p className="font-weight-bold">{employee?.education}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Work Grade</label>
-              <p className="font-weight-bold">Canteen</p>
+              <p className="font-weight-bold">{employee?.employee_grade}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
@@ -235,23 +239,27 @@ function Profile(props) {
           <div className="row view-basic-card pl-2 mt-3">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Contact Name</label>
-              <p className="font-weight-bold">Dnayneshwar Ware</p>
+              <p className="font-weight-bold">{employee?.emergency_contact}</p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Contact Relation</label>
-              <p className="font-weight-bold">Roommate</p>
+              <p className="font-weight-bold">
+                {employee?.emergency_person_relation}
+              </p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 ">
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Contact Number</label>
-              <p className="font-weight-bold">+91-90220-34427</p>
+              <p className="font-weight-bold">
+                {employee?.emergency_contact_no}
+              </p>
             </div>
 
             <div className="col-12 col-md-6 col-lg-6">
               <label className="">Pay Scale</label>
-              <p className="font-weight-bold">20 RS</p>
+              <p className="font-weight-bold">{employee?.pay_scale}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">

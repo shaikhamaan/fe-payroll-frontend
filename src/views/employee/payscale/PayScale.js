@@ -12,10 +12,9 @@ import countries from "../../../constants/jsons/countries";
 import moment from "moment";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import { store } from "src/redux/store";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-
 
 toast.configure();
 const PayScale = ({
@@ -29,19 +28,19 @@ const PayScale = ({
   const dispatch = useDispatch();
   const organization_id = useSelector((state) => state);
 
-//   const details =  {
-//     employee_name : "",
-//     work_location : "",
-//     entry_made_on : "",
-//     entry_added_by : "",
-//     employee_code : ""
-//   } 
-// //   const {
-// //     employee_grade = "",
-// //     pay_scale_term = "",
-// //     pay_scale_type = "",
-// //     pay_scale ="" 
-// //   } = userDetails;
+  //   const details =  {
+  //     employee_name : "",
+  //     work_location : "",
+  //     entry_made_on : "",
+  //     entry_added_by : "",
+  //     employee_code : ""
+  //   }
+  // //   const {
+  // //     employee_grade = "",
+  // //     pay_scale_term = "",
+  // //     pay_scale_type = "",
+  // //     pay_scale =""
+  // //   } = userDetails;
 
   return (
     <>
@@ -50,43 +49,42 @@ const PayScale = ({
           <Formik
             enableReinitialize
             initialValues={{
-              employee_grade:'',
-              pay_scale_term: '',
-              pay_scale_type:'',
-              pay_scale:''
+              employee_grade: "",
+              pay_scale_term: "",
+              pay_scale_type: "",
+              pay_scale: "",
             }}
             //validateOnChange={validateAfterSubmit}
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
-                //console.log(values);
-                const result = await axios.post("http://localhost:5000/payscale",values);
-                if(result.data.status == "success")
-                {
-                  toast.success(result.data.message, {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                 });
-                }
-                else
-                {
-                  toast.error(result.data.message, {
-                    position: "top-right",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                 });
-                }
-              }  
-            }
+              //console.log(values);
+              const result = await axios.post(
+                "http://localhost:5000/payscale",
+                values
+              );
+              if (result.data.status == "success") {
+                toast.success(result.data.message, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                });
+              } else {
+                toast.error(result.data.message, {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                });
+              }
+            }}
           >
             {({
               errors,
@@ -97,10 +95,10 @@ const PayScale = ({
               submitForm,
             }) => {
               return (
-                <Form >
-                  <CCardBody className="d-flex flex-column w-60">
-                    <CFormGroup className="my-0">
-                    <CCol xs="12" lg="6">
+                <Form>
+                  <CCardBody>
+                    <CFormGroup className="my-0" row>
+                      <CCol xs="12" lg="6">
                         <Select
                           custom
                           name="select"
@@ -188,9 +186,9 @@ const PayScale = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                        <br />
+                      <br />
                       <CCol xs="12" lg="6">
-                      <Select
+                        <Select
                           custom
                           name="select"
                           id="pay_scale_term"
@@ -204,7 +202,6 @@ const PayScale = ({
                               key: "Monthly Fixed",
                               value: "Monthly Fixed",
                             },
-                            
                           ]}
                           onChange={(e) => {
                             setFieldValue("pay_scale_term", e.target.value);
@@ -217,10 +214,10 @@ const PayScale = ({
                           required
                           disabled={isDisabled}
                         />
-                        </CCol>
-                        <br />
-                        <CCol xs="12" lg="6">
-                      <Select
+                      </CCol>
+                      <br />
+                      <CCol xs="12" lg="6">
+                        <Select
                           custom
                           name="select"
                           id="pay_scale_type"
@@ -234,7 +231,6 @@ const PayScale = ({
                               key: "Custom",
                               value: "Custom",
                             },
-                            
                           ]}
                           onChange={(e) => {
                             setFieldValue("pay_scale_type", e.target.value);
@@ -247,9 +243,9 @@ const PayScale = ({
                           required
                           disabled={isDisabled}
                         />
-                        </CCol>
-                        <br />
-                        <CCol xs="5" lg="6">
+                      </CCol>
+                      <br />
+                      <CCol xs="5" lg="6">
                         <SimpleInput
                           id="pay_scale"
                           placeholder="0"
@@ -262,7 +258,7 @@ const PayScale = ({
                           required
                           disabled={isDisabled}
                         />
-                        </CCol>
+                      </CCol>
                     </CFormGroup>
                     <SimpleButton
                       onClick={() => {
@@ -275,7 +271,7 @@ const PayScale = ({
                       }}
                       title="Add"
                       color="primary"
-                      className="my-3 w-50 btn"
+                      className="float-right my-3"
                       type="submit"
                     />
                   </CCardBody>

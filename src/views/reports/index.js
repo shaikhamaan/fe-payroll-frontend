@@ -50,7 +50,7 @@ function Reports(props) {
       });
       console.log(data.data);
 
-      await setExcelData([
+      setExcelData([
         {
           // sheet:  type === "monthly" ? `${monthYear}_attendance` : `${date}_attendance`,
           // columns: type === "monthly" ? monthly : daily,
