@@ -65,7 +65,7 @@ function Profile(props) {
     <div>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <Link to={`/employees/edit/${employee?.employee_code}`}>
-          <SimpleButton title="Upload Documents" className="mr-3 mb-2" />
+          <SimpleButton title="Edit" className="mr-3 mb-2" />
         </Link>
       </div>
       <CCard accentColor="primary">
