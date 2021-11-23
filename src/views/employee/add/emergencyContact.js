@@ -21,7 +21,7 @@ import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { emergencyContactValidation } from "./validations";
-import { SnackbarProvider,useSnackbar } from "notistack";
+import { SnackbarProvider, useSnackbar } from "notistack";
 import Select from "src/components/formFields/select";
 import PhoneNumberInput from "src/components/formFields/phoneNumberInput";
 import { store } from "src/redux/store";
@@ -46,10 +46,6 @@ function EmergencyContact({
     emergency_contact = "",
     emergency_contact_no = "",
     emergency_person_relation = "",
-    pay_scale = "",
-    pay_scale_type = "",
-    payscale_per_hour = "",
-    pay_scale_term = "",
   } = userDetails;
   return (
     <>
@@ -62,29 +58,47 @@ function EmergencyContact({
               emergency_contact,
               emergency_contact_no,
               emergency_person_relation,
-              pay_scale,
-              pay_scale_type,
-              payscale_per_hour,
-              pay_scale_term,
             }}
             //validationSchema={emergencyContactValidation}
             onSubmit={async (values) => {
               dispatch({ type: SET_LOADER, payload: true });
               for (const key in values) {
+
                 data[key] = values[key];
               }
               dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
+              console.log(data);
 
-              const d = await axios.post("http://localhost:5000", data);
+              const id = data["id"];
+             
+              if (id == -1 || id == undefined) {
+                delete data["id"];
 
-              console.log(d);
-              enqueueSnackbar(String(d.data.message), {
-                anchorOrigin: {
-                  vertical: "top",
-                  horizontal: "right",
-                },
-                variant: String(d.data.status),
-              });
+                const d = await axios.post("http://localhost:5000", data);
+
+                console.log(d);
+                enqueueSnackbar(String(d.data.message), {
+                  anchorOrigin: {
+                    vertical: "top",
+                    horizontal: "right",
+                  },
+                  variant: String(d.data.status),
+                });
+              }
+              else {
+                const d = await axios.post("http://localhost:5000/update", data);
+
+                console.log(d);
+                enqueueSnackbar(String(d.data.message), {
+                  anchorOrigin: {
+                    vertical: "top",
+                    horizontal: "right",
+                  },
+                  variant: String(d.data.status),
+                });
+              }
+
+
             }}
           >
             {({
@@ -149,7 +163,7 @@ function EmergencyContact({
                       <CCol xs="12" sm="12" lg="12">
                         <PhoneNumberInput
                           title="Emergency Contact Number"
-                          value={values?.emergency_contact_no?.mobile?.toString()}
+                          value={values?.emergency_contact_no}
                           onChange={(e) => {
                             setFieldValue(
                               "emergency_contact_no",
@@ -165,69 +179,7 @@ function EmergencyContact({
                         />
                       </CCol>
                     </CFormGroup>
-                    <CFormGroup row className="mt-4">
-                      <CCol xs="12" lg="6">
-                        <SimpleInput
-                          id="pay-scale"
-                          placeholder="Pay Scale"
-                          onChange={(e) => {
-                            setFieldValue("pay_scale", e.target.value);
-                          }}
-                          value={values?.pay_scale}
-                          error={touched?.pay_scale && errors?.pay_scale}
-                          title="Pay Scale"
-                          required
-                        />
-                      </CCol>
-                      <CCol xs="12" lg="6">
-                        <SimpleInput
-                          id="pay-scale-type"
-                          placeholder="Pay Scale Type"
-                          onChange={(e) => {
-                            setFieldValue("pay_scale_type", e.target.value);
-                          }}
-                          value={values?.pay_scale_type}
-                          error={
-                            touched?.pay_scale_type && errors?.pay_scale_type
-                          }
-                          title="Pay Scale Type"
-                          required
-                        />
-                      </CCol>
-                    </CFormGroup>
-                    <CFormGroup row className="mt-3">
-                      <CCol xs="12" lg="6">
-                        <SimpleInput
-                          id="payscale-per-hour"
-                          placeholder="Pay Scale Per Hour"
-                          onChange={(e) => {
-                            setFieldValue("payscale_per_hour", e.target.value);
-                          }}
-                          value={values?.payscale_per_hour}
-                          error={
-                            touched?.payscale_per_hour &&
-                            errors?.payscale_per_hour
-                          }
-                          title="Pay Scale Hour"
-                          required
-                        />
-                      </CCol>
-                      <CCol xs="12" lg="6">
-                        <SimpleInput
-                          id="payscale-term"
-                          placeholder="Pay Scale Per Term"
-                          onChange={(e) => {
-                            setFieldValue("pay_scale_term", e.target.value);
-                          }}
-                          value={values?.pay_scale_term}
-                          error={
-                            touched?.pay_scale_term && errors?.pay_scale_term
-                          }
-                          title="Pay Scale Term"
-                          required
-                        />
-                      </CCol>
-                    </CFormGroup>
+
                     <CButton
                       onClick={() => {
                         setActive(3);

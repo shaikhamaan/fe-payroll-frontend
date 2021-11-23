@@ -28,6 +28,7 @@ const BasicData = ({
   const organization_id = useSelector((state) => state);
 
   const {
+    id= -1,
     employee_name = "",
     work_location = "",
     entry_made_on = "",
@@ -42,6 +43,7 @@ const BasicData = ({
   );
 
   const data = store.getState().commonReducer.data;
+  //data["id"] = -1;
 
   return (
     <>
@@ -50,6 +52,7 @@ const BasicData = ({
           <Formik
             enableReinitialize
             initialValues={{
+              id,
               work_location,
               entry_made_on,
               entry_added_by,
@@ -60,10 +63,12 @@ const BasicData = ({
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
-              console.log("hello");
+             
               dispatch({ type: SET_LOADER, payload: true });
 
               for (const key in values) {
+               
+                
                 data[key] = values[key];
               }
 

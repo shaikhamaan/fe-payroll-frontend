@@ -21,9 +21,9 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const data = store.getState().commonReducer.data;
-
+  
   const {
-   
+    
     bank_name = "",
     bank_ifsc_code = "",
     bank_account_no = "",

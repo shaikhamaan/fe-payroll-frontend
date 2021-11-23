@@ -16,6 +16,9 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     years_of_experience = "",
     education = "",
     employee_grade = "",
+    pay_scale_term = "",
+    pay_scale_type = ""
+
   } = userDetails;
 
   const data = store.getState().commonReducer.data;
@@ -34,6 +37,8 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
               years_of_experience,
               education,
               employee_grade,
+              pay_scale_term,
+              pay_scale_type
             }}
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
@@ -271,6 +276,65 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                             touched?.employee_grade && errors?.employee_grade
                           }
                           title="Employee Grade"
+                          required
+                          disabled={isDisabled}
+                        />
+                      </CCol>
+                    </CFormGroup>
+                      <CFormGroup row className="mt-4">
+                      <CCol xs="12" lg="6">
+                        <Select
+                          custom
+                          name="select"
+                          id="pay_scale_term"
+                          options={[
+                            { key: "Please select Pay Scale Term", value: "" },
+                            {
+                              key: "Per Day",
+                              value: "Per Day",
+                            },
+                            {
+                              key: "Monthly Fixed",
+                              value: "Monthly Fixed",
+                            },
+                          ]}
+                          onChange={(e) => {
+                            setFieldValue("pay_scale_term", e.target.value);
+                          }}
+                          value={values?.pay_scale_term}
+                          error={
+                            touched?.pay_scale_term && errors?.pay_scale_term
+                          }
+                          title="Pay Scale Term"
+                          required
+                          disabled={isDisabled}
+                        />
+                      </CCol>
+                      <br />
+                      <CCol xs="12" lg="6">
+                        <Select
+                          custom
+                          name="select"
+                          id="pay_scale_type"
+                          options={[
+                            { key: "Please select Pay Scale Type", value: "" },
+                            {
+                              key: "Pre-Defined",
+                              value: "Pre-Defined",
+                            },
+                            {
+                              key: "Custom",
+                              value: "Custom",
+                            },
+                          ]}
+                          onChange={(e) => {
+                            setFieldValue("pay_scale_type", e.target.value);
+                          }}
+                          value={values?.pay_scale_type}
+                          error={
+                            touched?.pay_scale_type && errors?.pay_scale_type
+                          }
+                          title="Pay Scale Type"
                           required
                           disabled={isDisabled}
                         />
