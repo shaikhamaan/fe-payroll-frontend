@@ -54,7 +54,7 @@ const MassUploadEmployees = () => {
                 console.log(error);
               }
 
-              const { data = {} } = await axios.post("/massupload", formData, {
+              const { data = {} } = await axios.post("https://freshexp-server.herokuapp.com/massupload", formData, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
