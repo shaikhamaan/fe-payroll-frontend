@@ -222,6 +222,18 @@ function Profile(props) {
               <label className="">Work Grade</label>
               <p className="font-weight-bold">{employee?.employee_grade}</p>
             </div>
+            <div className="col-12 col-md-6 col-lg-6">
+              <label className="">Pay Scale</label>
+              <p className="font-weight-bold">{employee?.pay_scale}</p>
+            </div>
+            <div className="col-12 col-md-6 col-lg-6">
+              <label className="">Pay Scale Type</label>
+              <p className="font-weight-bold">{employee?.pay_scale_type}</p>
+            </div>
+            <div className="col-12 col-md-6 col-lg-6">
+              <label className="">Pay Scale Term</label>
+              <p className="font-weight-bold">{employee?.pay_scale_term}</p>
+            </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
             <div
@@ -255,11 +267,6 @@ function Profile(props) {
               <p className="font-weight-bold">
                 {employee?.emergency_contact_no}
               </p>
-            </div>
-
-            <div className="col-12 col-md-6 col-lg-6">
-              <label className="">Pay Scale</label>
-              <p className="font-weight-bold">{employee?.pay_scale}</p>
             </div>
           </div>
           <div className="row view-basic-card pl-2 mt-3">
