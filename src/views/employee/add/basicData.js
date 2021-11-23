@@ -30,6 +30,7 @@ const BasicData = ({
   const {
     id= -1,
     employee_name = "",
+    rfid_card_no="",
     work_location = "",
     entry_made_on = "",
     entry_added_by = "",
@@ -53,6 +54,7 @@ const BasicData = ({
             enableReinitialize
             initialValues={{
               id,
+              rfid_card_no,
               work_location,
               entry_made_on,
               entry_added_by,
@@ -217,6 +219,30 @@ const BasicData = ({
                         />
                       </CCol>
                       <CCol xs="12" lg="6">
+                        <SimpleInput
+                          id="rfid_card_no"
+                          placeholder="Enter RFID Card No "
+                          onChange={(e) => {
+                            setFieldValue("rfid_card_no", e.target.value);
+                          }}
+                          value={values?.rfid_card_no}
+                          error={
+                            touched?.rfid_card_no && errors?.rfid_card_no
+                          }
+                          title="RFID Card Number"
+                          required
+                          disabled={isDisabled}
+                          // onFocus={() => {
+                          //   setValidateAfterSubmit(false);
+                          // }}
+                          // onBlur={() => {
+                          //   setValidateAfterSubmit(true);
+                          // }}
+                        />
+                      </CCol>
+                      <br/>
+                      
+                      <CCol xs="12" lg="6" className="mt-4">
                         <Select
                           custom
                           name="select"
@@ -251,6 +277,7 @@ const BasicData = ({
                           disabled={isDisabled}
                         />
                       </CCol>
+                      
                     </CFormGroup>
                     {/* <CFormGroup row>
                       <CCol>
