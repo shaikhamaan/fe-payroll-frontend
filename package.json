@@ -119,5 +119,5 @@
     "node": ">=10",
     "npm": ">=6"
   },
-  "proxy": "https://freshexp-server.herokuapp.com/"
+  "proxy": "http://localhost:5000/"
 }

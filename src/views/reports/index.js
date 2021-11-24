@@ -46,12 +46,9 @@ function Reports(props) {
   const handleClick = async () => {
     const getReport = async () => {
       if (type === "daily") {
-        const data = await axios.post(
-          "https://freshexp-server.herokuapp.com/report",
-          {
-            date: date,
-          }
-        );
+        const data = await axios.post("http://localhost:5000/report", {
+          date: date,
+        });
 
         const excelData = [
           {
@@ -71,13 +68,10 @@ function Reports(props) {
 
         await download();
       } else {
-        const data = await axios.post(
-          "https://freshexp-server.herokuapp.com/month",
-          {
-            month: monthYear,
-            department: department,
-          }
-        );
+        const data = await axios.post("http://localhost:5000/month", {
+          month: monthYear,
+          department: department,
+        });
         const report = data.data;
         const wb = XLSX.utils.book_new();
         if (!wb.Props) wb.Props = {};

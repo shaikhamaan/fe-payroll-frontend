@@ -46,10 +46,7 @@ const Penalty = () => {
             date,
           }}
           onSubmit={async (values, { resetForm }) => {
-            const d = await axios.post(
-              "https://freshexp-server.herokuapp.com/perks",
-              values
-            );
+            const d = await axios.post("http://localhost:5000/perks", values);
             if (d.data.status == "success") {
               toast.success(
                 d.data.message + "" + `Employee Code : ${values.employee_code}`,

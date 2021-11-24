@@ -29,7 +29,7 @@ function ListEmployees(props) {
   const [employees, setEmployees] = useState([]);
 
   useEffect(async () => {
-    const e = await axios.get("https://freshexp-server.herokuapp.com/");
+    const e = await axios.get("http://localhost:5000/");
     setEmployees(e.data);
   }, []);
 

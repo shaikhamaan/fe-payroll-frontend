@@ -71,10 +71,7 @@ function EmergencyContact({
               if (id == -1 || id == undefined) {
                 delete data["id"];
 
-                const d = await axios.post(
-                  "https://freshexp-server.herokuapp.com/",
-                  data
-                );
+                const d = await axios.post("http://localhost:5000/", data);
 
                 console.log(d);
                 enqueueSnackbar(String(d.data.message), {
@@ -86,7 +83,7 @@ function EmergencyContact({
                 });
               } else {
                 const d = await axios.post(
-                  "https://freshexp-server.herokuapp.com/update",
+                  "http://localhost:5000/update",
                   data
                 );
 

@@ -83,7 +83,7 @@ const getEmployees = async (
 ) => {
   try {
     const data = await axios.get(
-      `https://freshexp-server.herokuapp.com/getdata/${queryString}`
+      `http://localhost:5000/getdata/${queryString}`
     );
     console.log(data.data.data, "getEmployee-success");
     successCallback(data.data.data);

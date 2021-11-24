@@ -34,9 +34,7 @@ function Profile(props) {
   const { start = "", end = "" } = {};
 
   useEffect(async () => {
-    const e = await axios.get(
-      `https://freshexp-server.herokuapp.com/getdata/${id}`
-    );
+    const e = await axios.get(`http://localhost:5000/getdata/${id}`);
     setEmployees(e?.data?.data);
   }, []);
 
@@ -361,7 +359,7 @@ function Profile(props) {
                         </CCol>
                       </CFormGroup>
                       <a
-                        href={`https://freshexp-server.herokuapp.com/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
+                        href={`http://localhost:5000/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
                         download
                       >
                         <SimpleButton
