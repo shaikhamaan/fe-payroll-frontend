@@ -73,7 +73,7 @@ function Profile(props) {
         </Link>
       </div>
       <CCard accentColor="primary">
-        <MainHeading heading="Amaan Shaikh" />
+        <MainHeading heading={employee?.employee_name} />
         <CCardBody className="px-5">
           <div className="row view-basic-card pl-2">
             <div
