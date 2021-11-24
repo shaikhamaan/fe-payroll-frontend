@@ -10,8 +10,8 @@ import MainHeading from "src/components/heading";
 import DatePicker from "src/components/formFields/datePicker";
 import moment from "moment";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 var today = new Date();
 var maxDate = new Date();
 
@@ -39,32 +39,43 @@ const Penalty = () => {
         <MainHeading heading="Penalty" />
         <Formik
           //enableReinitialize
-          initialValues={{ employee_code, penalty_description, penalty_value, date }}
-
-
+          initialValues={{
+            employee_code,
+            penalty_description,
+            penalty_value,
+            date,
+          }}
           onSubmit={async (values, { resetForm }) => {
-            const d = await axios.post("http://localhost:5000/perks", values);
+            const d = await axios.post(
+              "https://freshexp-server.herokuapp.com/perks",
+              values
+            );
             if (d.data.status == "success") {
-              toast.success(d.data.message + "" + `Employee Code : ${values.employee_code}`, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-              });
-            }
-            else {
-              toast.error(d.data.message + "" + `Employee Code : ${values.employee_code}`, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-              });
+              toast.success(
+                d.data.message + "" + `Employee Code : ${values.employee_code}`,
+                {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                }
+              );
+            } else {
+              toast.error(
+                d.data.message + "" + `Employee Code : ${values.employee_code}`,
+                {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                }
+              );
             }
           }}
         >
@@ -108,16 +119,12 @@ const Penalty = () => {
                         }}
                         value={
                           values?.date
-                            ? moment(values?.date)?.format(
-                              "YYYY-MM-DD"
-                            )
+                            ? moment(values?.date)?.format("YYYY-MM-DD")
                             : ""
                         }
-                        error={
-                          touched?.date && errors?.date
-                        }
+                        error={touched?.date && errors?.date}
                         maxDate={maxDate}
-                      // disabled={isDisabled}
+                        // disabled={isDisabled}
                       />
                     </CCol>
                   </CFormGroup>

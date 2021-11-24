@@ -5,34 +5,38 @@ import {
   CCard,
   CCardBody,
   CCol,
+  CFormGroup,
 } from "@coreui/react";
 import moment from "moment";
 import SimpleButton from "src/components/buttons/simpleButton";
 import DatePicker from "src/components/formFields/datePicker";
 import { useParams } from "react-router";
+import { SET_LOADER } from "src/redux/actions";
 import { Link } from "react-router-dom";
 import MainHeading from "src/components/heading";
+import { useDispatch, useSelector } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import { Doughnut, Pie } from "react-chartjs-2";
 import "./style.css";
 import axios from "axios";
 import xlsx from "json-as-xlsx";
-
+import * as yup from "yup";
+import { Formik, Form } from "formik";
 function Profile(props) {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [monthYear, setMonthYear] = useState(
     moment(new Date()).format("MMMM-yyyy")
   );
   const [employee, setEmployees] = useState({});
   const [excelData, setExcelData] = useState([]);
-  let settings = {
-    fileName: `${monthYear}_attendance`,
-    extraLength: 4,
-    writeOptions: {},
-  };
+
+  const { start = "", end = "" } = {};
 
   useEffect(async () => {
-    const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+    const e = await axios.get(
+      `https://freshexp-server.herokuapp.com/getdata/${id}`
+    );
     setEmployees(e?.data?.data);
   }, []);
 
@@ -278,30 +282,102 @@ function Profile(props) {
                 className="font-weight-bold pl-0 m-0"
                 style={{ fontSize: "20px" }}
               >
-                Attendance Statistics
+                Download Payslip
               </label>
             </div>
           </div>
-          <div className=" d-flex col-12 col-md-12 col-lg-12 my-3">
-            <DatePicker
-              type="month"
-              value={moment(monthYear).format("yyyy-MM")}
-              onChange={(e) => {
-                setMonthYear(moment(e.target.value).format("MMMM-yyyy"));
+          <div className=" my-3">
+            <Formik
+              enableReinitialize
+              initialValues={{
+                start,
+                end,
               }}
-              className="col-md-10 col-xs-10 col-lg-10"
-            />
-
-            <SimpleButton
-              title="Download Attendance"
-              style={{ width: 230, marginLeft: 30 }}
-              onClick={() => {
-                xlsx(excelData, settings);
+              validationSchema={yup.object().shape({
+                start: yup.date().required("From Date is required"),
+                end: yup
+                  .date()
+                  .test(
+                    "end_test",
+                    "To date cannot be lesser than from date",
+                    (value, context) => {
+                      if (value) {
+                        var isValid;
+                        var end = new Date(value)?.getTime();
+                        var start = new Date(context?.parent?.start)?.getTime();
+                        if (end >= start) {
+                          isValid = true;
+                        } else {
+                          isValid = false;
+                        }
+                      } else {
+                        isValid = true;
+                      }
+                      return isValid;
+                    }
+                  ),
+              })}
+              onSubmit={async (values) => {}}
+            >
+              {({ errors, touched, values, setFieldValue }) => {
+                return (
+                  <Form>
+                    <CCardBody>
+                      <CFormGroup row className="mt-3">
+                        <CCol lg="6" md="6" sm="12" xs="12">
+                          <DatePicker
+                            type="date"
+                            placeholder="From Date"
+                            id="start"
+                            value={
+                              values?.start
+                                ? moment(values?.start).format("YYYY-MM-DD")
+                                : ""
+                            }
+                            onChange={(e) => {
+                              setFieldValue("start", e.target.value);
+                            }}
+                            error={touched?.start && errors?.start}
+                            title="From Date"
+                            required
+                          />
+                        </CCol>
+                        <CCol lg="6" md="6" sm="12" xs="12">
+                          <DatePicker
+                            type="date"
+                            placeholder="To Date"
+                            id="end"
+                            value={
+                              values?.end
+                                ? moment(values?.end).format("YYYY-MM-DD")
+                                : ""
+                            }
+                            onChange={(e) => {
+                              setFieldValue("end", e.target.value);
+                            }}
+                            error={touched?.end && errors?.end}
+                            title="To Date"
+                          />
+                        </CCol>
+                      </CFormGroup>
+                      <a
+                        href={`https://freshexp-server.herokuapp.com/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
+                        download
+                      >
+                        <SimpleButton
+                          title="Download"
+                          className="float-right"
+                          type="button"
+                          className="float-right mb-3"
+                        />
+                      </a>
+                    </CCardBody>
+                  </Form>
+                );
               }}
-              className="col-md-2 col-xs-2 col-lg-2"
-            />
+            </Formik>
           </div>
-          <Pie
+          {/* <Pie
             className="chart"
             data={{
               labels: ["Present", "Absent"],
@@ -341,7 +417,7 @@ function Profile(props) {
                 },
               },
             }}
-          />
+          /> */}
         </CCardBody>
       </CCard>
     </div>

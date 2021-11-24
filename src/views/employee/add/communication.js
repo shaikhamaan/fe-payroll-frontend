@@ -23,7 +23,6 @@ import { store } from "src/redux/store";
 
 function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
   const {
-    
     mobile_no = "",
     whatsapp_status = "",
     vehicle_group = "",
@@ -41,7 +40,6 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
           <Formik
             enableReinitialize
             initialValues={{
-              
               mobile_no,
               whatsapp_status,
               vehicle_group,
@@ -49,16 +47,23 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
             }}
             //validationSchema={communicationValidation}
             onSubmit={async (values) => {
-              dispatch({ type: SET_LOADER, payload: true });
-              for(const key in values){
-                data[key] = values[key]
+             
+              for (const key in values) {
+                data[key] = values[key];
               }
 
-              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
               setActive(2);
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm, submitForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              resetForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -72,9 +77,7 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
                             setFieldValue("mobile_no", e ? `+${e}` : "");
                           }}
                           id="mobile_no"
-                          error={
-                            touched?.mobile_no && errors?.mobile_no
-                          }
+                          error={touched?.mobile_no && errors?.mobile_no}
                           required
                           disabled={isDisabled}
                         />
@@ -134,7 +137,6 @@ function Communication({ userDetails, setUserDetails, setActive, isDisabled }) {
                           title="Mobile Relation"
                           required
                           disabled={isDisabled}
-                          
                         />
                       </CCol>
                     </CFormGroup>

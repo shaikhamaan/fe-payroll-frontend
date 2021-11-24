@@ -20,7 +20,7 @@ React.icons = icons;
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter basename="">
-      <React.Suspense fallback={() => <Loading loading={false} />}>
+      <React.Suspense fallback={() => <Loading loading={true} />}>
         <App />
       </React.Suspense>
     </BrowserRouter>

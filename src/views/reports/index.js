@@ -44,16 +44,15 @@ function Reports(props) {
   };
 
   const handleClick = async () => {
-    
-    dispatch({ type: SET_LOADER, payload: true });
     const getReport = async () => {
-      
-      if(type === "daily"){
-        const data = await axios.post("http://localhost:5000/report", {
-          date: date,
-        });
-        
-  
+      if (type === "daily") {
+        const data = await axios.post(
+          "https://freshexp-server.herokuapp.com/report",
+          {
+            date: date,
+          }
+        );
+
         const excelData = [
           {
             sheet: `attendance`,
@@ -61,7 +60,7 @@ function Reports(props) {
             content: data.data,
           },
         ];
-        
+
         const download = async () => {
           try {
             xlsx(excelData, settings);
@@ -69,33 +68,33 @@ function Reports(props) {
             console.log(error);
           }
         };
-    
+
         await download();
-      }
-      else
-      {
-        const data = await axios.post("http://localhost:5000/month", {
-          month: monthYear,
-          department: department
-        });
+      } else {
+        const data = await axios.post(
+          "https://freshexp-server.herokuapp.com/month",
+          {
+            month: monthYear,
+            department: department,
+          }
+        );
         const report = data.data;
         const wb = XLSX.utils.book_new();
-        if(!wb.Props) wb.Props = {};
+        if (!wb.Props) wb.Props = {};
         wb.Props.Title = "Attendance Report";
-        for(let i=0;i<report.length;i++)
-        {
-          wb.SheetNames.push(String(i+1))
+        for (let i = 0; i < report.length; i++) {
+          wb.SheetNames.push(String(i + 1));
           var ws = XLSX.utils.json_to_sheet(report[i]);
-        
-          wb.Sheets[String(i+1)] = ws;
+
+          wb.Sheets[String(i + 1)] = ws;
         }
-        var wbout = XLSX.writeFile(wb,`${department} ${monthYear}.xlsx`,{bookType:'xlsx',  type: 'binary'});
+        var wbout = XLSX.writeFile(wb, `${department} ${monthYear}.xlsx`, {
+          bookType: "xlsx",
+          type: "binary",
+        });
       }
-     
     };
     await getReport();
-
-    
   };
 
   return (
@@ -181,13 +180,13 @@ function Reports(props) {
                   />
                 </CCol>
                 <SimpleButton
-                    title="Download Report"
-                    style={{ width: 230, marginLeft: 30 }}
-                    onClick={() => {
-                      handleClick();
-                    }}
-                    className="col-md-2 col-xs-2 col-lg-2 mt-4 float-right"
-                  />
+                  title="Download Report"
+                  style={{ width: 230, marginLeft: 30 }}
+                  onClick={() => {
+                    handleClick();
+                  }}
+                  className="col-md-2 col-xs-2 col-lg-2 mt-4 float-right"
+                />
               </CFormGroup>
             </div>
           ) : null}

@@ -17,8 +17,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     education = "",
     employee_grade = "",
     pay_scale_term = "",
-    pay_scale_type = ""
-
+    pay_scale_type = "",
   } = userDetails;
 
   const data = store.getState().commonReducer.data;
@@ -38,11 +37,10 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
               education,
               employee_grade,
               pay_scale_term,
-              pay_scale_type
+              pay_scale_type,
             }}
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
-              dispatch({ type: SET_LOADER, payload: true });
               for (const key in values) {
                 data[key] = values[key];
               }
@@ -149,7 +147,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                     </CFormGroup>
                     <CFormGroup row className="mt-4">
                       <CCol xs="12" lg="6">
-                      <Select
+                        <Select
                           custom
                           name="select"
                           id="education"
@@ -183,9 +181,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                             setFieldValue("education", e.target.value);
                           }}
                           value={values?.education}
-                          error={
-                            touched?.education && errors?.education
-                          }
+                          error={touched?.education && errors?.education}
                           title="Education Level"
                           required
                           disabled={isDisabled}
@@ -281,7 +277,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                         />
                       </CCol>
                     </CFormGroup>
-                      <CFormGroup row className="mt-4">
+                    <CFormGroup row className="mt-4">
                       <CCol xs="12" lg="6">
                         <Select
                           custom

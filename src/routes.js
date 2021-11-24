@@ -184,13 +184,13 @@ const routes = [
     exact: true,
   },
   {
-    path: "/employees/payscale",
+    path: "/payscale/update",
     name: "PayScale Update",
     component: PayScale,
     exact: true,
   },
   {
-    path: "/employees/payscale/download",
+    path: "/payscale/download",
     name: "PayScale Download",
     component: PayscaleDownload,
     exact: true,

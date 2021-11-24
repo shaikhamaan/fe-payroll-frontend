@@ -1,5 +1,6 @@
 import React from "react";
 import CIcon from "@coreui/icons-react";
+import userTypes from "src/constants/userTypes";
 
 const _nav = [
   {
@@ -11,6 +12,7 @@ const _nav = [
     //   color: "info",
     //   text: "NEW",
     // },
+    showto: [userTypes?.supervisor?.key, userTypes?.admin?.key],
   },
 
   {
@@ -18,6 +20,7 @@ const _nav = [
     name: "Employees",
     route: "/employees",
     icon: "cil-user-follow",
+    showto: [userTypes?.admin?.key],
     _children: [
       {
         _tag: "CSidebarNavItem",
@@ -36,9 +39,24 @@ const _nav = [
       },
       {
         _tag: "CSidebarNavItem",
-        name: "Employee Profile",
-        to: "/employees/profile",
+        name: "Employee Penalty",
+        to: "/employees/penalty",
       },
+    ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Employees",
+    route: "/employees",
+    icon: "cil-user-follow",
+    showto: [userTypes?.supervisor?.key],
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "View Employees",
+        to: "/employees/list",
+      },
+
       {
         _tag: "CSidebarNavItem",
         name: "Employee Penalty",
@@ -48,9 +66,10 @@ const _nav = [
   },
   {
     _tag: "CSidebarNavDropdown",
-    name: "Attendance",
+    name: "Payscale",
     route: "/attendance",
-    icon: "cil-settings",
+    icon: "cil-calculator",
+    showto: [userTypes?.admin?.key],
     _children: [
       // {
       //   _tag: "CSidebarNavItem",
@@ -60,21 +79,23 @@ const _nav = [
       {
         _tag: "CSidebarNavItem",
         name: "Payscale Update",
-        to: "/employees/payscale",
+        to: "/payscale/update",
       },
       {
         _tag: "CSidebarNavItem",
         name: "Payscale Download",
-        to: "/employees/payscale/download",
+        to: "/payscale/download",
       },
     ],
   },
   {
     _tag: "CSidebarNavItem",
-    name: "Reports",
+    name: "Attendance Reports",
     to: "/reports",
-    icon: "cil-drop",
+    icon: "cil-chart-pie",
+    showto: [userTypes?.admin?.key],
   },
+  
   // {
   //   _tag: "CSidebarNavTitle",
   //   _children: ["Theme"],

@@ -9,21 +9,20 @@ import {
 } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
 import { addEmployee } from "./api";
-import { ADD_EMPLOYEE_DATA,SET_LOADER } from "src/redux/actions";
+import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { bankDetailsValidation } from "./validations";
 import { SnackbarProvider, useSnackbar } from "notistack";
-import {store} from 'src/redux/store'
+import { store } from "src/redux/store";
 
 function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const data = store.getState().commonReducer.data;
-  
+
   const {
-    
     bank_name = "",
     bank_ifsc_code = "",
     bank_account_no = "",
@@ -49,19 +48,23 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
             }}
             //validationSchema={bankDetailsValidation}
             onSubmit={async (values) => {
-              dispatch({ type: SET_LOADER, payload: true });
-              
-              for(const key in values){
-                data[key] = values[key]
+              for (const key in values) {
+                data[key] = values[key];
               }
 
-              dispatch({ type: ADD_EMPLOYEE_DATA, values: data})
+              dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
 
               setActive(3);
-              
             }}
           >
-            {({ errors, touched, values, setFieldValue, resetForm,submitForm }) => {
+            {({
+              errors,
+              touched,
+              values,
+              setFieldValue,
+              resetForm,
+              submitForm,
+            }) => {
               return (
                 <Form>
                   <CCardBody>
@@ -216,7 +219,6 @@ function BankDetails({ setUserDetails, userDetails, setActive, isDisabled }) {
                       color="primary"
                       className="float-right"
                       type="submit"
-              
                     />
                   </CCardBody>
                 </Form>

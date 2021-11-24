@@ -28,9 +28,9 @@ const BasicData = ({
   const organization_id = useSelector((state) => state);
 
   const {
-    id= -1,
+    id = -1,
     employee_name = "",
-    rfid_card_no="",
+    rfid_card_no = "",
     work_location = "",
     entry_made_on = "",
     entry_added_by = "",
@@ -65,12 +65,7 @@ const BasicData = ({
             // validateOnBlur
             //validationSchema={basicDetailsValidation}
             onSubmit={async (values, { resetForm }) => {
-             
-              dispatch({ type: SET_LOADER, payload: true });
-
               for (const key in values) {
-               
-                
                 data[key] = values[key];
               }
 
@@ -226,9 +221,7 @@ const BasicData = ({
                             setFieldValue("rfid_card_no", e.target.value);
                           }}
                           value={values?.rfid_card_no}
-                          error={
-                            touched?.rfid_card_no && errors?.rfid_card_no
-                          }
+                          error={touched?.rfid_card_no && errors?.rfid_card_no}
                           title="RFID Card Number"
                           required
                           disabled={isDisabled}
@@ -240,8 +233,8 @@ const BasicData = ({
                           // }}
                         />
                       </CCol>
-                      <br/>
-                      
+                      <br />
+
                       <CCol xs="12" lg="6" className="mt-4">
                         <Select
                           custom
@@ -277,7 +270,6 @@ const BasicData = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                      
                     </CFormGroup>
                     {/* <CFormGroup row>
                       <CCol>
@@ -400,14 +392,6 @@ const BasicData = ({
                       </CCol>
                     </CFormGroup> */}
                     <SimpleButton
-                      onClick={() => {
-                        setValidateAfterSubmit(true);
-                        dispatch({ type: SET_LOADER, payload: true });
-                        validateForm().then((e) => {
-                          console.log(e, "asddchnoi");
-                          dispatch({ type: SET_LOADER, payload: false });
-                        });
-                      }}
                       title="Save & Next"
                       color="primary"
                       className="float-right my-3"

@@ -49,7 +49,6 @@ function EmergencyContact({
   } = userDetails;
   return (
     <>
-
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
           <Formik
@@ -61,20 +60,35 @@ function EmergencyContact({
             }}
             //validationSchema={emergencyContactValidation}
             onSubmit={async (values) => {
-              dispatch({ type: SET_LOADER, payload: true });
               for (const key in values) {
-
                 data[key] = values[key];
               }
               dispatch({ type: ADD_EMPLOYEE_DATA, values: data });
               console.log(data);
 
               const id = data["id"];
-             
+
               if (id == -1 || id == undefined) {
                 delete data["id"];
 
-                const d = await axios.post("http://localhost:5000", data);
+                const d = await axios.post(
+                  "https://freshexp-server.herokuapp.com/",
+                  data
+                );
+
+                console.log(d);
+                enqueueSnackbar(String(d.data.message), {
+                  anchorOrigin: {
+                    vertical: "top",
+                    horizontal: "right",
+                  },
+                  variant: String(d.data.status),
+                });
+              } else {
+                const d = await axios.post(
+                  "https://freshexp-server.herokuapp.com/update",
+                  data
+                );
 
                 console.log(d);
                 enqueueSnackbar(String(d.data.message), {
@@ -85,20 +99,6 @@ function EmergencyContact({
                   variant: String(d.data.status),
                 });
               }
-              else {
-                const d = await axios.post("http://localhost:5000/update", data);
-
-                console.log(d);
-                enqueueSnackbar(String(d.data.message), {
-                  anchorOrigin: {
-                    vertical: "top",
-                    horizontal: "right",
-                  },
-                  variant: String(d.data.status),
-                });
-              }
-
-
             }}
           >
             {({
@@ -208,6 +208,5 @@ function EmergencyContact({
     </>
   );
 }
-
 
 export default EmergencyContact;

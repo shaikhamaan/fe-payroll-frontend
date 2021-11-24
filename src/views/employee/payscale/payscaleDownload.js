@@ -51,9 +51,7 @@ function PayscaleDownload() {
                     if (value) {
                       var isValid;
                       var end = new Date(value)?.getTime();
-                      var start = new Date(
-                        context?.parent?.start
-                      )?.getTime();
+                      var start = new Date(context?.parent?.start)?.getTime();
                       if (end >= start) {
                         isValid = true;
                       } else {
@@ -67,21 +65,20 @@ function PayscaleDownload() {
                 ),
             })}
             onSubmit={async (values) => {
-              dispatch({ type: SET_LOADER, payload: true });
-              
-              let excelData
+              let excelData;
               const getPayScale = async () => {
                 const data = await axios.post(
-                  "http://localhost:5000/masssalary",
+                  "https://freshexp-server.herokuapp.com/masssalary",
                   values
                 );
-                
-                excelData = [{
-                  sheet: `Payment Report`,
-                  columns: columns,
-                  content: data.data,
-                }]
-               
+
+                excelData = [
+                  {
+                    sheet: `Payment Report`,
+                    columns: columns,
+                    content: data.data,
+                  },
+                ];
               };
               await getPayScale();
 
@@ -92,7 +89,7 @@ function PayscaleDownload() {
                   console.log(error);
                 }
               };
-              
+
               await download();
             }}
           >

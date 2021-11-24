@@ -35,67 +35,23 @@ const Login = () => {
 
   const onLoginPress = async () => {
     dispatch({ type: SET_LOADER, payload: true });
-    const response = await axios.post("http://localhost:5000/authuser", {
-      username: id,
-      password: password,
-    });
-    if (Response.status === "success") {
+    const response = await axios.post(
+      "https://freshexp-server.herokuapp.com/authuser",
+      {
+        username: id,
+        password: password,
+      }
+    );
+    if (response?.data?.status === "success") {
       localStorage.setItem(localStorageConstants.userId, id);
-      localStorage.setItem("role", response?.role);
+      localStorage.setItem("role", response?.data?.role);
       dispatch({ type: SET_LOGIN_STATUS, payload: true });
       history.push("/dashboard");
     } else {
       setErrors({ message: "Login Failed" });
     }
+    console.log(response, "haaa");
     dispatch({ type: SET_LOADER, payload: false });
-    // login(
-    //   {
-    //     email: id,
-    //     password: password,
-    //     device_type: "Web",
-    //   },
-    //   (data) => {
-    //     if (data?.status === "success") {
-    //
-    //       localStorage.setItem(
-    //         localStorageConstants.sessionId,
-    //         data?.data?.session_id
-    //       );
-    //       dispatch({
-    //         type: SET_USER_DATA,
-    //         payload: data?.data?.user_details,
-    //       });
-    //       setUserId(data?.data?.user_details?.user_id);
-    //       getMetaData(
-    //         `?user_id=${data?.data?.user_details?._id}`,
-    //         (data) => {
-    //           if (data?.status === "success" && data?.data) {
-    //             dispatch({
-    //               type: SET_META_DATA,
-    //               payload: data?.data,
-    //             });
-    //           }
-    //         },
-    //         () => {
-    //           dispatch({ type: SET_LOADER, payload: false });
-    //           setErrors({ message: "Login Failed" });
-    //         }
-    //       );
-    //       if (data?.data?.user_details?.user_type === "hr") {
-    //         history.push("/employees/list");
-    //       } else {
-    //         history.push("/dashboard");
-    //       }
-    //       dispatch({ type: SET_LOADER, payload: false });
-    //     } else {
-    //       setErrors({ message: data?.message });
-    //       dispatch({ type: SET_LOADER, payload: false });
-    //     }
-    //   },
-    //   () => {
-    //     dispatch({ type: SET_LOADER, payload: false });
-    //   }
-    // );
   };
   return (
     <div

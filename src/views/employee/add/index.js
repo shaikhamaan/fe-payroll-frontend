@@ -46,24 +46,24 @@ const AddEmployees = () => {
   var isDisabled = false;
   //const { user_type, _id } = useSelector((state) => state?.auth?.userDetails);
 
- const { id } = useParams();
+  const { id } = useParams();
   // useEffect(async () => {
-  //   const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+  //   const e = await axios.get(`https://freshexp-server.herokuapp.com/getdata/${id}`);
   //   setUserDetails(e?.data?.data);
   // }, []);
   //checkPermission(user_type, id, _id);
   useEffect(() => {
     if (id) {
-      dispatch({ type: SET_LOADER, payload: true });
+      //dispatch({ type: SET_LOADER, payload: true });
       getEmployees(
         `${id}`,
         (data) => {
           setUserDetails(data);
           console.log(userDetails);
-          dispatch({ type: SET_LOADER, payload: false });
+          //dispatch({ type: SET_LOADER, payload: false });
         },
         () => {
-          dispatch({ type: SET_LOADER, payload: false });
+          //dispatch({ type: SET_LOADER, payload: false });
         }
       );
     }

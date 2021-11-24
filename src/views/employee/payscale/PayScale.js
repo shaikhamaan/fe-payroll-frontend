@@ -7,6 +7,7 @@ import SimpleButton from "src/components/buttons/simpleButton";
 import { useDispatch, useSelector } from "react-redux";
 import { ADD_EMPLOYEE_DATA, SET_LOADER } from "src/redux/actions";
 import { Formik, Form } from "formik";
+import MainHeading from "src/components/heading";
 import countries from "../../../constants/jsons/countries";
 // import { getCityStateFromPinCode } from "src/views/organization/add/apis";
 import moment from "moment";
@@ -46,6 +47,7 @@ const PayScale = ({
     <>
       <CCol xs="12" sm="12" className="mt-4">
         <CCard>
+          <MainHeading heading="Update Payscale" />
           <Formik
             enableReinitialize
             initialValues={{
@@ -60,10 +62,10 @@ const PayScale = ({
             onSubmit={async (values, { resetForm }) => {
               //console.log(values);
               const result = await axios.post(
-                "http://localhost:5000/payscale",
+                "https://freshexp-server.herokuapp.com/payscale",
                 values
               );
-              
+
               if (result.data.status == "success") {
                 toast.success(result.data.message, {
                   position: "top-right",
@@ -187,7 +189,7 @@ const PayScale = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                      <br />
+
                       <CCol xs="12" lg="6">
                         <Select
                           custom
@@ -216,7 +218,8 @@ const PayScale = ({
                           disabled={isDisabled}
                         />
                       </CCol>
-                      <br />
+                    </CFormGroup>
+                    <CFormGroup className="mt-2" row>
                       <CCol xs="12" lg="6">
                         <Select
                           custom
@@ -262,14 +265,6 @@ const PayScale = ({
                       </CCol>
                     </CFormGroup>
                     <SimpleButton
-                      onClick={() => {
-                        setValidateAfterSubmit(true);
-                        dispatch({ type: SET_LOADER, payload: true });
-                        validateForm().then((e) => {
-                          console.log(e, "asddchnoi");
-                          dispatch({ type: SET_LOADER, payload: false });
-                        });
-                      }}
                       title="Add"
                       color="primary"
                       className="float-right my-3"

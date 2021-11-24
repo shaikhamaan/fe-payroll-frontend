@@ -17,8 +17,10 @@ import CIcon from "@coreui/icons-react";
 
 // sidebar nav config
 import navigation from "./_nav";
+import localStorageConstants from "src/constants/localstorageConstants";
 
 const TheSidebar = () => {
+  const role = localStorage.getItem("role");
   const dispatch = useDispatch();
   const show = useSelector((state) => state.commonReducer.sidebarShow);
 
@@ -28,11 +30,11 @@ const TheSidebar = () => {
       onShowChange={(val) => dispatch({ type: "set", sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        <img src={BrandLogo} height={50}/>
+        <img src={BrandLogo} height={50} />
       </CSidebarBrand>
       <CSidebarNav>
         <CCreateElement
-          items={navigation}
+          items={navigation.filter((item) => item?.showto?.includes(role))}
           components={{
             CSidebarNavDivider,
             CSidebarNavDropdown,

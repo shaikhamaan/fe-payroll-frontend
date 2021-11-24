@@ -10,17 +10,16 @@ import tableTypes from "../../../components/tables/types";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
-import { Link }  from 'react-router-dom'
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faAirFreshener } from '@fortawesome/free-solid-svg-icons'
-
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAddressCard,
+  faAirFreshener,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ListEmployees(props) {
-  const { id } = useParams();
-
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const [employeeData, setEmployeeData] = useState([]);
   // const organization_id = useSelector((state) =>
   //   id ? id : state.auth?.userDetails?.organization_id
@@ -30,10 +29,9 @@ function ListEmployees(props) {
   const [employees, setEmployees] = useState([]);
 
   useEffect(async () => {
-    const e = await axios.get("http://localhost:5000");
+    const e = await axios.get("https://freshexp-server.herokuapp.com/");
     setEmployees(e.data);
   }, []);
-
 
   return (
     <SnackbarProvider>
@@ -66,13 +64,14 @@ function ListEmployees(props) {
                     accessor: (row) => {
                       return (
                         <>
-              
-                        <Link
-                          to={`/employees/profile/${row?.employee_code}`}
-                        >
-                        <h4 className="text-center"><FontAwesomeIcon icon={faAddressCard} color="blue" /></h4>
-                        
-                        </Link>
+                          <Link to={`/employees/profile/${row?.employee_code}`}>
+                            <h4 className="text-center">
+                              <FontAwesomeIcon
+                                icon={faAddressCard}
+                                color="blue"
+                              />
+                            </h4>
+                          </Link>
                         </>
                       );
                     },
