@@ -38,29 +38,7 @@ function Profile(props) {
     setEmployees(e?.data?.data);
   }, []);
 
-  //   useEffect(() => {
-  //     dispatch({ type: SET_LOADER, payload: true });
-  //     getAttendance(
-  //       "",
-  //       (data) => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //         setAttendance(data?.data?.data || []);
-  //         setExcelData([
-  //           {
-  //             sheet: `${monthYear} Attendance`,
-  //             columns: [
-  //               { label: "Employee Name", value: "employee_name" },
-  //               { label: "Attendance Status", value: "attendance_status" },
-  //             ],
-  //             content: data?.data?.data,
-  //           },
-  //         ]);
-  //       },
-  //       () => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //       }
-  //     );
-  //   }, [refresh, monthYear]);
+ 
   console.log(employee);
 
   return (
@@ -71,7 +49,7 @@ function Profile(props) {
         </Link>
       </div>
       <CCard accentColor="primary">
-        <MainHeading heading="Amaan Shaikh" />
+        <MainHeading heading={employee?.employee_name} />
         <CCardBody className="px-5">
           <div className="row view-basic-card pl-2">
             <div
