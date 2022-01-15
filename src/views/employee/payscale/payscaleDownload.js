@@ -23,7 +23,7 @@ function PayscaleDownload() {
   //const [excelData, setExcelData] = useState([]);
   const dispatch = useDispatch();
   let settings = {
-    fileName: "Salary",
+    fileName: "Salary Payment Report",
     extraLength: 4,
     writeOptions: {},
   };
@@ -68,7 +68,7 @@ function PayscaleDownload() {
               let excelData;
               const getPayScale = async () => {
                 const data = await axios.post(
-                  "http://localhost:5000/masssalary",
+                  "http://localhost:5000/reports/masssalary",
                   values
                 );
 

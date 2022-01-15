@@ -35,7 +35,7 @@ const Login = () => {
 
   const onLoginPress = async () => {
     dispatch({ type: SET_LOADER, payload: true });
-    const response = await axios.post("http://localhost:5000/authuser", {
+    const response = await axios.post("http://localhost:5000/users/authuser", {
       username: id,
       password: password,
     });
