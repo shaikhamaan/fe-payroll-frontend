@@ -75,6 +75,7 @@ const MassUploadEmployees = React.lazy(() =>
 const PayscaleDownload = React.lazy(() =>
   import("src/views/employee/payscale/payscaleDownload")
 );
+const Update = React.lazy(() => import("src/views/attendance/update"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -166,8 +167,8 @@ const routes = [
     exact: true,
   },
   {
-    path: "/employees/penalty",
-    name: "Add Penalty",
+    path: "/rewards",
+    name: "Rewards",
     component: Penalty,
     exact: true,
   },
@@ -196,9 +197,15 @@ const routes = [
     exact: true,
   },
   {
-    path: "/reports",
-    name: "Reports",
+    path: "/attendance/reports",
+    name: "Attendance Reports",
     component: Reports,
+    exact: true,
+  },
+  {
+    path: "/attendance/update",
+    name: "Attendance Refill",
+    component: Update,
     exact: true,
   },
 ];

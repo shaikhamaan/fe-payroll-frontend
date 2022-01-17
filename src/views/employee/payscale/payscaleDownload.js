@@ -20,7 +20,6 @@ import xlsx from "json-as-xlsx";
 import { columns } from "./columns";
 
 function PayscaleDownload() {
-  //const [excelData, setExcelData] = useState([]);
   const dispatch = useDispatch();
   let settings = {
     fileName: "Salary Payment Report",

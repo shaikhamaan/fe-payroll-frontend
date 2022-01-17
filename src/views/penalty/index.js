@@ -1,7 +1,8 @@
-import { CCard, CCardBody, CCol, CFormGroup } from "@coreui/react";
+import { CCard, CCardBody, CCol, CFormGroup, CLabel } from "@coreui/react";
 import { Form, Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import Select from "react-select";
 import { useHistory, useParams } from "react-router-dom";
 import SimpleButton from "src/components/buttons/simpleButton";
 import SimpleInput from "src/components/formFields/simpleInput";
@@ -25,54 +26,58 @@ const Penalty = () => {
   const history = useHistory();
   const [batchData, setBatchData] = useState({});
   const { id } = useParams();
-
-  const {
-    employee_code = "",
-    date = "",
-    penalty_description = "",
-    penalty_value = "",
-  } = {};
+  const [selectedOption, setSelectedOption] = useState({});
+  const [options, setOptions] = useState([]);
+  const { date = "", penalty_description = "", penalty_value = "" } = {};
+  useEffect(async () => {
+    const { data } = await axios.get("http://localhost:5000/employee");
+    let temp = [];
+    data.map((employee) =>
+      temp.push({
+        label: employee?.employee_code + " - " + employee?.employee_name,
+        value: employee?.employee_code,
+      })
+    );
+    setOptions(temp);
+  }, []);
 
   return (
     <div>
       <CCard>
-        <MainHeading heading="Penalty" />
+        <MainHeading heading="Rewards" />
         <Formik
           //enableReinitialize
           initialValues={{
-            employee_code,
             penalty_description,
             penalty_value,
             date,
           }}
           onSubmit={async (values, { resetForm }) => {
-            const d = await axios.post("http://localhost:5000/perks", values);
+           
+            const d = await axios.post("http://localhost:5000/awards", {
+              ...values,
+              employee_codes: selectedOption,
+            });
             if (d.data.status == "success") {
-              toast.success(
-                d.data.message + "" + `Employee Code : ${values.employee_code}`,
-                {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                }
-              );
+              toast.success(d.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              });
             } else {
-              toast.error(
-                d.data.message + "" + `Employee Code : ${values.employee_code}`,
-                {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                }
-              );
+              toast.error(d.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              });
             }
           }}
         >
@@ -82,7 +87,17 @@ const Penalty = () => {
                 <CCardBody>
                   <CFormGroup row className="mt-3">
                     <CCol lg="6" md="6">
-                      <SimpleInput
+                      <CLabel htmlFor="#select">Select Employee</CLabel>
+                      <Select
+                        onChange={(e) => {
+                          setSelectedOption(e);
+                          console.log(e, "liu");
+                        }}
+                        options={options}
+                        isMulti={true}
+                        id="select"
+                      />
+                      {/* <SimpleInput
                         title="Employee Code"
                         placeholder="Enter Employee Code"
                         onChange={(e) => {
@@ -90,12 +105,12 @@ const Penalty = () => {
                         }}
                         required
                         value={values?.employee_code}
-                      />
+                      /> */}
                     </CCol>{" "}
                     <CCol lg="6" md="6">
                       <SimpleInput
-                        title="Enter Penalty Points"
-                        placeholder="Enter Penalty Points"
+                        title="Reward Points"
+                        placeholder="Enter Reward Points"
                         onChange={(e) => {
                           setFieldValue("penalty_value", e.target.value);
                         }}
