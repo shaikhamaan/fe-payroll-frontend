@@ -18,6 +18,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     employee_grade = "",
     pay_scale_term = "",
     pay_scale_type = "",
+    pay_scale_type_value = "",
   } = userDetails;
 
   const data = store.getState().commonReducer.data;
@@ -38,6 +39,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
               employee_grade,
               pay_scale_term,
               pay_scale_type,
+              pay_scale_type_value,
             }}
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
@@ -336,6 +338,75 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                         />
                       </CCol>
                     </CFormGroup>
+                    {values?.pay_scale_type === "Pre-Defined" ? (
+                      <CFormGroup row className="mt-4">
+                        <CCol xs="12" lg="12" sm="12">
+                          <Select
+                            custom
+                            name="select"
+                            id="pay_scale_type_value"
+                            options={[
+                              {
+                                key: "Please select Pay Scale Value",
+                                value: "",
+                              },
+                              {
+                                key: "10000",
+                                value: "10000",
+                              },
+                              {
+                                key: "20000",
+                                value: "20000",
+                              },
+                              {
+                                key: "30000",
+                                value: "30000",
+                              },
+                            ]}
+                            onChange={(e) => {
+                              setFieldValue(
+                                "pay_scale_type_value",
+                                e.target.value
+                              );
+                            }}
+                            value={values?.pay_scale_type_value}
+                            error={
+                              touched?.pay_scale_type_value &&
+                              errors?.pay_scale_type_value
+                            }
+                            title="Pay Scale Value"
+                            required
+                            disabled={isDisabled}
+                          />
+                        </CCol>
+                      </CFormGroup>
+                    ) : null}
+                    {values?.pay_scale_type === "Custom" ? (
+                      <CFormGroup row className="mt-4">
+                        <CCol xs="12" lg="12" sm="12">
+                          <SimpleInput
+                            custom
+                            name="select"
+                            id="pay_scale_type_value"
+                            onChange={(e) => {
+                              setFieldValue(
+                                "pay_scale_type_value",
+                                e.target.value
+                              );
+                            }}
+                            placeholder="Enter Pay Scale Value"
+                            value={values?.pay_scale_type_value}
+                            error={
+                              touched?.pay_scale_type_value &&
+                              errors?.pay_scale_type_value
+                            }
+                            title="Pay Scale Value"
+                            required
+                            disabled={isDisabled}
+                          />
+                        </CCol>
+                      </CFormGroup>
+                    ) : null}
                     <CButton
                       onClick={() => {
                         resetForm();

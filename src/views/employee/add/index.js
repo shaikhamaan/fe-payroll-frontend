@@ -89,6 +89,11 @@ const AddEmployees = () => {
   return (
     <SnackbarProvider>
       <div>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Link to={`/employees/upload`}>
+            <SimpleButton title="Upload Employees" className="mr-3 mb-2" />
+          </Link>
+        </div>
         <CCol xs="12" md="12" className="mb-4">
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {/* <div className="d-flex">

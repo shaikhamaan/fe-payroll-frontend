@@ -24,7 +24,7 @@ const _nav = [
     _children: [
       {
         _tag: "CSidebarNavItem",
-        name: "Add Employee",
+        name: "Add Employees",
         to: "/employees/add",
       },
       {
@@ -32,16 +32,11 @@ const _nav = [
         name: "View Employees",
         to: "/employees/list",
       },
-      {
-        _tag: "CSidebarNavItem",
-        name: "Mass Upload",
-        to: "/employees/upload",
-      },
-      {
-        _tag: "CSidebarNavItem",
-        name: "Employee Penalty",
-        to: "/employees/penalty",
-      },
+      // {
+      //   _tag: "CSidebarNavItem",
+      //   name: "Mass Upload",
+      //   to: "/employees/upload",
+      // },
     ],
   },
   {
@@ -64,10 +59,30 @@ const _nav = [
       },
     ],
   },
+
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Attendance",
+    to: "/attendance",
+    icon: "cil-chart-pie",
+    showto: [userTypes?.admin?.key],
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "Attendance Reports",
+        to: "/attendance/reports",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Attendance Update",
+        to: "/attendance/update",
+      },
+    ],
+  },
   {
     _tag: "CSidebarNavDropdown",
     name: "Payscale",
-    route: "/attendance",
+    route: "/payscale",
     icon: "cil-calculator",
     showto: [userTypes?.admin?.key],
     _children: [
@@ -90,12 +105,12 @@ const _nav = [
   },
   {
     _tag: "CSidebarNavItem",
-    name: "Attendance Reports",
-    to: "/reports",
-    icon: "cil-chart-pie",
+    route: "/rewards",
+    icon: "cil-puzzle",
     showto: [userTypes?.admin?.key],
+    name: "Rewards",
+    to: "/rewards",
   },
-  
   // {
   //   _tag: "CSidebarNavTitle",
   //   _children: ["Theme"],
