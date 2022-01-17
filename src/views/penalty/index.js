@@ -10,8 +10,9 @@ import SimpleTextArea from "src/components/formFields/simpleTextArea";
 import MainHeading from "src/components/heading";
 import DatePicker from "src/components/formFields/datePicker";
 import moment from "moment";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { addReward, getEmployees } from "./apis";
+
 import "react-toastify/dist/ReactToastify.css";
 var today = new Date();
 var maxDate = new Date();
@@ -30,7 +31,7 @@ const Penalty = () => {
   const [options, setOptions] = useState([]);
   const { date = "", penalty_description = "", penalty_value = "" } = {};
   useEffect(async () => {
-    const { data } = await axios.get("http://localhost:5000/employee");
+    const { data } = await getEmployees();
     let temp = [];
     data.map((employee) =>
       temp.push({
@@ -53,8 +54,7 @@ const Penalty = () => {
             date,
           }}
           onSubmit={async (values, { resetForm }) => {
-           
-            const d = await axios.post("http://localhost:5000/awards", {
+            const d = await addReward({
               ...values,
               employee_codes: selectedOption,
             });

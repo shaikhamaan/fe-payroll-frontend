@@ -22,6 +22,7 @@ import axios from "axios";
 import xlsx from "json-as-xlsx";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
+import { getProfile } from "./apis";
 function Profile(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -34,11 +35,10 @@ function Profile(props) {
   const { start = "", end = "" } = {};
 
   useEffect(async () => {
-    const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+    const e = await getProfile(id);
     setEmployees(e?.data?.data);
   }, []);
 
- 
   console.log(employee);
 
   return (

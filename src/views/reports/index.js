@@ -21,7 +21,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
 import { Doughnut, Pie } from "react-chartjs-2";
-import axios from "axios";
+import { dayReport, monthReprt } from "./apis";
 import xlsx from "json-as-xlsx";
 import { daily, monthly } from "./utils/columns";
 import XLSX from "xlsx";
@@ -46,7 +46,7 @@ function Reports(props) {
   const handleClick = async () => {
     const getReport = async () => {
       if (type === "daily") {
-        const data = await axios.post("http://localhost:5000/report", {
+        const data = await dayReport({
           date: date,
         });
 
@@ -68,7 +68,7 @@ function Reports(props) {
 
         await download();
       } else {
-        const data = await axios.post("http://localhost:5000/month", {
+        const data = await monthReprt({
           month: monthYear,
           department: department,
         });

@@ -18,7 +18,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
     employee_grade = "",
     pay_scale_term = "",
     pay_scale_type = "",
-    pay_scale_type_value = "",
+    pay_scale = "",
   } = userDetails;
 
   const data = store.getState().commonReducer.data;
@@ -39,7 +39,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
               employee_grade,
               pay_scale_term,
               pay_scale_type,
-              pay_scale_type_value,
+              pay_scale,
             }}
             //validationSchema={jobDetailsValidation}
             onSubmit={async (values) => {
@@ -344,7 +344,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                           <Select
                             custom
                             name="select"
-                            id="pay_scale_type_value"
+                            id="pay_scale"
                             options={[
                               {
                                 key: "Please select Pay Scale Value",
@@ -364,16 +364,10 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                               },
                             ]}
                             onChange={(e) => {
-                              setFieldValue(
-                                "pay_scale_type_value",
-                                e.target.value
-                              );
+                              setFieldValue("pay_scale", e.target.value);
                             }}
-                            value={values?.pay_scale_type_value}
-                            error={
-                              touched?.pay_scale_type_value &&
-                              errors?.pay_scale_type_value
-                            }
+                            value={values?.pay_scale}
+                            error={touched?.pay_scale && errors?.pay_scale}
                             title="Pay Scale Value"
                             required
                             disabled={isDisabled}
@@ -387,19 +381,13 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                           <SimpleInput
                             custom
                             name="select"
-                            id="pay_scale_type_value"
+                            id="pay_scale"
                             onChange={(e) => {
-                              setFieldValue(
-                                "pay_scale_type_value",
-                                e.target.value
-                              );
+                              setFieldValue("pay_scale", e.target.value);
                             }}
                             placeholder="Enter Pay Scale Value"
-                            value={values?.pay_scale_type_value}
-                            error={
-                              touched?.pay_scale_type_value &&
-                              errors?.pay_scale_type_value
-                            }
+                            value={values?.pay_scale}
+                            error={touched?.pay_scale && errors?.pay_scale}
                             title="Pay Scale Value"
                             required
                             disabled={isDisabled}
