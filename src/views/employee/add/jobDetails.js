@@ -7,6 +7,7 @@ import { Formik, Form } from "formik";
 import { useDispatch } from "react-redux";
 import SimpleButton from "src/components/buttons/simpleButton";
 import { store } from "src/redux/store";
+import axios from "axios";
 function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
   //const { id } = useParams();
   const {
@@ -22,6 +23,13 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
   } = userDetails;
 
   const data = store.getState().commonReducer.data;
+
+  const setPayScale = async (employee_grade, pay_scale_term) => {
+    const data = await axios.get(
+      `http://localhost:5000/payscale/getpay?employee_grade=${employee_grade}&pay_scale_term=${pay_scale_term}`
+    );
+    return data.data.amount;
+  };
 
   const dispatch = useDispatch();
   return (
@@ -242,8 +250,8 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                               value: "Harvester Supervisor",
                             },
                             {
-                              key: "PH Qaulity Supervisors",
-                              value: "PH Qaulity Supervisors",
+                              key: "PH Quality Supervisors",
+                              value: "PH Quality Supervisors",
                             },
                             {
                               key: "Security",
@@ -325,8 +333,13 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                               value: "Custom",
                             },
                           ]}
-                          onChange={(e) => {
+                          onChange={async (e) => {
                             setFieldValue("pay_scale_type", e.target.value);
+                            const d = await setPayScale(
+                              values.employee_grade,
+                              values.pay_scale_term
+                            );
+                            setFieldValue("pay_scale", d);
                           }}
                           value={values?.pay_scale_type}
                           error={
@@ -341,7 +354,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                     {values?.pay_scale_type === "Pre-Defined" ? (
                       <CFormGroup row className="mt-4">
                         <CCol xs="12" lg="12" sm="12">
-                          <Select
+                          {/* <Select
                             custom
                             name="select"
                             id="pay_scale"
@@ -364,13 +377,26 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
                               },
                             ]}
                             onChange={(e) => {
-                              setFieldValue("pay_scale", e.target.value);
+                              console.log(values.pay_scale);
+                              //setFieldValue("pay_scale", e.target.value);
                             }}
                             value={values?.pay_scale}
                             error={touched?.pay_scale && errors?.pay_scale}
                             title="Pay Scale Value"
                             required
                             disabled={isDisabled}
+                          /> */}
+                          <SimpleInput
+                            id="pay_scale"
+                            placeholder="PayScale"
+                            onChange={(e) => {
+                              setFieldValue("pay_scale", e.target.value);
+                            }}
+                            value={values?.pay_scale}
+                            error={touched?.pay_scale && errors?.pay_scale}
+                            title="PayScale"
+                            required
+                            disabled={true}
                           />
                         </CCol>
                       </CFormGroup>
