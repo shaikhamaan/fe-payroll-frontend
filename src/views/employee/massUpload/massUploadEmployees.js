@@ -11,6 +11,14 @@ import { useSnackbar } from "notistack";
 import { useHistory } from "react-router";
 import { fields } from "./utils/fields";
 import { JsonToCsv, useJsonToCsv } from "react-json-csv";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import axios from "axios";
+import xlsx from "json-as-xlsx";
+import { columns } from "./utils/columns";
+
+toast.configure();
 
 const MassUploadEmployees = () => {
   const organization_id = useSelector(
@@ -21,6 +29,12 @@ const MassUploadEmployees = () => {
   const [responseText, setResponseText] = useState("");
   const [excelData, setExcelData] = useState([]);
   const [disable, setDisable] = useState(false);
+  const [failedNumber, setFailedNumber] = useState(0);
+  let settings = {
+    fileName: "RejectedItems",
+    extraLength: 4,
+    writeOptions: {},
+  };
   // var textInputRef = useRef()
   const { saveAsCsv } = useJsonToCsv();
   return (
@@ -31,24 +45,57 @@ const MassUploadEmployees = () => {
             enableReinitialize
             initialValues={{}}
             onSubmit={async (values) => {
-              if (fileChoosen) {
-                dispatch({ type: SET_LOADER, payload: true });
-                importEmployees(
-                  organization_id,
-                  fileChoosen,
-                  (data) => {
-                    dispatch({ type: SET_LOADER, payload: false });
-                    setResponseText(data?.message);
-                    setExcelData(data?.data?.unUploadedEmployeesList);
+              console.log(fileChoosen);
+              var formData = new FormData();
+
+              try {
+                formData.append("file", fileChoosen, "Fe.xlsx");
+              } catch (error) {
+                console.log(error);
+              }
+
+              const { data = {} } = await axios.post(
+                "http://localhost:5000/massupload",
+                formData,
+                {
+                  headers: {
+                    "Content-Type": "multipart/form-data",
                   },
-                  () => {
-                    dispatch({ type: SET_LOADER, payload: false });
+                }
+              );
+              if (data.failedEntries.length > 0) {
+                toast.warning(
+                  `Done, ${data.failedEntries.length} Enteries Failed - Download Failed Enteries`,
+                  {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
                   }
                 );
+                setFailedNumber(data.failedEntries.length);
               } else {
-                dispatch({ type: SET_LOADER, payload: false });
-                setResponseText("Upload a Valid CSV file");
+                toast.success(`Mass Upload Successful!`, {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                });
               }
+
+              setExcelData([
+                {
+                  sheet: "Failed Entries",
+                  columns: columns,
+                  content: data?.failedEntries,
+                },
+              ]);
             }}
           >
             {({ errors, touched, values, setFieldValue }) => {
@@ -70,9 +117,9 @@ const MassUploadEmployees = () => {
                       fontSize: 12,
                     }}
                   >
-                    * only CSV files allowed
+                    * only xlsx files allowed
                   </p>
-                  {responseText?.length > 0 ? (
+                  {failedNumber > 0 ? (
                     <p
                       className="mt-2"
                       style={{
@@ -87,23 +134,16 @@ const MassUploadEmployees = () => {
                     {excelData?.length > 0 ? (
                       <a
                         href="#"
-                        onClick={() =>
-                          saveAsCsv({
-                            data: excelData,
-                            fields,
-                            filename: "Not Uploaded Employees",
-                          })
-                        }
+                        onClick={() => {
+                          console.log(excelData, "myExcel");
+                          xlsx(excelData, settings);
+                        }}
                         className="mt-2"
                       >
                         Download file for rejected employees
                       </a>
                     ) : (
-                      <a
-                        href={`${apiBaseUrl}${apiUrls?.downloads?.employeeUploadSampleSheet}`}
-                        download
-                        className="mt-2"
-                      >
+                      <a href="#" download className="mt-2">
                         Download sample file
                       </a>
                     )}

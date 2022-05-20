@@ -1,5 +1,6 @@
 import React from "react";
 import CIcon from "@coreui/icons-react";
+import userTypes from "src/constants/userTypes";
 
 const _nav = [
   {
@@ -7,20 +8,23 @@ const _nav = [
     name: "Dashboard",
     to: "/dashboard",
     icon: <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon" />,
-    badge: {
-      color: "info",
-      text: "NEW",
-    },
+    // badge: {
+    //   color: "info",
+    //   text: "NEW",
+    // },
+    showto: [userTypes?.supervisor?.key, userTypes?.admin?.key],
   },
+
   {
     _tag: "CSidebarNavDropdown",
     name: "Employees",
     route: "/employees",
     icon: "cil-user-follow",
+    showto: [userTypes?.admin?.key],
     _children: [
       {
         _tag: "CSidebarNavItem",
-        name: "Add Employee",
+        name: "Add Employees",
         to: "/employees/add",
       },
       {
@@ -28,7 +32,84 @@ const _nav = [
         name: "View Employees",
         to: "/employees/list",
       },
+      // {
+      //   _tag: "CSidebarNavItem",
+      //   name: "Mass Upload",
+      //   to: "/employees/upload",
+      // },
     ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Employees",
+    route: "/employees",
+    icon: "cil-user-follow",
+    showto: [userTypes?.supervisor?.key],
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "View Employees",
+        to: "/employees/list",
+      },
+
+      {
+        _tag: "CSidebarNavItem",
+        name: "Employee Awards",
+        to: "/employees/penalty",
+      },
+    ],
+  },
+
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Attendance",
+    to: "/attendance",
+    icon: "cil-chart-pie",
+    showto: [userTypes?.admin?.key],
+    _children: [
+      {
+        _tag: "CSidebarNavItem",
+        name: "Attendance Reports",
+        to: "/attendance/reports",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Attendance Refill",
+        to: "/attendance/update",
+      },
+    ],
+  },
+  {
+    _tag: "CSidebarNavDropdown",
+    name: "Payscale",
+    route: "/payscale",
+    icon: "cil-calculator",
+    showto: [userTypes?.admin?.key],
+    _children: [
+      // {
+      //   _tag: "CSidebarNavItem",
+      //   name: "Attendance",
+      //   to: "/attendance/all",
+      // },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Payscale Update",
+        to: "/payscale/update",
+      },
+      {
+        _tag: "CSidebarNavItem",
+        name: "Payscale Download",
+        to: "/payscale/download",
+      },
+    ],
+  },
+  {
+    _tag: "CSidebarNavItem",
+    route: "/rewards",
+    icon: "cil-puzzle",
+    showto: [userTypes?.admin?.key],
+    name: "Rewards",
+    to: "/rewards",
   },
   // {
   //   _tag: "CSidebarNavTitle",

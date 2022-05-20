@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-// import "../../";
+import "../../../src/index.css";
 
 function Loader(props) {
   if (!props.loading) {

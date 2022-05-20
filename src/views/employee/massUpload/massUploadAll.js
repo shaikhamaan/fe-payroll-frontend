@@ -18,6 +18,7 @@ const MassUploadAll = () => {
   const organization_id = useSelector(
     (state) => state?.auth?.userDetails?.organization_id
   );
+
   const dispatch = useDispatch();
   const [fileChoosen, setFileChoosen] = useState("");
   const [successMessage, setSuccessMessage] = useState({});
@@ -26,6 +27,7 @@ const MassUploadAll = () => {
   const [allData, setAllData] = useState({});
   const [excelData, setExcelData] = useState([]);
   const [disable, setDisable] = useState(false);
+  import axios from 'axios'
   // var textInputRef = useRef()
   const { saveAsCsv } = useJsonToCsv();
   let settings = {
@@ -33,6 +35,7 @@ const MassUploadAll = () => {
     extraLength: 4,
     writeOptions: {},
   };
+
   return (
     <div>
       <CCol xs="12" lg="12">
@@ -40,7 +43,9 @@ const MassUploadAll = () => {
           <Formik
             enableReinitialize
             initialValues={{}}
+
             onSubmit={async (values) => {
+
               if (fileChoosen) {
                 dispatch({ type: SET_LOADER, payload: true });
                 importEmployees(
@@ -106,7 +111,7 @@ const MassUploadAll = () => {
               }
             }}
           >
-            {({ errors, touched, values, setFieldValue }) => {
+            {({ errors, touched, values, setFieldValue, submitForm }) => {
               return (
                 <Form>
                   <div className="d-flex justify-content-between align-items-center">
@@ -220,11 +225,11 @@ const MassUploadAll = () => {
                       title="Submit"
                       color="primary"
                       className="float-right my-3 mt-4"
-                      type="submit"
+                      onClick={console.log('clicked')}
                       disable={disable}
-                      // ref={textInputRef}
                     />
                   </div>
+
                 </Form>
               );
             }}

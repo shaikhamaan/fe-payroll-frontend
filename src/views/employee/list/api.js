@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const { default: apiClient } = require("src/apis/api-client");
 const { default: apiUrls } = require("src/apis/apis");
 
@@ -18,21 +20,8 @@ const getEmployeesPaginate = async (
   }
 };
 
-const getEmployees = async (
-  queryString,
-  successCallback = () => {},
-  failCallback = () => {}
-) => {
-  try {
-    const { data = {} } = await apiClient.get(
-      apiUrls.employee.getEmployees(queryString)
-    );
-    console.log(data, "getEmployee-success");
-    successCallback(data);
-  } catch (err) {
-    console.log(err, "getEmployee-error");
-    failCallback();
-  }
+const getEmployees = () => {
+  return axios.get("http://localhost:5000/employee");
 };
 
 const getUsersWithSelectedFields = async (

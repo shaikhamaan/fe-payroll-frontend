@@ -1,53 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { CCard, CCardBody, CCol } from "@coreui/react";
-import { getEmployeesPaginate, getUsersWithSelectedFields } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import {
+  getEmployees,
+  getEmployeesPaginate,
+  getUsersWithSelectedFields,
+} from "./api";
+
 import { useDispatch, useSelector } from "react-redux";
 import CustomTable from "src/components/tables";
-import { SelectColumnFilter } from "src/components/tables/filters";
-import { useParams } from "react-router";
-import tableTypes from "../../../components/tables/types";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
-
-import axios from "axios";
-
-
-function tableMaker(val){
-  return(
-    <>
-      <tr>
-        <td>{val.employee_name}</td>
-        <td>{val.employee_code}</td>
-        <td>{val.work_location}</td>
-      </tr>
-    </>
-  )
-}
-
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAddressCard,
+  faAirFreshener,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ListEmployees(props) {
-  const { id } = useParams();
-
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const [employeeData, setEmployeeData] = useState([]);
   // const organization_id = useSelector((state) =>
   //   id ? id : state.auth?.userDetails?.organization_id
   // );
   // const params = new URLSearchParams(props.location.search);
   // var page = params.get("page");
-  const [employees,setEmployees] = useState([])
-   useEffect( async () => {
-    
-    const e = await axios.get('http://localhost:5000')
-    setEmployees(e.data)
-   }, []);
-  
+  const [employees, setEmployees] = useState([]);
 
-   console.log(employees);
-  
+  useEffect(async () => {
+    const e = await getEmployees();
+    setEmployees(e.data);
+  }, []);
+
   return (
     <SnackbarProvider>
       <div>
@@ -57,8 +42,8 @@ function ListEmployees(props) {
             <CCardBody>
               <CustomTable
                 data={[...employees]}
-                // actions
-                // type={tableTypes?.employeesList}
+                //actions
+                //type={tableTypes?.employeesList}
                 columns={[
                   {
                     Header: "Employee Name",
@@ -73,9 +58,23 @@ function ListEmployees(props) {
                     accessor: "employee_code",
                   },
                   {
-                    Header: "ID",
-                    accessor: "_id",
-                    show: false,
+                    Header: "Actions",
+                    disableSortBy: true,
+                    disableFilters: true,
+                    accessor: (row) => {
+                      return (
+                        <>
+                          <Link to={`/employees/profile/${row?.employee_code}`}>
+                            <h4 className="text-center">
+                              <FontAwesomeIcon
+                                icon={faAddressCard}
+                                color="blue"
+                              />
+                            </h4>
+                          </Link>
+                        </>
+                      );
+                    },
                   },
                 ]}
               />
@@ -84,12 +83,6 @@ function ListEmployees(props) {
         </CCol>
       </div>
     </SnackbarProvider>
- 
-   
-
-   
-
-
   );
 }
 

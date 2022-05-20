@@ -36,7 +36,7 @@ import { useSelector } from "react-redux";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import ProfileCard from "./profileCard";
 import MainHeading from "src/components/heading";
-
+import axios from "axios";
 const AddEmployees = () => {
   const [active, setActive] = useState(0);
   const [refresh, setRefresh] = useState(0);
@@ -47,20 +47,23 @@ const AddEmployees = () => {
   //const { user_type, _id } = useSelector((state) => state?.auth?.userDetails);
 
   const { id } = useParams();
-
+  // useEffect(async () => {
+  //   const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+  //   setUserDetails(e?.data?.data);
+  // }, []);
   //checkPermission(user_type, id, _id);
   useEffect(() => {
     if (id) {
-      dispatch({ type: SET_LOADER, payload: true });
+      //dispatch({ type: SET_LOADER, payload: true });
       getEmployees(
-        `?_id=${id}`,
+        `${id}`,
         (data) => {
-          setUserDetails(data?.data[0]);
+          setUserDetails(data);
           console.log(userDetails);
-          dispatch({ type: SET_LOADER, payload: false });
+          //dispatch({ type: SET_LOADER, payload: false });
         },
         () => {
-          dispatch({ type: SET_LOADER, payload: false });
+          //dispatch({ type: SET_LOADER, payload: false });
         }
       );
     }
@@ -86,6 +89,11 @@ const AddEmployees = () => {
   return (
     <SnackbarProvider>
       <div>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Link to={`/employees/upload`}>
+            <SimpleButton title="Upload Employees" className="mr-3 mb-2" />
+          </Link>
+        </div>
         <CCol xs="12" md="12" className="mb-4">
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {/* <div className="d-flex">

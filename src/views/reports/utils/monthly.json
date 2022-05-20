@@ -1,0 +1,1985 @@
+[
+    {
+        "department": "PH ladies - standard",
+        "employee_code": "2001",
+        "employee_name": "Asha Kaale",
+        "performance": [
+            {
+                "date": "2021-11-01",
+                "employee_code": "2001",
+                "employee_name": "Asha Kaale",
+                "rfid_card_no": "ACSED10",
+                "arrival_time": "00.00",
+                "dept_time": "00.00",
+                "working_hrs": "",
+                "over_time": "0",
+                "status": "A"
+            },
+            {
+                "date": "2021-11-02",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-03",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-03 10:01:20",
+                    "dept_time": "2021-11-03 18:01:20",
+                    "working_hrs": "",
+                    "over_time": 1,
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-04",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-04 10:01:20",
+                    "dept_time": "2021-11-04 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-05",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-05 10:01:20",
+                    "dept_time": "2021-11-05 18:01:20",
+                    "working_hrs": "",
+                    "over_time": 2,
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-06",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "dept_time": "2021-11-06 18:01:20",
+                    "working_hrs": "",
+                    "over_time": 2,
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-07",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-07 10:01:20",
+                    "dept_time": "2021-11-07 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-08",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-08 10:01:20",
+                    "dept_time": "2021-11-08 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-09",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "2021-11-09 10:01:20",
+                    "dept_time": "2021-11-09 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-10",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-11",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-12",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-13",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-14",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-15",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-16",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-17",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-18",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-19",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-20",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-21",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-22",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-23",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-24",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-25",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-26",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-27",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-28",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-29",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-30",
+                "data": {
+                    "employee_code": "2001",
+                    "employee_name": "Asha Kaale",
+                    "rfid_card_no": "ACSED10",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            }
+        ]
+    },
+    {
+        "department": "PH ladies - standard",
+        "employee_code": "2002",
+        "employee_name": "Sankket sonawane",
+        "performance": [
+            {
+                "date": "2021-11-01",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-02",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-03",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-04",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-05",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-06",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-07",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-08",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-09",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-10",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-11",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-12",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-13",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-14",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-15",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-16",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-17",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-18",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-19",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-20",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-21",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-22",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-23",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-24",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-25",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-26",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-27",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-28",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-29",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-30",
+                "data": {
+                    "employee_code": "2002",
+                    "employee_name": "Sankket sonawane",
+                    "rfid_card_no": "ACSED47",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            }
+        ]
+    },
+    {
+        "department": "PH ladies - standard",
+        "employee_code": "2003",
+        "employee_name": "Amaan Shaikh",
+        "performance": [
+            {
+                "date": "2021-11-01",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-02",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-03",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-04",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-05",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-06",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-07",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-08",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-09",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-10",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-11",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-12",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-13",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-14",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-15",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-16",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-17",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-18",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-19",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-20",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-21",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-22",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-23",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-24",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-25",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-26",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-27",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-28",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-29",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-30",
+                "data": {
+                    "employee_code": "2003",
+                    "employee_name": "Amaan Shaikh",
+                    "rfid_card_no": "ACSED46",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            }
+        ]
+    },
+    {
+        "department": "PH ladies - standard",
+        "employee_code": "2004",
+        "employee_name": "Dnyaneshwar Ware",
+        "performance": [
+            {
+                "date": "2021-11-01",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-02",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-03",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-04",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-05",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-06",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-07",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-08",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-09",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-10",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-11",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-12",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-13",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-14",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-15",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-16",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-17",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-18",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-19",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-20",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-21",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-22",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-23",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-24",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-25",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-26",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-27",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-28",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-29",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-30",
+                "data": {
+                    "employee_code": "2004",
+                    "employee_name": "Dnyaneshwar Ware",
+                    "rfid_card_no": "CDCSED512",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            }
+        ]
+    },
+    {
+        "department": "PH Bengal Boys Supervisor",
+        "employee_code": "2005",
+        "employee_name": "Ajit Shinde",
+        "performance": [
+            {
+                "date": "2021-11-01",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-02",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-03",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "2021-11-03 10:01:20",
+                    "dept_time": "2021-11-03 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-04",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "2021-11-04 10:01:20",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-05",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "2021-11-05 10:01:20",
+                    "dept_time": "2021-11-05 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-06",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "2021-11-06 10:01:20",
+                    "dept_time": "2021-11-06 18:01:20",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "P"
+                }
+            },
+            {
+                "date": "2021-11-07",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-08",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-09",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-10",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-11",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-12",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-13",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-14",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-15",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-16",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-17",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-18",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-19",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-20",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-21",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-22",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-23",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-24",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-25",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-26",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-27",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-28",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-29",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            },
+            {
+                "date": "2021-11-30",
+                "data": {
+                    "employee_code": "2005",
+                    "employee_name": "Ajit Shinde",
+                    "rfid_card_no": "ACSED11",
+                    "arrival_time": "00.00",
+                    "dept_time": "00.00",
+                    "working_hrs": "",
+                    "over_time": "0",
+                    "status": "A"
+                }
+            }
+        ]
+    }
+]

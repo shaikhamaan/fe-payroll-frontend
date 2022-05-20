@@ -12,7 +12,10 @@ const Actions = ({ row, type }) => {
         </Link>
       ) : null}
       {type === tableTypes?.employeesList ? (
-        <Link data-tip="Edit" to={`/employees/edit/${row?.values?._id}`}>
+        <Link
+          data-tip="Employee Profile"
+          to={`/employees/profile/${row?.values?.employee_code}`}
+        >
           <i class="fas fa-user-edit"></i>
         </Link>
       ) : null}
@@ -30,7 +33,7 @@ const Actions = ({ row, type }) => {
         <Link
           className="ml-2"
           data-tip="Edit Leave"
-        // to={`/employees/list/${row?.values?._id}`}
+          // to={`/employees/list/${row?.values?._id}`}
         >
           <i class="fas fa-user"></i>
           <ReactTooltip />

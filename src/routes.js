@@ -4,7 +4,7 @@ const Toaster = React.lazy(() =>
   import("./views/notifications/toaster/Toaster")
 );
 const Tables = React.lazy(() => import("./views/base/tables/Tables"));
-
+const Profile = React.lazy(() => import("./views/employee/profile"));
 const Breadcrumbs = React.lazy(() =>
   import("./views/base/breadcrumbs/Breadcrumbs")
 );
@@ -56,12 +56,26 @@ const Colors = React.lazy(() => import("./views/theme/colors/Colors"));
 const Typography = React.lazy(() =>
   import("./views/theme/typography/Typography")
 );
+const Penalty = React.lazy(() => import("./views/penalty/"));
+const Attendance = React.lazy(() => import("./views/attendance/"));
 const Widgets = React.lazy(() => import("./views/widgets/Widgets"));
 const Users = React.lazy(() => import("./views/users/Users"));
 const User = React.lazy(() => import("./views/users/User"));
 
 const AddEmployees = React.lazy(() => import("../src/views/employee/add"));
 const ListEmployees = React.lazy(() => import("../src/views/employee/list"));
+const ViewEmployeeData = React.lazy(() => import("./views/employee/profile"));
+const Reports = React.lazy(() => import("./views/reports/"));
+const PayScale = React.lazy(() =>
+  import("../src/views/employee/payscale/PayScale")
+);
+const MassUploadEmployees = React.lazy(() =>
+  import("src/views/employee/massUpload/massUploadEmployees")
+);
+const PayscaleDownload = React.lazy(() =>
+  import("src/views/employee/payscale/payscaleDownload")
+);
+const Update = React.lazy(() => import("src/views/attendance/update"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -130,9 +144,68 @@ const routes = [
     component: AddEmployees,
   },
   {
+    path: "/employees/edit/:id",
+    name: "Edit Employee",
+    component: AddEmployees,
+  },
+  {
     path: "/employees/list",
     name: "List Employees",
     component: ListEmployees,
+    exact: true,
+  },
+  {
+    path: "/employees/viewdata/:id",
+    name: "View Individual Data",
+    component: ViewEmployeeData,
+    exact: "true",
+  },
+  {
+    path: "/employees/profile/:id",
+    name: "Employee Profile",
+    component: Profile,
+    exact: true,
+  },
+  {
+    path: "/rewards",
+    name: "Rewards",
+    component: Penalty,
+    exact: true,
+  },
+  {
+    path: "/employees/upload",
+    name: "Upload Employees",
+    component: MassUploadEmployees,
+    exact: true,
+  },
+  {
+    path: "/attendance/all",
+    name: "Attendance",
+    component: Attendance,
+    exact: true,
+  },
+  {
+    path: "/payscale/update",
+    name: "PayScale Update",
+    component: PayScale,
+    exact: true,
+  },
+  {
+    path: "/payscale/download",
+    name: "PayScale Download",
+    component: PayscaleDownload,
+    exact: true,
+  },
+  {
+    path: "/attendance/reports",
+    name: "Attendance Reports",
+    component: Reports,
+    exact: true,
+  },
+  {
+    path: "/attendance/update",
+    name: "Attendance Refill",
+    component: Update,
     exact: true,
   },
 ];
