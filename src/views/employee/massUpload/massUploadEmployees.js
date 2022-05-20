@@ -55,7 +55,7 @@ const MassUploadEmployees = () => {
               }
 
               const { data = {} } = await axios.post(
-                "https://freshexp-server.herokuapp.com/massupload",
+                "http://localhost:5000/massupload",
                 formData,
                 {
                   headers: {

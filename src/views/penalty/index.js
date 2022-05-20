@@ -10,8 +10,9 @@ import SimpleTextArea from "src/components/formFields/simpleTextArea";
 import MainHeading from "src/components/heading";
 import DatePicker from "src/components/formFields/datePicker";
 import moment from "moment";
-import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { addReward, getEmployees } from "./apis";
+
 import "react-toastify/dist/ReactToastify.css";
 var today = new Date();
 var maxDate = new Date();
@@ -30,11 +31,11 @@ const Penalty = () => {
   const [options, setOptions] = useState([]);
   const { date = "", penalty_description = "", penalty_value = "" } = {};
   useEffect(async () => {
-    const { data } = await axios.get("https://freshexp-server.herokuapp.com/");
+    const { data } = await getEmployees();
     let temp = [];
     data.map((employee) =>
       temp.push({
-        label: employee?.employee_code,
+        label: employee?.employee_code + " - " + employee?.employee_name,
         value: employee?.employee_code,
       })
     );
@@ -53,37 +54,30 @@ const Penalty = () => {
             date,
           }}
           onSubmit={async (values, { resetForm }) => {
-            console.log({ ...values, employee_codes: selectedOption }, "new");
-            const d = await axios.post(
-              "https://freshexp-server.herokuapp.com/perks",
-              { ...values, employee_codes: selectedOption }
-            );
+            const d = await addReward({
+              ...values,
+              employee_codes: selectedOption,
+            });
             if (d.data.status == "success") {
-              toast.success(
-                d.data.message + "" + `Employee Code : ${values.employee_code}`,
-                {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                }
-              );
+              toast.success(d.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              });
             } else {
-              toast.error(
-                d.data.message + "" + `Employee Code : ${values.employee_code}`,
-                {
-                  position: "top-right",
-                  autoClose: 3000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                }
-              );
+              toast.error(d.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+              });
             }
           }}
         >

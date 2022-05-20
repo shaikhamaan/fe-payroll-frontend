@@ -12,18 +12,11 @@ import moment from "moment";
 import SimpleButton from "src/components/buttons/simpleButton";
 import Select from "react-select";
 import DatePicker from "src/components/formFields/datePicker";
-import { SET_LOADER } from "src/redux/actions";
-import { useDispatch, useSelector } from "react-redux";
-import CustomTable from "src/components/tables";
-import { SelectColumnFilter } from "src/components/tables/filters";
-import { useParams } from "react-router";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import MainHeading from "src/components/heading";
-import { SnackbarProvider } from "notistack";
-import { Doughnut, Pie } from "react-chartjs-2";
 import axios from "axios";
-import xlsx from "json-as-xlsx";
-import XLSX from "xlsx";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 function Update(props) {
   var today = new Date();
@@ -33,14 +26,49 @@ function Update(props) {
   );
   const [selectedOption, setSelectedOption] = useState({});
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [options, setOptions] = useState([]);
+
+  const handleSubmit = async () => {
+    const d = await axios.post(
+      "https://freshexp-server.herokuapp.com/attendance/refill",
+      {
+        employee_codes: selectedOption,
+        date,
+        time,
+      }
+    );
+
+    if (d.data.status == "success") {
+      toast.success(d.data.message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error(d.data.message, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   useEffect(async () => {
-    const { data } = await axios.get("https://freshexp-server.herokuapp.com/");
+    const { data } = await axios.get("http://localhost:5000/employee");
     let temp = [];
     data.map((employee) =>
       temp.push({
-        label: employee?.employee_code,
-        value: employee?.employee_code,
+        label: employee?.rfid_card_no + " - " + employee?.employee_name,
+        value: employee?.rfid_card_no,
       })
     );
     setOptions(temp);
@@ -49,15 +77,14 @@ function Update(props) {
   return (
     <div>
       <CCard accentColor="primary">
-        <MainHeading heading="Attendance Update" />
+        <MainHeading heading="Attendance Refill" />
         <CCardBody className="">
           <CFormGroup row>
             <CCol lg="6" sm="6">
-              <CLabel htmlFor="#select">Select Employee</CLabel>
+              <CLabel htmlFor="#select">Select Employees</CLabel>
               <Select
                 onChange={(e) => {
                   setSelectedOption(e);
-                  console.log(e, "liu");
                 }}
                 options={options}
                 isMulti={true}
@@ -83,6 +110,7 @@ function Update(props) {
             color="primary"
             className="float-right my-3"
             type="submit"
+            onClick={handleSubmit}
           />
         </CCardBody>
       </CCard>

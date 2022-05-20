@@ -22,6 +22,7 @@ import axios from "axios";
 import xlsx from "json-as-xlsx";
 import * as yup from "yup";
 import { Formik, Form } from "formik";
+import { getProfile } from "./apis";
 function Profile(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -34,35 +35,10 @@ function Profile(props) {
   const { start = "", end = "" } = {};
 
   useEffect(async () => {
-    const e = await axios.get(
-      `https://freshexp-server.herokuapp.com/getdata/${id}`
-    );
+    const e = await getProfile(id);
     setEmployees(e?.data?.data);
   }, []);
 
-  //   useEffect(() => {
-  //     dispatch({ type: SET_LOADER, payload: true });
-  //     getAttendance(
-  //       "",
-  //       (data) => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //         setAttendance(data?.data?.data || []);
-  //         setExcelData([
-  //           {
-  //             sheet: `${monthYear} Attendance`,
-  //             columns: [
-  //               { label: "Employee Name", value: "employee_name" },
-  //               { label: "Attendance Status", value: "attendance_status" },
-  //             ],
-  //             content: data?.data?.data,
-  //           },
-  //         ]);
-  //       },
-  //       () => {
-  //         dispatch({ type: SET_LOADER, payload: false });
-  //       }
-  //     );
-  //   }, [refresh, monthYear]);
   console.log(employee);
 
   return (
@@ -361,7 +337,7 @@ function Profile(props) {
                         </CCol>
                       </CFormGroup>
                       <a
-                        href={`https://freshexp-server.herokuapp.com/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
+                        href={`http://localhost:5000/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
                         download
                       >
                         <SimpleButton

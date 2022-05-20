@@ -1,24 +1,13 @@
-import localStorageConstants from "src/constants/localstorageConstants";
 import axios from "axios";
 const { default: apiClient } = require("src/apis/api-client");
 const { default: apiUrls } = require("src/apis/apis");
 
-const addEmployee = async (
-  dataToSend,
-  successCallback = () => {},
-  failCallback = () => {}
-) => {
-  try {
-    const { data = {} } = await apiClient.post(
-      apiUrls.employee.addEmployee,
-      dataToSend
-    );
-    console.log(data, "addEmployee-success");
-    successCallback(data);
-  } catch (err) {
-    console.log(err, "addEmployee-error");
-    failCallback();
-  }
+const addEmployee = (data) => {
+  return axios.post("http://localhost:5000/employee", data);
+};
+
+const updateEmployee = (data) => {
+  return axios.post("http://localhost:5000/employee/update", data);
 };
 
 const changeStatus = async (
@@ -83,7 +72,7 @@ const getEmployees = async (
 ) => {
   try {
     const data = await axios.get(
-      `https://freshexp-server.herokuapp.com/getdata/${queryString}`
+      `http://localhost:5000/employee/getdata/${queryString}`
     );
     console.log(data.data.data, "getEmployee-success");
     successCallback(data.data.data);
@@ -140,24 +129,24 @@ const deleteAssets = async (
   }
 };
 
-const updateEmployee = async (
-  _id,
-  dataToSend,
-  successCallback = () => {},
-  failCallback = () => {}
-) => {
-  try {
-    const { data = {} } = await apiClient.patch(
-      `${apiUrls.employee.updateEmployee}?_id=${_id}`,
-      dataToSend
-    );
-    console.log(data, "updateEmployee-success");
-    successCallback(data);
-  } catch (err) {
-    console.log(err, "updateEmployee-error");
-    failCallback();
-  }
-};
+// const updateEmployee = async (
+//   _id,
+//   dataToSend,
+//   successCallback = () => {},
+//   failCallback = () => {}
+// ) => {
+//   try {
+//     const { data = {} } = await apiClient.patch(
+//       `${apiUrls.employee.updateEmployee}?_id=${_id}`,
+//       dataToSend
+//     );
+//     console.log(data, "updateEmployee-success");
+//     successCallback(data);
+//   } catch (err) {
+//     console.log(err, "updateEmployee-error");
+//     failCallback();
+//   }
+// };
 
 const uploadUserDocument = async (userId, item, callBack = () => {}) => {
   var formData = new FormData();

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { CCard, CCardBody, CCol } from "@coreui/react";
-import { getEmployeesPaginate, getUsersWithSelectedFields } from "./api";
-import { SET_LOADER } from "src/redux/actions";
+import {
+  getEmployees,
+  getEmployeesPaginate,
+  getUsersWithSelectedFields,
+} from "./api";
+
 import { useDispatch, useSelector } from "react-redux";
 import CustomTable from "src/components/tables";
-import { SelectColumnFilter } from "src/components/tables/filters";
-import { useParams } from "react-router";
-import tableTypes from "../../../components/tables/types";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import MainHeading from "src/components/heading";
 import { SnackbarProvider } from "notistack";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAddressCard,
@@ -29,7 +29,7 @@ function ListEmployees(props) {
   const [employees, setEmployees] = useState([]);
 
   useEffect(async () => {
-    const e = await axios.get("https://freshexp-server.herokuapp.com/");
+    const e = await getEmployees();
     setEmployees(e.data);
   }, []);
 

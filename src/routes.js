@@ -204,7 +204,7 @@ const routes = [
   },
   {
     path: "/attendance/update",
-    name: "Attendance Update",
+    name: "Attendance Refill",
     component: Update,
     exact: true,
   },

@@ -54,7 +54,7 @@ const _nav = [
 
       {
         _tag: "CSidebarNavItem",
-        name: "Employee Penalty",
+        name: "Employee Awards",
         to: "/employees/penalty",
       },
     ],
@@ -74,7 +74,7 @@ const _nav = [
       },
       {
         _tag: "CSidebarNavItem",
-        name: "Attendance Update",
+        name: "Attendance Refill",
         to: "/attendance/update",
       },
     ],

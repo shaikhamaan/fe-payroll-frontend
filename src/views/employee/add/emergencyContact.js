@@ -15,7 +15,7 @@ import {
   CButton,
 } from "@coreui/react";
 import SimpleInput from "src/components/formFields/simpleInput";
-import { addEmployee } from "./api";
+import { addEmployee, updateEmployee } from "./api";
 import { SET_LOADER, ADD_EMPLOYEE_DATA } from "src/redux/actions";
 import { Formik, Form } from "formik";
 import { useDispatch, useSelector } from "react-redux";
@@ -71,10 +71,7 @@ function EmergencyContact({
               if (id == -1 || id == undefined) {
                 delete data["id"];
 
-                const d = await axios.post(
-                  "https://freshexp-server.herokuapp.com/",
-                  data
-                );
+                const d = await addEmployee(data);
 
                 console.log(d);
                 enqueueSnackbar(String(d.data.message), {
@@ -85,10 +82,7 @@ function EmergencyContact({
                   variant: String(d.data.status),
                 });
               } else {
-                const d = await axios.post(
-                  "https://freshexp-server.herokuapp.com/update",
-                  data
-                );
+                const d = await updateEmployee(data);
 
                 console.log(d);
                 enqueueSnackbar(String(d.data.message), {
