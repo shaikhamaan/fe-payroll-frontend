@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const addReward = (data) => {
-  return axios.post("http://localhost:5000/awards", data);
+  return axios.post("https://freshexp-server.herokuapp.com/awards", data);
 };
 
 const getEmployees = () => {
-  return axios.get("http://localhost:5000/employee");
+  return axios.get("https://freshexp-server.herokuapp.com/employee");
 };
 
 export { addReward, getEmployees };

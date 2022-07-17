@@ -337,7 +337,7 @@ function Profile(props) {
                         </CCol>
                       </CFormGroup>
                       <a
-                        href={`http://localhost:5000/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
+                        href={`https://freshexp-server.herokuapp.com/getsalary?employee_code=${employee?.employee_code}&start=${values?.start}&end=${values.end}`}
                         download
                       >
                         <SimpleButton

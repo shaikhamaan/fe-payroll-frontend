@@ -48,7 +48,7 @@ const AddEmployees = () => {
 
   const { id } = useParams();
   // useEffect(async () => {
-  //   const e = await axios.get(`http://localhost:5000/getdata/${id}`);
+  //   const e = await axios.get(`https://freshexp-server.herokuapp.com/getdata/${id}`);
   //   setUserDetails(e?.data?.data);
   // }, []);
   //checkPermission(user_type, id, _id);
