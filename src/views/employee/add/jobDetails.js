@@ -26,7 +26,7 @@ function JobDetails({ setActive, userDetails, setUserDetails, isDisabled }) {
 
   const setPayScale = async (employee_grade, pay_scale_term) => {
     const data = await axios.get(
-      `http://localhost:5000/payscale/getpay?employee_grade=${employee_grade}&pay_scale_term=${pay_scale_term}`
+      `https://freshexp-server.herokuapp.com/payscale/getpay?employee_grade=${employee_grade}&pay_scale_term=${pay_scale_term}`
     );
     return data.data.amount;
   };

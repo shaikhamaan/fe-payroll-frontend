@@ -62,7 +62,7 @@ const PayScale = ({
             onSubmit={async (values, { resetForm }) => {
               //console.log(values);
               const result = await axios.post(
-                "http://localhost:5000/payscale",
+                "https://freshexp-server.herokuapp.com/payscale",
                 values
               );
 

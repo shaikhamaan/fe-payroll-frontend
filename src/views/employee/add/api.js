@@ -3,11 +3,14 @@ const { default: apiClient } = require("src/apis/api-client");
 const { default: apiUrls } = require("src/apis/apis");
 
 const addEmployee = (data) => {
-  return axios.post("http://localhost:5000/employee", data);
+  return axios.post("https://freshexp-server.herokuapp.com/employee", data);
 };
 
 const updateEmployee = (data) => {
-  return axios.post("http://localhost:5000/employee/update", data);
+  return axios.post(
+    "https://freshexp-server.herokuapp.com/employee/update",
+    data
+  );
 };
 
 const changeStatus = async (
@@ -72,7 +75,7 @@ const getEmployees = async (
 ) => {
   try {
     const data = await axios.get(
-      `http://localhost:5000/employee/getdata/${queryString}`
+      `https://freshexp-server.herokuapp.com/employee/getdata/${queryString}`
     );
     console.log(data.data.data, "getEmployee-success");
     successCallback(data.data.data);

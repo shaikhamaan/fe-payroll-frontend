@@ -63,7 +63,9 @@ function Update(props) {
   };
 
   useEffect(async () => {
-    const { data } = await axios.get("http://localhost:5000/employee");
+    const { data } = await axios.get(
+      "https://freshexp-server.herokuapp.com/employee"
+    );
     let temp = [];
     data.map((employee) =>
       temp.push({

@@ -67,7 +67,7 @@ function PayscaleDownload() {
               let excelData;
               const getPayScale = async () => {
                 const data = await axios.post(
-                  "http://localhost:5000/reports/masssalary",
+                  "https://freshexp-server.herokuapp.com/reports/masssalary",
                   values
                 );
 

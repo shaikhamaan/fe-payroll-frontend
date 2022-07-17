@@ -35,10 +35,13 @@ const Login = () => {
 
   const onLoginPress = async () => {
     dispatch({ type: SET_LOADER, payload: true });
-    const response = await axios.post("http://localhost:5000/users/authuser", {
-      username: id,
-      password: password,
-    });
+    const response = await axios.post(
+      "https://freshexp-server.herokuapp.com/users/authuser",
+      {
+        username: id,
+        password: password,
+      }
+    );
     if (response?.data?.status === "success") {
       localStorage.setItem(localStorageConstants.userId, id);
       localStorage.setItem("role", response?.data?.role);

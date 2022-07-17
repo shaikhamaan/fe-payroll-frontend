@@ -21,7 +21,7 @@ const getEmployeesPaginate = async (
 };
 
 const getEmployees = () => {
-  return axios.get("http://localhost:5000/employee");
+  return axios.get("https://freshexp-server.herokuapp.com/employee");
 };
 
 const getUsersWithSelectedFields = async (
